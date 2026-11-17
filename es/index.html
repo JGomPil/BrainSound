@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BrainSound: resultados del piloto</title>
+<link rel="alternate" hreflang="en" href="https://jgompil.github.io/BrainSound/">
+<link rel="alternate" hreflang="es" href="https://jgompil.github.io/BrainSound/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Plain-language results page for a mostly non-expert team (musicians). One reading column,
+   findings as cards with a "how sure are we" badge, technical detail folded at the end. */
+:root {
+  --bg: #f6f7f9; --fg: #15181d; --muted: #586070; --line: #dde1e8; --card: #ffffff;
+  --accent: #2a78d6; --accent-ink: #1c5cab;
+  --solid: #0b7a3e; --promising: #9a5b00; --unclear: #6b7280;
+  --warn-bg: #fff4e5; --warn-line: #f2c48d; --warn: #9a4a06;
+  --note-bg: #eef4fc; --note-line: #c4d8f3; --plate: #fcfcfb; --plate-line: #e3e5ea;
+  --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
+  --accent: #5d9fea; --accent-ink: #8cbcf2;
+  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
+  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
+  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
+  --accent: #5d9fea; --accent-ink: #8cbcf2;
+  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
+  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
+  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 44px 80px; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 600; }
+h2 { font-size: 1.5rem; font-weight: 600; margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); }
+h3 { font-size: 1.2rem; font-weight: 600; margin: 0; }
+p { margin: 12px 0; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
+.lede { font-size: 1.15rem; color: var(--muted); }
+a { color: var(--accent-ink); }
+
+.box { border-radius: 10px; padding: 16px 20px; margin: 22px 0; border: 1px solid; }
+.box.note { background: var(--note-bg); border-color: var(--note-line); }
+.box.warn { background: var(--warn-bg); border-color: var(--warn-line); }
+.box h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.box.warn h3 { color: var(--warn); }
+.box p:last-child { margin-bottom: 0; }
+dl.gloss { margin: 8px 0 0; }
+dl.gloss dt { font-weight: 600; margin-top: 10px; }
+dl.gloss dd { margin: 2px 0 0; color: var(--muted); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 14px; font-size: 0.92rem; color: var(--muted); }
+.badge { display: inline-block; font-family: var(--f-mono); font-size: 0.74rem; font-weight: 500; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.badge.solid { color: var(--solid); } .badge.promising { color: var(--promising); } .badge.unclear { color: var(--unclear); }
+
+.finding { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-top: 22px; }
+.finding .head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; margin-bottom: 6px; }
+.finding .num { font-family: var(--f-mono); color: var(--muted); font-size: 0.85rem; }
+.finding .label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 16px 0 2px; }
+.finding .label + p { margin-top: 2px; }
+figure { margin: 18px 0 6px; }
+.plate { background: var(--plate); border: 1px solid var(--plate-line); border-radius: 8px; padding: 8px; }
+.plate img { display: block; width: 100%; height: auto; }
+.plate.small { max-width: 420px; }
+figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 14px 0; }
+.steps li { position: relative; padding-left: 42px; margin: 14px 0; }
+.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-family: var(--f-mono); font-size: 0.85rem; display: grid; place-items: center; }
+
+details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px; margin-top: 14px; }
+summary { cursor: pointer; font-weight: 600; }
+details[open] summary { margin-bottom: 8px; }
+details p, details li { font-size: 0.93rem; }
+details ul { padding-left: 20px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+.lang { display: flex; justify-content: flex-end; gap: 6px; font-family: var(--f-mono); font-size: 0.85rem; margin-bottom: 18px; }
+.lang a, .lang span { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; }
+.lang span[aria-current] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.lang a:hover { border-color: var(--accent); }
+footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a><span aria-current="page">Español</span></nav>
+
+<header>
+  <div class="eyebrow">BrainSound · estudio piloto · resultados preliminares</div>
+  <h1>¿Qué ocurre en el cerebro cuando escuchamos el sonido como materia?</h1>
+  <p class="lede">Un resumen en lenguaje sencillo de lo que hemos encontrado hasta ahora. 27 personas escucharon 27 sonidos con los ojos cerrados mientras registrábamos su actividad cerebral, y nos contaron qué les hacía sentir e imaginar cada sonido.</p>
+</header>
+
+<section>
+  <h2>Qué hicimos</h2>
+  <ol class="steps">
+    <li><b>Los sonidos.</b> 13 sonidos sintéticos creados en SuperCollider, cada bloque variando una propiedad (altura, envolvente, ancho de banda o parciales), y 14 grabaciones de paisajes sonoros naturales (pájaros, lluvia, río, olas, trueno, viento, terremoto), en dos versiones cada uno. Todos duraban 50 segundos, al mismo volumen.</li>
+    <li><b>El cerebro.</b> Mientras escuchaban, cada persona llevaba un gorro con 64 sensores (EEG) que captan los diminutos ritmos eléctricos del cerebro a través del cuero cabelludo. También registramos 3 minutos de reposo en silencio, con los ojos cerrados, antes y después.</li>
+    <li><b>La experiencia.</b> Tras cada sonido, valoraban cuánto les agradaba, cuánto les activaba y cuánto control sentían, nombraban una emoción y describían la imagen que les evocaba: su color, tamaño, temperatura, textura y movimiento.</li>
+  </ol>
+
+  <div class="box note">
+    <h3>Tres palabras que necesitas para esta página</h3>
+    <dl class="gloss">
+      <dt>Ritmos cerebrales</dt>
+      <dd>El EEG es como una grabación del "zumbido" del cerebro. Mezcla ritmos lentos y rápidos, un poco como los graves, medios y agudos de una mezcla. Miramos cuánto hay de cada uno.</dd>
+      <dt>Ritmo alfa</dt>
+      <dd>Un ritmo de unos 10 ciclos por segundo, máximo cuando descansamos con los ojos cerrados. Funciona como una señal de "ralentí": cuando el cerebro se pone a trabajar (atender, imaginar), el alfa baja. <b>Menos alfa = cerebro más implicado.</b></dd>
+      <dt>Complejidad</dt>
+      <dd>Lo predecible o variada que es la señal cerebral, como comparar un bordón con una improvisación libre.</dd>
+    </dl>
+  </div>
+
+  <div class="legend">
+    ¿Cómo de seguros estamos?
+    <span><span class="badge solid">sólido</span> claro y consistente</span>
+    <span><span class="badge promising">prometedor</span> señal real, hay que confirmarla</span>
+    <span><span class="badge unclear">aún no se sabe</span> mezclado con otros factores</span>
+  </div>
+</section>
+
+<section>
+  <h2>Qué encontramos</h2>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 1</span><span class="badge solid">sólido</span></div>
+    <h3>Escuchar "enciende" el cerebro, sobre todo en la parte posterior de la cabeza</h3>
+    <figure>
+      <div class="plate small"><img src="../figs/es/alpha_listening.png" alt="Mapa de la cabeza visto desde arriba: la bajada de alfa es mayor (azul oscuro) en la parte posterior y menor (claro) delante y en los lados"></div>
+      <figcaption>La cabeza vista desde arriba (nariz arriba). Azul más oscuro = mayor bajada de alfa al escuchar respecto al reposo. El alfa bajó en todas partes, al menos 4 puntos porcentuales, así que la escala empieza en 4 para que se vea dónde bajó más.</figcaption>
+    </figure>
+    <div class="label">Qué vimos</div>
+    <p>Comparado con el reposo, el alfa bajó en toda la cabeza en cuanto las personas escuchaban un sonido. La bajada fue mayor en la parte posterior, sobre zonas que solemos asociar a la visión, y menor en los lados, donde se procesa la audición.</p>
+    <div class="label">Por qué importa</div>
+    <p>Las personas tuvieron los ojos cerrados todo el tiempo, así que no se trata de ver nada. Encaja con la idea del proyecto: escuchar estos sonidos implica regiones del cerebro que normalmente asociamos a la visión, quizá porque se construyen imágenes mentales.</p>
+    <div class="label">Cuidado</div>
+    <p>El alfa también baja simplemente al prestar atención. Todavía no podemos decir que las zonas visuales estén haciendo un trabajo "visual".</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 2</span><span class="badge promising">prometedor</span></div>
+    <h3>Cuanto más movimiento imaginaban, menos alfa tenían</h3>
+    <figure>
+      <div class="plate"><img src="../figs/es/movement_alpha.png" alt="Gráfico de barras: el alfa está por encima de la media del oyente con imágenes quietas y baja escalón a escalón con movimiento lento, moderado y rápido"></div>
+      <figcaption>Cada barra compara a las personas consigo mismas: cuánto alfa tenían con ese tipo de imagen, respecto a su propia media. Las líneas negras muestran la incertidumbre.</figcaption>
+    </figure>
+    <div class="label">Qué vimos</div>
+    <p>Cuando alguien describía la imagen evocada como quieta, su alfa era más alto; cuando describía un movimiento rápido o intenso, era más bajo, escalón a escalón. Se mantiene al comparar a cada persona solo consigo misma.</p>
+    <div class="label">Por qué importa</div>
+    <p>Une una medida cerebral con lo que las personas vivieron, que es justo de lo que trata el proyecto: el sonido percibido como algo que se mueve en el espacio. No se explica por lo activador o agradable que resultaba el sonido, ni por tensión muscular.</p>
+    <div class="label">Un detalle intrigante</div>
+    <p>La relación parecía más fuerte con los sonidos sintéticos de SuperCollider que con los paisajes naturales. Una idea: con una grabación de lluvia, la persona <i>reconoce</i> la fuente y ya sabe cómo se mueve; con un sonido sintético abstracto no hay fuente, así que el oyente tiene que <i>construir</i> el movimiento a partir del propio sonido. La diferencia entre los dos tipos de sonido aún no es estadísticamente clara, así que por ahora es una hipótesis para el próximo estudio.</p>
+    <div class="label">Cuidado</div>
+    <p>Alrededor de dos tercios de los oyentes (18 de 27) muestran el efecto. Es pequeño, está repartido por la cabeza en lugar de solo en la parte posterior, y lo encontramos buscando entre muchas relaciones posibles. Hay que confirmarlo con participantes nuevos.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 3</span><span class="badge solid">sólido</span></div>
+    <h3>Cada tipo de sonido natural deja una huella distinta en el cerebro</h3>
+    <figure>
+      <div class="plate"><img src="../figs/es/soundscapes.png" alt="Barras horizontales para siete paisajes sonoros: trueno y olas los más altos, pájaros el más bajo"></div>
+      <figcaption>Una de las varias medidas que diferían entre paisajes: la "pendiente" del espectro de la señal cerebral. Una pendiente más inclinada suele interpretarse como un estado cerebral más tranquilo, menos excitado.</figcaption>
+    </figure>
+    <div class="label">Qué vimos</div>
+    <p>Pájaros, río, lluvia, viento, olas, trueno y terremoto produjeron patrones cerebrales distintos, sobre todo en el equilibrio entre ritmos lentos y rápidos y en la complejidad de la señal. El canto de los pájaros tendía a ir con la señal más "viva", y el trueno y las olas con la más tranquila.</p>
+    <div class="label">Por qué este es fiable</div>
+    <p>El orden de los paisajes se barajó para cada persona, así que las diferencias no se pueden explicar por el cansancio ni por qué sonido vino antes.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 4</span><span class="badge promising">prometedor</span></div>
+    <h3>Entre los sonidos sintéticos, lo que más importó fue la envolvente</h3>
+    <figure>
+      <div class="plate"><img src="../figs/es/envelope_theta.png" alt="Gráfico de líneas de theta central para las cuatro envolventes, con un pico en la percusiva y una línea gris por oyente"></div>
+      <figcaption>Bloque 2: proporción de theta, un ritmo lento (4–8 ciclos por segundo), en el centro de la cabeza para cada envolvente. Azul = media de todos los oyentes con su incertidumbre; líneas grises = cada oyente.</figcaption>
+    </figure>
+    <p>Cambiar la envolvente (neutra, percusiva, de viento, on-off) cambió la actividad cerebral. La envolvente percusiva destacó, con más actividad theta. Cambiar la altura, el ancho de banda o los parciales no produjo diferencias claras. Los sonidos de cada bloque se pusieron siempre en el mismo orden, así que hay que confirmarlo.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 5</span><span class="badge solid">sólido</span></div>
+    <h3>Las personas coinciden en cómo se sienten los sonidos, sobre todo en agrado y tamaño</h3>
+    <figure>
+      <div class="plate"><img src="../figs/es/ratings.png" alt="Gráficos de puntos con el agrado, la activación y el control medios de cada uno de los 27 sonidos, coloreados por bloque"></div>
+      <figcaption>Valoración media de cada sonido (1–7) con su incertidumbre. Izquierda: agrado (valencia). Centro: activación (arousal). Derecha: sensación de control (dominancia).</figcaption>
+    </figure>
+    <p>Los sonidos se diferenciaron claramente en agrado, activación y control, y en el tamaño, la temperatura y el movimiento de las imágenes que evocaban. Cada persona es muy distinta, pero las medias del grupo son muy consistentes, sobre todo en agrado y tamaño imaginado. Pájaros y río fueron los más agradables; el bloque de parciales, la envolvente on-off y el terremoto, de los que menos.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 6</span><span class="badge unclear">aún no se sabe</span></div>
+    <h3>Sintéticos frente a naturales, y las dos versiones de cada paisaje</h3>
+    <p>Estas comparaciones muestran diferencias, pero no podemos interpretarlas por cómo estaba ordenada la sesión (ver abajo). Cuando tenemos en cuenta el momento de la sesión, la diferencia entre las dos versiones de los paisajes desaparece.</p>
+  </article>
+</section>
+
+<section>
+  <h2>La principal limitación, en un párrafo</h2>
+  <div class="box warn">
+    <h3>El orden de los sonidos no se barajó lo suficiente</h3>
+    <p>Todo el mundo escuchó los paisajes al final, la primera versión de cada paisaje antes que la segunda, y los sonidos de cada bloque sintético en el mismo orden. En una sesión larga la gente se cansa y se adormece, y eso por sí solo cambia la señal cerebral (el alfa era más alto en el reposo final que en el inicial). Así que cuando dos tipos de sonido iban siempre en el mismo orden, no podemos saber si una diferencia viene del sonido o del momento.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Próximos pasos</h2>
+  <ol class="steps">
+    <li><b>Analizar los propios sonidos.</b> Medir la acústica de cada audio (ataques, modulaciones, brillo, rugosidad) y los parámetros de SuperCollider, para ver qué propiedades del sonido impulsan el movimiento imaginado y la respuesta cerebral.</li>
+    <li><b>Mirar dentro de los 50 segundos.</b> Comprobar si los cerebros de distintos oyentes se mueven a la vez con el mismo sonido.</li>
+    <li><b>Limpiar y revisar</b> los datos cerebrales (actividad muscular) y que una persona compruebe cómo codificamos las descripciones de texto libre.</li>
+    <li><b>Diseñar el estudio principal</b> con el orden barajado para cada persona, más participantes y una escala sencilla de 1 a 7 para el movimiento imaginado, poniendo a prueba el hallazgo 2 y la idea de "movimiento construido frente a reconocido" como hipótesis prerregistradas.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Para el lector técnico</h2>
+  <details>
+    <summary>Procesado del EEG y medidas</summary>
+    <ul>
+      <li>64 canales, 500 Hz; notch 49–51 Hz; paso banda 0,5–70 Hz; referencia promedio; épocas de 5 s normalizadas (z) por época (por eso la media, la varianza y la potencia absoluta no informan y se excluyeron); rechazo de artefactos por umbral. Mediana de 9 épocas limpias por estímulo; 9 registros ausentes o con menos de 5 épocas.</li>
+      <li>17 medidas principales: potencia relativa (δ, θ, α, β, γ), frecuencia mediana, entropía espectral, entropía muestral, complejidad de Lempel-Ziv, medida de tendencia central, exponente aperiódico (ajuste log-log 2–40 Hz excluyendo 7–14 Hz), frecuencia alfa individual, fuerza nodal wPLI (5 bandas). Mediana entre épocas; 6 regiones más la media global.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Estadística</summary>
+    <ul>
+      <li>Nivel de canal: tests de permutación por clústeres espaciales intra-sujeto (masa de clúster, 5000 permutaciones; inversión de signo pareada o permutación de etiquetas intra-sujeto de una F de medidas repetidas).</li>
+      <li>Nivel de región: ANOVA de medidas repetidas (Greenhouse-Geisser) y modelos lineales mixtos con la posición en la sesión como covariable (LRT); d<sub>z</sub> de Cohen con IC bootstrap; FDR de Benjamini-Hochberg por familia.</li>
+      <li>Cerebro–experiencia: modelos mixtos ensayo a ensayo con descomposición intra/inter-oyente de cada valoración (833 tests; 79 con q &lt; ,05). Sensibilidad: efecto aleatorio cruzado del estímulo, potencia gamma como indicador de EMG, covariables de valencia/arousal/dominancia, pendientes aleatorias por oyente.</li>
+      <li>RSA: matrices de disimilitud EEG 27 × 27 por oyente frente a modelos de diseño y subjetivos; permutación de etiquetas de estímulo; correlaciones parciales controlando la distancia temporal; techo de ruido.</li>
+      <li>Acuerdo entre oyentes: ICC a partir de un modelo de efectos aleatorios cruzados (estímulo × oyente), IC jackknife.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Números clave</summary>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Resultado</th><th>Estimación</th></tr></thead>
+      <tbody>
+        <tr><td>α, escuchar − reposo (global)</td><td>d<sub>z</sub> = −1,70 [−2,21; −1,41]; los 64 canales en el clúster</td></tr>
+        <tr><td>Bajada de α, parieto-occipital frente a temporal</td><td>d<sub>z</sub> = −0,59 [−0,96; −0,28], q = ,047</td></tr>
+        <tr><td>Movimiento → α (global, intra-oyente)</td><td>β = −0,037, r<sub>rm</sub> = −,15, q = ,001; sin cambios con valencia/arousal/dominancia, gamma y efecto cruzado del estímulo; β = −0,058 cuando se indica la velocidad</td></tr>
+        <tr><td>Movimiento → α con pendientes aleatorias</td><td>parieto-occipital p = ,002; pendientes por oyente en dos etapas d<sub>z</sub> = −0,38, p = ,058 (18/27 negativas); sin diferencia posterior &gt; temporal (p = ,79)</td></tr>
+        <tr><td>Movimiento × tipo de estímulo</td><td>sintéticos β = −0,035 (p = ,004); paisajes β = −0,014 (p = ,19); interacción p = ,29</td></tr>
+        <tr><td>Categoría de paisaje (exponente 1/f, global)</td><td>F = 5,05, p<sub>GG</sub> = ,0009, q = ,028; clúster de 49 canales p = ,0002</td></tr>
+        <tr><td>Bloque de envolvente (θ central)</td><td>F = 10,96, p<sub>GG</sub> &lt; ,001, η²<sub>p</sub> = ,30; percusiva − neutra d<sub>z</sub> = 0,58</td></tr>
+        <tr><td>Valencia ↔ complejidad temporal</td><td>r<sub>rm</sub> ≈ ,19, pero se reduce un 70–85 % al controlar gamma (probablemente en parte muscular)</td></tr>
+        <tr><td>Acuerdo del grupo (ICC, media de 27)</td><td>valencia ,82, tamaño ,82, temperatura ,73, movimiento ,68</td></tr>
+        <tr><td>RSA, valencia-arousal-dominancia propias | tiempo</td><td>ρ = ,029 [,008; ,053], q = ,006</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+</section>
+
+<footer>
+  <p>Resultados preliminares de un estudio piloto en curso; las cifras pueden cambiar antes de la publicación. Solo se muestran resultados de grupo. Pendiente: el significado de la etiqueta "sc" de la primera versión de los paisajes; una revisión humana de la codificación del texto libre.</p>
+</footer>
+</div>
+</body>
+</html>

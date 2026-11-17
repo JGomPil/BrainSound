@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BrainSound Pilot Results</title>
+<link rel="alternate" hreflang="en" href="https://jgompil.github.io/BrainSound/">
+<link rel="alternate" hreflang="es" href="https://jgompil.github.io/BrainSound/es/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap">
 <style>
@@ -84,11 +86,16 @@ details ul { padding-left: 20px; }
 table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
 th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+.lang { display: flex; justify-content: flex-end; gap: 6px; font-family: var(--f-mono); font-size: 0.85rem; margin-bottom: 18px; }
+.lang a, .lang span { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; }
+.lang span[aria-current] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.lang a:hover { border-color: var(--accent); }
 footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
 </style>
 </head>
 <body>
 <div class="wrap">
+<nav class="lang" aria-label="Language"><span aria-current="page">English</span><a href="es/" hreflang="es" lang="es">Español</a></nav>
 
 <header>
   <div class="eyebrow">BrainSound · pilot study · preliminary results</div>
@@ -99,7 +106,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>What we did</h2>
   <ol class="steps">
-    <li><b>The sounds.</b> 13 synthetic sounds built in SuperCollider, each block changing one property (pitch, envelope, bandwidth or partials), and 14 recordings of natural soundscapes (birds, rain, river, sea waves, thunder, wind, earthquake), in two versions each. Every sound lasted 50 seconds.</li>
+    <li><b>The sounds.</b> 13 synthetic sounds built in SuperCollider, each block changing one property (pitch, envelope, bandwidth or partials), and 14 recordings of natural soundscapes (birds, rain, river, sea waves, thunder, wind, earthquake), in two versions each. Every sound lasted 50 seconds, all at the same loudness.</li>
     <li><b>The brain.</b> While listening, each person wore a cap with 64 sensors (EEG) that pick up the tiny electrical rhythms of the brain through the scalp. We also recorded 3 minutes of quiet rest, eyes closed, before and after.</li>
     <li><b>The experience.</b> After each sound, people rated how pleasant, how activating and how "in control" it felt, named an emotion, and described the image it evoked: its colour, size, temperature, texture and movement.</li>
   </ol>
@@ -131,8 +138,8 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="head"><span class="num">Finding 1</span><span class="badge solid">solid</span></div>
     <h3>Listening switches the brain on, especially at the back of the head</h3>
     <figure>
-      <div class="plate small"><img src="figs/fig_simple_alpha_listening.png" alt="Head map seen from above, entirely blue, darkest over the back of the head, showing alpha decreases while listening compared with rest"></div>
-      <figcaption>The head seen from above (nose at the top). Blue means less alpha while listening than while resting; darker blue, a bigger drop.</figcaption>
+      <div class="plate small"><img src="figs/en/alpha_listening.png" alt="Head map seen from above: the alpha drop is largest (dark blue) over the back of the head and smallest (pale) at the front and sides"></div>
+      <figcaption>The head seen from above (nose at the top). Darker blue = a bigger drop in alpha while listening compared with resting. Alpha dropped everywhere, by at least 4 percentage points, so the colour scale starts at 4 to show where the drop was largest.</figcaption>
     </figure>
     <div class="label">What we saw</div>
     <p>Compared with resting, alpha dropped over the whole head as soon as people listened to a sound. The drop was largest at the back of the head, over areas usually linked to vision, and smaller over the sides, where hearing is processed.</p>
@@ -146,7 +153,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="head"><span class="num">Finding 2</span><span class="badge promising">promising</span></div>
     <h3>The more movement people imagined, the less alpha they had</h3>
     <figure>
-      <div class="plate"><img src="figs/fig_simple_movement_alpha.png" alt="Bar chart: alpha is above the listener's average for still images and falls step by step for slow, moderate and fast imagined movement"></div>
+      <div class="plate"><img src="figs/en/movement_alpha.png" alt="Bar chart: alpha is above the listener's average for still images and falls step by step for slow, moderate and fast imagined movement"></div>
       <figcaption>Each bar compares people with themselves: how much alpha they had with that kind of image, relative to their own average. The black lines show the uncertainty.</figcaption>
     </figure>
     <div class="label">What we saw</div>
@@ -163,7 +170,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="head"><span class="num">Finding 3</span><span class="badge solid">solid</span></div>
     <h3>Each kind of natural sound leaves a different trace in the brain</h3>
     <figure>
-      <div class="plate"><img src="figs/fig_simple_soundscapes.png" alt="Horizontal bars for seven soundscapes: thunder and sea waves highest, birds lowest"></div>
+      <div class="plate"><img src="figs/en/soundscapes.png" alt="Horizontal bars for seven soundscapes: thunder and sea waves highest, birds lowest"></div>
       <figcaption>One of several measures that differed between soundscapes: the "steepness" of the brain signal's spectrum. A steeper spectrum is usually read as a calmer, less excited brain state.</figcaption>
     </figure>
     <div class="label">What we saw</div>
@@ -176,8 +183,8 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="head"><span class="num">Finding 4</span><span class="badge promising">promising</span></div>
     <h3>Among the synthetic sounds, the envelope mattered most</h3>
     <figure>
-      <div class="plate"><img src="figs/fig_means_B2_envelope.png" alt="Four small line plots showing a peak for the percussive envelope compared with neutral, wind and on-off envelopes"></div>
-      <figcaption>The four envelopes of block 2. Blue = average of all listeners; grey lines = individual listeners. Theta (θ) is a slow rhythm, 4–8 cycles per second.</figcaption>
+      <div class="plate"><img src="figs/en/envelope_theta.png" alt="Line plot of central theta for the four envelopes, peaking for the percussive envelope, with one grey line per listener"></div>
+      <figcaption>Block 2: share of theta, a slow rhythm (4–8 cycles per second), at the centre of the head for each envelope. Blue = average of all listeners with its uncertainty; grey lines = individual listeners.</figcaption>
     </figure>
     <p>Changing the envelope (neutral, percussive, wind-like, on-off) changed brain activity. The percussive envelope stood out, with more slow theta activity. Changing pitch, bandwidth or partials did not produce clear differences. The sounds within each block were always played in the same order, so this needs confirming.</p>
   </article>
@@ -186,7 +193,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="head"><span class="num">Finding 5</span><span class="badge solid">solid</span></div>
     <h3>People agree on how sounds feel, especially on pleasantness and size</h3>
     <figure>
-      <div class="plate"><img src="figs/fig_behaviour_VAD.png" alt="Dot plots of average pleasantness, activation and control for each of the 27 sounds, coloured by block"></div>
+      <div class="plate"><img src="figs/en/ratings.png" alt="Dot plots of average pleasantness, activation and control for each of the 27 sounds, coloured by block"></div>
       <figcaption>Average rating of every sound (1–7) with its uncertainty. Left: pleasantness (valence). Middle: activation (arousal). Right: feeling in control (dominance).</figcaption>
     </figure>
     <p>The sounds clearly differed in how pleasant, activating and controllable they felt, and in the size, temperature and movement of the images they evoked. Individuals vary a lot, but the group averages are very consistent, especially for pleasantness and imagined size. Birds and river were the most pleasant; the partials block, the on-off envelope and earthquake were among the least.</p>
@@ -222,7 +229,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   <details>
     <summary>EEG processing and measures</summary>
     <ul>
-      <li>64 channels, 500 Hz; notch 49–51 Hz; band-pass 1–70 Hz; common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
+      <li>64 channels, 500 Hz; notch 49–51 Hz; band-pass 0.5–70 Hz; common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
       <li>17 primary features: relative power (δ, θ, α, β, γ), median frequency, spectral entropy, sample entropy, Lempel-Ziv complexity, central tendency measure, aperiodic exponent (log-log fit 2–40 Hz excluding 7–14 Hz), individual alpha frequency, wPLI node strength (5 bands). Median across epochs; 6 ROIs plus global.</li>
     </ul>
   </details>
