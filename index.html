@@ -7,278 +7,257 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap">
 <style>
-/* Layout: single reading column (~70ch) with full-width figure plates; findings first, then design, methods, results, limits. */
+/* Plain-language results page for a mostly non-expert team (musicians). One reading column,
+   findings as cards with a "how sure are we" badge, technical detail folded at the end. */
 :root {
   --bg: #f6f7f9; --fg: #15181d; --muted: #586070; --line: #dde1e8; --card: #ffffff;
-  --accent: #2a78d6; --accent-ink: #1c5cab; --warn: #9a4a06; --warn-bg: #fff4e5; --warn-line: #f2c48d;
-  --ok: #0b7a3e; --plate: #fcfcfb; --plate-line: #e3e5ea;
+  --accent: #2a78d6; --accent-ink: #1c5cab;
+  --solid: #0b7a3e; --promising: #9a5b00; --unclear: #6b7280;
+  --warn-bg: #fff4e5; --warn-line: #f2c48d; --warn: #9a4a06;
+  --note-bg: #eef4fc; --note-line: #c4d8f3; --plate: #fcfcfb; --plate-line: #e3e5ea;
   --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
-  --accent: #5d9fea; --accent-ink: #8cbcf2; --warn: #f3b46b; --warn-bg: #2a1f12; --warn-line: #6b4a22;
-  --ok: #4cc27f; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark } }
+  --accent: #5d9fea; --accent-ink: #8cbcf2;
+  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
+  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
+  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
-  --accent: #5d9fea; --accent-ink: #8cbcf2; --warn: #f3b46b; --warn-bg: #2a1f12; --warn-line: #6b4a22;
-  --ok: #4cc27f; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark }
+  --accent: #5d9fea; --accent-ink: #8cbcf2;
+  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
+  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
+  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark }
 
-body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.65;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.wrap { max-width: 980px; margin: 0 auto; padding-block: 40px 80px; }
-.col { max-width: 70ch; }
-h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.2; margin: 0; }
-h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 600; letter-spacing: -0.01em; }
-h2 { font-size: 1.55rem; font-weight: 600; margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); }
-h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 44px 80px; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 600; }
+h2 { font-size: 1.5rem; font-weight: 600; margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); }
+h3 { font-size: 1.2rem; font-weight: 600; margin: 0; }
 p { margin: 12px 0; }
-.eyebrow { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
-.lede { font-size: 1.12rem; color: var(--muted); margin-top: 14px; }
-.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-family: var(--f-mono); font-size: 0.82rem; color: var(--muted); }
-.meta b { color: var(--fg); font-weight: 500; }
-.stat { font-family: var(--f-mono); font-size: 0.9em; white-space: nowrap; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
+.lede { font-size: 1.15rem; color: var(--muted); }
 a { color: var(--accent-ink); }
-code { font-family: var(--f-mono); font-size: 0.88em; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
 
-.findings { display: grid; gap: 12px; margin-top: 28px; counter-reset: f; }
-.finding { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
-.finding .tag { grid-row: span 2; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 999px; align-self: start; white-space: nowrap; border: 1px solid currentColor; }
-.tag.robust { color: var(--ok); } .tag.tentative { color: var(--warn); } .tag.confounded { color: var(--muted); }
-.finding strong { font-weight: 600; }
-.finding p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.box { border-radius: 10px; padding: 16px 20px; margin: 22px 0; border: 1px solid; }
+.box.note { background: var(--note-bg); border-color: var(--note-line); }
+.box.warn { background: var(--warn-bg); border-color: var(--warn-line); }
+.box h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.box.warn h3 { color: var(--warn); }
+.box p:last-child { margin-bottom: 0; }
+dl.gloss { margin: 8px 0 0; }
+dl.gloss dt { font-weight: 600; margin-top: 10px; }
+dl.gloss dd { margin: 2px 0 0; color: var(--muted); }
 
-.callout { background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 8px; padding: 16px 20px; margin-top: 22px; }
-.callout h3 { margin: 0 0 6px; color: var(--warn); font-size: 1.02rem; }
-.callout p, .callout li { font-size: 0.96rem; }
-.callout ul { margin: 6px 0 0; padding-left: 20px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 14px; font-size: 0.92rem; color: var(--muted); }
+.badge { display: inline-block; font-family: var(--f-mono); font-size: 0.74rem; font-weight: 500; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.badge.solid { color: var(--solid); } .badge.promising { color: var(--promising); } .badge.unclear { color: var(--unclear); }
 
-figure { margin: 22px 0; }
-.plate { background: var(--plate); border: 1px solid var(--plate-line); border-radius: 8px; padding: 10px; overflow-x: auto; }
-.plate img { display: block; width: 100%; height: auto; min-width: 560px; }
-figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; max-width: 80ch; }
-figcaption b { color: var(--fg); font-weight: 600; }
+.finding { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-top: 22px; }
+.finding .head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; margin-bottom: 6px; }
+.finding .num { font-family: var(--f-mono); color: var(--muted); font-size: 0.85rem; }
+.finding .label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 16px 0 2px; }
+.finding .label + p { margin-top: 2px; }
+figure { margin: 18px 0 6px; }
+.plate { background: var(--plate); border: 1px solid var(--plate-line); border-radius: 8px; padding: 8px; }
+.plate img { display: block; width: 100%; height: auto; }
+.plate.small { max-width: 420px; }
+figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
 
-.table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
-table { border-collapse: collapse; width: 100%; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
-th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-tr:last-child td { border-bottom: 0; }
-td.num { font-family: var(--f-mono); font-size: 0.85rem; white-space: nowrap; }
-.muted { color: var(--muted); }
-ol.plain, ul.plain { padding-left: 20px; }
-ol.plain li, ul.plain li { margin: 6px 0; }
-.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
-.two > * { min-width: 0; }
-footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 14px 0; }
+.steps li { position: relative; padding-left: 42px; margin: 14px 0; }
+.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-family: var(--f-mono); font-size: 0.85rem; display: grid; place-items: center; }
+
+details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px; margin-top: 14px; }
+summary { cursor: pointer; font-weight: 600; }
+details[open] summary { margin-bottom: 8px; }
+details p, details li { font-size: 0.93rem; }
+details ul { padding-left: 20px; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
+footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
 </style>
 </head>
 <body>
-
 <div class="wrap">
-<header class="col">
-  <div class="eyebrow">Pilot study · Sonic neuroaesthetics · Preliminary analysis</div>
-  <h1>BrainSound: EEG responses to sound as plastic material</h1>
-  <p class="lede">Does listening to artistically crafted sound engage dynamics usually linked to visual processing (spatiality, temporality, sequencing), and does the EEG track listeners' aesthetic experience? Results from 27 listeners, 27 sound stimuli and two resting baselines.</p>
-  <div class="meta">
-    <span><b>n</b> = 27 participants</span><span><b>64</b>-ch EEG, eyes closed</span><span><b>27</b> stimuli × 50 s</span><span>Analysis of 17 Nov 2026</span>
-  </div>
+
+<header>
+  <div class="eyebrow">BrainSound · pilot study · preliminary results</div>
+  <h1>What happens in the brain when we listen to sound as material?</h1>
+  <p class="lede">A plain-language summary of what we have found so far. 27 people listened to 27 sounds with their eyes closed while we recorded their brain activity, and told us what each sound made them feel and imagine.</p>
 </header>
 
 <section>
-  <h2>Key findings</h2>
-  <div class="findings">
-    <div class="finding"><span class="tag robust">robust</span><strong>Sound listening desynchronises alpha across the scalp, most strongly over parieto-occipital cortex.</strong>
-      <p>Relative α power fell from rest to stimulation <span class="stat">(global dz = −1.70, 95% CI −2.21 to −1.41)</span>. The drop was larger over the parieto-occipital "visual" ROI than over temporal "auditory" ROIs <span class="stat">(dz = −0.59, CI −0.96 to −0.28, q = .047)</span>, with eyes closed in both states.</p></div>
-    <div class="finding"><span class="tag tentative">promising</span><strong>The more movement listeners described in their evoked image, the lower their alpha power.</strong>
-      <p>Within listeners, sounds described with more intense movement went with lower α and higher δ power <span class="stat">(global r<sub>rm</sub> = −.15, q = .001)</span>. The association is unchanged after controlling for arousal, valence, dominance, gamma (EMG) power and stimulus identity, and is stronger when only responses that state a speed are used. Caveats: it weakens when listener-specific slopes are modelled (18/27 listeners show the negative direction), it is not specific to posterior sites, and it replicates in synthetic stimuli but not significantly in soundscapes. It is a candidate for a pre-registered confirmatory test.</p></div>
-    <div class="finding"><span class="tag robust">robust</span><strong>The category of natural soundscape shapes spectral and complexity measures.</strong>
-      <p>Across the seven soundscapes (presented in random order) the aperiodic 1/f exponent, sample and spectral entropy, LZC, median frequency and δ/β power differed <span class="stat">(e.g. 1/f exponent, global: F = 5.05, p<sub>GG</sub> = .0009, q = .028)</span>.</p></div>
-    <div class="finding"><span class="tag tentative">tentative</span><strong>Percussive envelopes raise central theta and steepen the 1/f slope.</strong>
-      <p>Block 2 was the only synthetic block surviving FDR <span class="stat">(central θ: F = 10.96, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .30; percussive − neutral dz = 0.58)</span>. Within-block order was fixed, so serial position cannot be excluded, although the effect is not monotonic with position.</p></div>
-    <div class="finding"><span class="tag tentative">tentative</span><strong>Pleasantness relates to EEG complexity over temporal sites, but much of it may be muscular.</strong>
-      <p>Higher valence went with higher entropy and LZC and lower CTM, mainly at left temporal sites <span class="stat">(r<sub>rm</sub> ≈ .19, q &lt; .001)</span>. Adding gamma power as an EMG proxy shrinks these coefficients by 70–85%. 7 of 29 valence associations remain significant.</p></div>
-    <div class="finding"><span class="tag robust">robust</span><strong>Each listener's EEG geometry mirrors their own subjective geometry.</strong>
-      <p>In RSA, stimulus-by-stimulus EEG dissimilarity tracked the listener's own valence-arousal-dominance dissimilarity, also after partialling out temporal distance in the session <span class="stat">(ρ = .029, CI .008–.053, q = .006)</span>.</p></div>
-    <div class="finding"><span class="tag confounded">confounded</span><strong>Soundscapes vs synthetic sounds, and 'sc' vs original versions, cannot be interpreted.</strong>
-      <p>Both contrasts are perfectly aligned with time in the session (see below). The 'sc' vs original effect disappears once session position is modelled.</p></div>
+  <h2>What we did</h2>
+  <ol class="steps">
+    <li><b>The sounds.</b> 13 synthetic sounds built in SuperCollider, each block changing one property (pitch, envelope, bandwidth or partials), and 14 recordings of natural soundscapes (birds, rain, river, sea waves, thunder, wind, earthquake), in two versions each. Every sound lasted 50 seconds.</li>
+    <li><b>The brain.</b> While listening, each person wore a cap with 64 sensors (EEG) that pick up the tiny electrical rhythms of the brain through the scalp. We also recorded 3 minutes of quiet rest, eyes closed, before and after.</li>
+    <li><b>The experience.</b> After each sound, people rated how pleasant, how activating and how "in control" it felt, named an emotion, and described the image it evoked: its colour, size, temperature, texture and movement.</li>
+  </ol>
+
+  <div class="box note">
+    <h3>Three words you need for this page</h3>
+    <dl class="gloss">
+      <dt>Brain rhythms</dt>
+      <dd>The EEG is like a recording of the brain's "hum". It mixes slow and fast rhythms, a bit like the bass, mids and treble of a mix. We look at how much of each is present.</dd>
+      <dt>Alpha rhythm</dt>
+      <dd>A rhythm of about 10 cycles per second, strongest when we rest with eyes closed. It works like an idle signal: when the brain gets busy (paying attention, imagining), alpha drops. <b>Less alpha = a more engaged brain.</b></dd>
+      <dt>Complexity</dt>
+      <dd>How predictable or varied the brain signal is, like comparing a drone with a free improvisation.</dd>
+    </dl>
   </div>
 
-  <div class="callout">
-    <h3>Read with care: presentation order was not counterbalanced</h3>
-    <ul>
-      <li>Within blocks 1–4 the order of conditions was identical for all 27 participants (the neutral sound always came first).</li>
-      <li>Block 5 (soundscapes) was always last, occupying positions 14–27.</li>
-      <li>The 'sc' versions always preceded the original versions.</li>
-    </ul>
-    <p>Only the order of blocks 1–4 and the order of soundscape categories were randomised. Relative α power rose from the pre- to the post-session rest (41-channel cluster, p = .0006), so time-on-task alone produces EEG changes. In RSA, temporal distance is the strongest single predictor of EEG dissimilarity <span class="stat">(ρ = .26)</span>.</p>
+  <div class="legend">
+    How sure are we?
+    <span><span class="badge solid">solid</span> clear and consistent</span>
+    <span><span class="badge promising">promising</span> real signal, needs confirming</span>
+    <span><span class="badge unclear">can't tell yet</span> mixed up with other factors</span>
   </div>
 </section>
 
 <section>
-  <h2>Design and data</h2>
-  <div class="col">
-    <p>27 adults took part (14 men, 13 women; age 21–63, mean 40.8 ± 12.2 years; 11 with instrumental music training). Each listened with eyes closed to 27 stimuli of 50 s, organised in five blocks, plus 180 s resting baselines before and after.</p>
-  </div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Block</th><th>Manipulated parameter</th><th>Conditions</th><th>Order</th></tr></thead>
-    <tbody>
-      <tr><td>B1 Pitch</td><td>Register</td><td>neutral · low · high</td><td class="muted">fixed within block</td></tr>
-      <tr><td>B2 Envelope</td><td>Temporal dynamics</td><td>neutral · percussive · wind · on-off</td><td class="muted">fixed within block</td></tr>
-      <tr><td>B3 Bandwidth</td><td>Filter bandwidth</td><td>intermediate · wide · narrow</td><td class="muted">fixed within block</td></tr>
-      <tr><td>B4 Partials</td><td>Harmonic structure</td><td>fundamental · compressed · distant</td><td class="muted">fixed within block</td></tr>
-      <tr><td>B5 Soundscapes</td><td>Category × version (2 × 7)</td><td>birds, earthquake, rain, river, sea waves, thunder, wind; 'sc' and original</td><td class="muted">always last; 'sc' first; categories random</td></tr>
-    </tbody>
-  </table></div>
-  <div class="two">
-    <div class="col">
-      <h3>EEG</h3>
-      <p>64 channels at 500 Hz; 49–51 Hz notch; 1–70 Hz band-pass; common average reference; 5-s epochs, z-normalised per epoch; amplitude-threshold artefact rejection. A median of 9 clean epochs remained per stimulus. 9 condition recordings were unavailable (8 missing, 1 with fewer than 5 clean epochs).</p>
-      <p>Because epochs are z-normalised, mean, variance and absolute power carry no information and were excluded (verified empirically).</p>
-    </div>
-    <div class="col">
-      <h3>Primary features (17)</h3>
-      <p>Relative power in δ, θ, α, β and γ. Median frequency, spectral entropy, sample entropy, Lempel-Ziv complexity and the central tendency measure. Aperiodic (1/f) exponent and individual alpha frequency, both from the PSD. wPLI node strength in five bands.</p>
-      <p>Values were aggregated per channel as the median across epochs. They are summarised in six a-priori ROIs plus the global mean.</p>
-    </div>
-  </div>
-  <div class="col">
-    <h3>Subjective measures</h3>
-    <p>After each stimulus: valence, arousal and dominance (1–7), an emotion code (emotion category and intensity 1–4), and free descriptions of the imagined image's colour, size, movement, temperature and texture. Free text was coded with explicit rules plus manual corrections after reviewing every unique response: size (0–4), temperature (−1 to +1), movement intensity (0–3) and spatial trajectory (yes/no). Blind validation by a human rater is pending.</p>
+  <h2>What we found</h2>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 1</span><span class="badge solid">solid</span></div>
+    <h3>Listening switches the brain on, especially at the back of the head</h3>
+    <figure>
+      <div class="plate small"><img src="figs/fig_simple_alpha_listening.png" alt="Head map seen from above, entirely blue, darkest over the back of the head, showing alpha decreases while listening compared with rest"></div>
+      <figcaption>The head seen from above (nose at the top). Blue means less alpha while listening than while resting; darker blue, a bigger drop.</figcaption>
+    </figure>
+    <div class="label">What we saw</div>
+    <p>Compared with resting, alpha dropped over the whole head as soon as people listened to a sound. The drop was largest at the back of the head, over areas usually linked to vision, and smaller over the sides, where hearing is processed.</p>
+    <div class="label">Why it matters</div>
+    <p>People had their eyes closed the whole time, so this is not about seeing anything. It fits the idea of the project: listening to these sounds engages brain regions we normally associate with vision, perhaps because people build mental images.</p>
+    <div class="label">Be careful</div>
+    <p>Alpha also drops simply with attention. We cannot yet say the visual areas are doing "visual" work.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 2</span><span class="badge promising">promising</span></div>
+    <h3>The more movement people imagined, the less alpha they had</h3>
+    <figure>
+      <div class="plate"><img src="figs/fig_simple_movement_alpha.png" alt="Bar chart: alpha is above the listener's average for still images and falls step by step for slow, moderate and fast imagined movement"></div>
+      <figcaption>Each bar compares people with themselves: how much alpha they had with that kind of image, relative to their own average. The black lines show the uncertainty.</figcaption>
+    </figure>
+    <div class="label">What we saw</div>
+    <p>When someone described the image a sound evoked as still, their alpha was higher; when they described fast or intense movement, it was lower, step by step. This holds when we compare each person only with themselves.</p>
+    <div class="label">Why it matters</div>
+    <p>It links a brain measure to what people actually experienced, which is exactly what the project is about: sound perceived as something that moves in space. It is not explained by how activating or pleasant the sound felt, nor by muscle tension.</p>
+    <div class="label">An intriguing detail</div>
+    <p>The link looked stronger for the synthetic SuperCollider sounds than for the natural soundscapes. One idea: with a recording of rain, people <i>recognise</i> the source and already know how it moves; with an abstract synthetic sound there is no source, so the listener has to <i>build</i> the movement from the sound itself. The difference between the two kinds of sound is not yet statistically clear, so for now this is a hypothesis to test in the next study.</p>
+    <div class="label">Be careful</div>
+    <p>About two thirds of listeners (18 of 27) show the effect. It is small, it is spread over the head rather than only at the back, and we found it while searching through many possible links. It needs to be confirmed with new participants.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 3</span><span class="badge solid">solid</span></div>
+    <h3>Each kind of natural sound leaves a different trace in the brain</h3>
+    <figure>
+      <div class="plate"><img src="figs/fig_simple_soundscapes.png" alt="Horizontal bars for seven soundscapes: thunder and sea waves highest, birds lowest"></div>
+      <figcaption>One of several measures that differed between soundscapes: the "steepness" of the brain signal's spectrum. A steeper spectrum is usually read as a calmer, less excited brain state.</figcaption>
+    </figure>
+    <div class="label">What we saw</div>
+    <p>Birds, river, rain, wind, sea waves, thunder and earthquake produced different brain patterns, mainly in the balance between slow and fast rhythms and in signal complexity. Birdsong tended to go with the "liveliest" brain signal, and thunder and sea waves with the calmest.</p>
+    <div class="label">Why this one is trustworthy</div>
+    <p>The order of the soundscapes was shuffled for each person, so the differences cannot be explained by tiredness or by which sound came first.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 4</span><span class="badge promising">promising</span></div>
+    <h3>Among the synthetic sounds, the envelope mattered most</h3>
+    <figure>
+      <div class="plate"><img src="figs/fig_means_B2_envelope.png" alt="Four small line plots showing a peak for the percussive envelope compared with neutral, wind and on-off envelopes"></div>
+      <figcaption>The four envelopes of block 2. Blue = average of all listeners; grey lines = individual listeners. Theta (θ) is a slow rhythm, 4–8 cycles per second.</figcaption>
+    </figure>
+    <p>Changing the envelope (neutral, percussive, wind-like, on-off) changed brain activity. The percussive envelope stood out, with more slow theta activity. Changing pitch, bandwidth or partials did not produce clear differences. The sounds within each block were always played in the same order, so this needs confirming.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 5</span><span class="badge solid">solid</span></div>
+    <h3>People agree on how sounds feel, especially on pleasantness and size</h3>
+    <figure>
+      <div class="plate"><img src="figs/fig_behaviour_VAD.png" alt="Dot plots of average pleasantness, activation and control for each of the 27 sounds, coloured by block"></div>
+      <figcaption>Average rating of every sound (1–7) with its uncertainty. Left: pleasantness (valence). Middle: activation (arousal). Right: feeling in control (dominance).</figcaption>
+    </figure>
+    <p>The sounds clearly differed in how pleasant, activating and controllable they felt, and in the size, temperature and movement of the images they evoked. Individuals vary a lot, but the group averages are very consistent, especially for pleasantness and imagined size. Birds and river were the most pleasant; the partials block, the on-off envelope and earthquake were among the least.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 6</span><span class="badge unclear">can't tell yet</span></div>
+    <h3>Synthetic vs natural sounds, and the two versions of each soundscape</h3>
+    <p>These comparisons show differences, but we cannot interpret them because of how the session was ordered (see below). When we account for the time in the session, the difference between the two soundscape versions disappears.</p>
+  </article>
+</section>
+
+<section>
+  <h2>The main limitation, in one paragraph</h2>
+  <div class="box warn">
+    <h3>The order of the sounds was not shuffled enough</h3>
+    <p>Everyone heard the soundscapes at the end, the first version of each soundscape before the second, and the sounds within each synthetic block in the same order. Over a long session people get tired and drowsy, which by itself changes the brain signal (alpha was higher in the final rest than in the first). So whenever two kinds of sound were always in the same order, we can't tell whether a difference comes from the sound or from the time.</p>
   </div>
 </section>
 
 <section>
-  <h2>Statistical approach</h2>
-  <ol class="plain col">
-    <li><b>Channel level:</b> spatial cluster-based permutation tests (cluster mass, 5000 permutations, Delaunay adjacency). They were written for within-subject designs: paired sign-flip for two conditions, and within-subject label permutation of a repeated-measures F for more. Family-wise error is controlled across 64 channels.</li>
-    <li><b>ROI level:</b> repeated-measures ANOVA with Greenhouse-Geisser correction. Linear mixed models add session position as a covariate (likelihood-ratio tests). Effect sizes are reported as Cohen's dz with bootstrap 95% CIs.</li>
-    <li><b>Brain–experience:</b> trial-level mixed models with within-/between-listener decomposition of each rating. Sensitivity checks: crossed stimulus random effects, and gamma power as an EMG covariate. Repeated-measures correlation is reported as a complement.</li>
-    <li><b>RSA:</b> per-listener 27 × 27 EEG dissimilarity matrices compared with design models and with own and consensus subjective matrices. Inference uses stimulus-label permutation, partial correlations control temporal distance, and noise ceilings follow Nili et al. (2014).</li>
-    <li><b>Multiplicity:</b> Benjamini-Hochberg FDR within each family of tests.</li>
+  <h2>What comes next</h2>
+  <ol class="steps">
+    <li><b>Analyse the sounds themselves.</b> Measure the acoustics of each audio file (attacks, modulations, brightness, roughness) and the SuperCollider parameters, to see which sound properties drive the imagined movement and the brain response.</li>
+    <li><b>Look inside the 50 seconds.</b> Check whether the brains of different listeners move together in time with the same sound.</li>
+    <li><b>Clean up and double-check</b> the brain data (muscle activity) and have a person check how we coded the free-text descriptions.</li>
+    <li><b>Design the main study</b> with the order shuffled for every person, more participants and a simple 1–7 scale for imagined movement, testing finding 2 and the "built vs recognised movement" idea as pre-registered hypotheses.</li>
   </ol>
 </section>
 
 <section>
-  <h2>Results</h2>
-
-  <h3>1 · Sound listening versus rest</h3>
-  <div class="col">
-    <p>Both all stimuli and the neutral sound alone produced the same pattern compared with eyes-closed rest. α and β power decreased and δ and γ power increased. Signal complexity rose (sample entropy dz = 0.56, LZC dz = 0.62) and CTM fell (dz = −0.58). The individual alpha frequency shifted upwards at central-parietal sites.</p>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_topo_C1_stimulation_vs_rest.png" alt="Topographic maps of paired t values for stimulation minus rest across 12 EEG features, with significant cluster channels marked"></div>
-    <figcaption><b>Figure 1.</b> Stimulation − rest, paired t per channel. White dots mark channels in clusters significant at p &lt; .05 (FWER). Alpha desynchronisation covers all 64 channels and peaks parieto-occipitally.</figcaption>
-  </figure>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Relative power</th><th>Δ parieto-occipital</th><th>Δ temporal</th><th>dz (visual − auditory)</th><th>q</th></tr></thead>
-    <tbody>
-      <tr><td>α</td><td class="num">−0.098</td><td class="num">−0.063</td><td class="num">−0.59 [−0.96, −0.28]</td><td class="num">.047</td></tr>
-      <tr><td>δ</td><td class="num">+0.065</td><td class="num">+0.039</td><td class="num">0.52 [0.20, 0.90]</td><td class="num">.047</td></tr>
-      <tr><td>β</td><td class="num">+0.005</td><td class="num">−0.011</td><td class="num">0.54 [0.14, 1.02]</td><td class="num">.047</td></tr>
-    </tbody>
-  </table></div>
-  <p class="col muted">Table 1. H3 contrast: the change from rest is larger over the parieto-occipital ROI than over temporal ROIs (stimulation vs rest).</p>
-
-  <h3>2 · Effects of sound parameters within blocks</h3>
-  <div class="col">
-    <p>Among the synthetic blocks, only the envelope block (B2) survived FDR correction. The percussive envelope raised central and parietal θ and δ power, lowered frontal α, and steepened the aperiodic slope relative to the neutral sound. Pitch (B1) and bandwidth (B3) produced only nominal clusters (θ power, IAF, α wPLI) that did not survive correction; partial structure (B4) produced none.</p>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_means_B2_envelope.png" alt="Line plots of four EEG measures across the four envelope conditions, with individual participant lines in grey"></div>
-    <figcaption><b>Figure 2.</b> Block 2 (envelope): the four ROI effects with the smallest p values. Mean ± within-subject 95% CI; grey lines are individual participants.</figcaption>
-  </figure>
-  <div class="col">
-    <p>Within the soundscapes, <b>category</b> was the only factor whose order was randomised. It modulated the 1/f exponent (49-channel cluster, p = .0002), δ power (40 channels), sample and spectral entropy, LZC, CTM and median frequency. The <b>version</b> effect ('sc' − original: more δ, less α and β) was significant in the ANOVA but disappeared in mixed models controlling for session position (p = .28–.57). This is consistent with the time-on-task drift.</p>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_topo_B5_category.png" alt="Topographic maps of repeated-measures F values for the soundscape category effect across EEG features"></div>
-    <figcaption><b>Figure 3.</b> Soundscape category effect (repeated-measures F across seven categories, averaged over versions). White dots mark significant cluster channels.</figcaption>
-  </figure>
-
-  <h3>3 · Subjective responses</h3>
-  <div class="col">
-    <p>Stimuli differed in valence <span class="stat">(LRT χ²(26) = 118.5, p &lt; .001)</span>, arousal, dominance, emotion intensity, imagined size, temperature and movement intensity (all q &lt; .01). Spatial trajectory and number of descriptors did not differ (q &gt; .15). Emotion category was associated with stimulus identity <span class="stat">(Cramér's V = .31, permutation p &lt; .001)</span>. Single-listener agreement was low, as expected for aesthetic judgements, but stimulus means were reliable. Valence and imagined size were the most consensual.</p>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_behaviour_VAD.png" alt="Dot plots of mean valence, arousal and dominance with confidence intervals for each of the 27 stimuli, coloured by block"></div>
-    <figcaption><b>Figure 4.</b> Valence, arousal and dominance per stimulus (mean ± 95% CI; dotted line = scale midpoint).</figcaption>
-  </figure>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Rating</th><th>ICC single listener [95% CI]</th><th>ICC stimulus mean, k = 27 [95% CI]</th></tr></thead>
-    <tbody>
-      <tr><td>Valence</td><td class="num">.13 [.07, .18]</td><td class="num">.82 [.74, .89]</td></tr>
-      <tr><td>Imagined size</td><td class="num">.15 [.00, .30]</td><td class="num">.82 [.66, .98]</td></tr>
-      <tr><td>Temperature</td><td class="num">.12 [−.01, .24]</td><td class="num">.73 [.52, .94]</td></tr>
-      <tr><td>Movement intensity</td><td class="num">.06 [.01, .11]</td><td class="num">.68 [.49, .87]</td></tr>
-      <tr><td>Dominance</td><td class="num">.06 [.00, .12]</td><td class="num">.67 [.45, .88]</td></tr>
-      <tr><td>Arousal</td><td class="num">.04 [−.01, .09]</td><td class="num">.56 [.26, .85]</td></tr>
-      <tr><td>Spatial trajectory</td><td class="num">.01 [−.01, .04]</td><td class="num">.28 [−.15, .72]</td></tr>
-    </tbody>
-  </table></div>
-  <p class="col muted">Table 2. Inter-listener agreement from a crossed random-effects model (stimulus × listener) using all ratings; leave-one-listener-out jackknife CIs.</p>
-
-  <h3>4 · EEG and subjective experience</h3>
-  <div class="col">
-    <p>Of 833 trial-level tests (17 features × 7 ROIs × 7 ratings), 79 survived FDR correction, against about 42 expected at p &lt; .05 by chance. All 79 held with a crossed stimulus random effect, so they reflect listener-specific experience beyond what the stimulus explains. The two families behave differently under the EMG control:</p>
-  </div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Rating</th><th>Main EEG correlate</th><th>Within-listener β (global/ROI)</th><th>Survive gamma control</th></tr></thead>
-    <tbody>
-      <tr><td>Movement intensity<br><span class="muted">(see robustness note)</span></td><td>↓ relative α (all ROIs), ↑ δ parietal/parieto-occipital</td><td class="num">α global −0.037 [−0.054, −0.020]</td><td class="num">11 / 11</td></tr>
-      <tr><td>Temperature (warmer)</td><td>↑ parietal α, ↓ left temporal δ</td><td class="num">α parietal 0.032 [0.010, 0.054]</td><td class="num">2 / 2</td></tr>
-      <tr><td>Valence</td><td>↑ entropy and LZC, ↓ CTM, flatter 1/f, mainly temporal</td><td class="num">CTM left temporal −0.083 [−0.114, −0.051]</td><td class="num">7 / 29</td></tr>
-      <tr><td>Dominance</td><td>↑ complexity and γ wPLI</td><td class="num">wPLI γ global 0.062</td><td class="num">5 / 25</td></tr>
-      <tr><td>Arousal</td><td>complexity, temporal</td><td class="num">—</td><td class="num">0 / 4</td></tr>
-    </tbody>
-  </table></div>
-  <p class="col muted">Table 3. β values are standardised; EEG values are z-scored over all observations. Repeated-measures correlations are about 3× larger (|r<sub>rm</sub>| ≈ .10–.20). Models assume a common slope across listeners.</p>
-  <div class="callout">
-    <h3>Robustness of the movement–alpha association</h3>
+  <h2>For the technical reader</h2>
+  <details>
+    <summary>EEG processing and measures</summary>
     <ul>
-      <li><b>Survives:</b> adding arousal, valence and dominance (β −0.036); adding gamma power (β −0.036); a crossed stimulus effect (β −0.032); restricting to responses that state a speed (β −0.058, n = 346); a binary moving-vs-static coding (β −0.025). All p &lt; .005, global ROI.</li>
-      <li><b>Weakens:</b> with listener-specific random slopes, the effect remains at parieto-occipital (p = .002), left temporal (p = .005) and frontal sites (p = .012), but per-listener two-stage slopes give only global p = .058 (dz = −0.38; 18/27 negative). Random-slope fits were numerically unstable and should be re-estimated (e.g. lme4 or Bayesian models).</li>
-      <li><b>Not visual-specific:</b> posterior slopes do not differ from temporal or frontal slopes (p = .79 and .14).</li>
-      <li><b>Partial replication:</b> synthetic stimuli β −0.035 (p = .004); soundscapes β −0.014 (p = .19).</li>
+      <li>64 channels, 500 Hz; notch 49–51 Hz; band-pass 1–70 Hz; common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
+      <li>17 primary features: relative power (δ, θ, α, β, γ), median frequency, spectral entropy, sample entropy, Lempel-Ziv complexity, central tendency measure, aperiodic exponent (log-log fit 2–40 Hz excluding 7–14 Hz), individual alpha frequency, wPLI node strength (5 bands). Median across epochs; 6 ROIs plus global.</li>
     </ul>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_brain_behaviour_parieto_occipital.png" alt="Heatmap of standardised within-listener coefficients for each EEG feature and rating in the parieto-occipital ROI"></div>
-    <figcaption><b>Figure 5.</b> Within-listener coefficients, parieto-occipital ROI (filled dot q &lt; .05, open dot q &lt; .10). The movement-intensity column shows the α decrease and δ increase.</figcaption>
-  </figure>
-
-  <h3>5 · Representational similarity</h3>
-  <div class="col">
-    <p>The between-listener consistency of EEG geometry was substantial (noise ceiling lower bound ρ = .21). Design models fit well, but mostly through temporal proximity: the block model drops from ρ = .17 to .04 once time is partialled out. The listener's own VAD geometry remains significant after the time control (ρ = .029), whereas the descriptor geometry does not (ρ = .012, q = .16).</p>
-  </div>
-  <figure>
-    <div class="plate"><img src="figs/fig_rsa_bars.png" alt="Grouped bar chart of mean Spearman correlations between EEG dissimilarity matrices and design or subjective models, by feature family"></div>
-    <figcaption><b>Figure 6.</b> RSA by feature family. "| time" denotes partial correlation controlling each listener's temporal-distance matrix. * q &lt; .05 (stimulus-label permutation).</figcaption>
-  </figure>
-</section>
-
-<section>
-  <h2>Limitations</h2>
-  <ul class="plain col">
-    <li><b>Order confound.</b> Within-block order, the position of block 5 and the 'sc'/original order were fixed (see the callout above). Session position is modelled, but effects collinear with order cannot be separated.</li>
-    <li><b>Muscle activity.</b> Increases in γ and complexity, mostly temporal, are compatible with EMG. The gamma covariate is a proxy, not a correction. ICA- or EMG-based cleaning, or high-frequency (&gt; 45 Hz) exclusion analyses, are needed before interpreting valence effects.</li>
-    <li><b>Pilot size.</b> With n = 27 and many tests, estimates are imprecise. The study should be framed as exploratory and hypothesis-generating; effect sizes are reported for power analysis.</li>
-    <li><b>Free-text coding.</b> Rule-based coding was reviewed by the analyst. Blind coding of a 120-response sample by a human rater (Cohen's κ) is pending.</li>
-    <li><b>Simplified spectral parameterisation.</b> The 1/f exponent and IAF come from a log-log fit (2–40 Hz, 7–14 Hz excluded). specparam/FOOOF is recommended for the final analysis.</li>
-  </ul>
-
-  <h2>Recommendations for the main study</h2>
-  <ol class="plain col">
-    <li>Randomise or Latin-square the order of conditions within blocks, the position of the soundscape block, and the order of 'sc' and original versions.</li>
-    <li>Record EMG (temporalis, frontalis) or plan ICA-based muscle removal; consider an eyes-closed control task with matched attention.</li>
-    <li>Collect movement and spatial imagery ratings on structured scales (they show the clearest EEG link); free text is noisy, with low single-listener agreement.</li>
-    <li>Use the effect sizes here (e.g. movement–α r<sub>rm</sub> ≈ −.15; B2 θ η²<sub>p</sub> = .30) for a-priori power analysis and pre-register the confirmatory tests.</li>
-  </ol>
+  </details>
+  <details>
+    <summary>Statistics</summary>
+    <ul>
+      <li>Channel level: within-subject spatial cluster permutation tests (cluster mass, 5000 permutations; paired sign-flip or within-subject label permutation of a repeated-measures F).</li>
+      <li>ROI level: repeated-measures ANOVA (Greenhouse-Geisser) and linear mixed models with session position as covariate (LRT); Cohen's dz with bootstrap CIs; Benjamini-Hochberg FDR per family.</li>
+      <li>Brain–experience: trial-level mixed models with within/between-listener decomposition of each rating (833 tests; 79 at q &lt; .05). Sensitivity: crossed stimulus random effect, gamma power as EMG proxy, arousal/valence/dominance covariates, listener-specific random slopes.</li>
+      <li>RSA: per-listener 27 × 27 EEG dissimilarity matrices vs design and subjective models; stimulus-label permutation; partial correlations controlling temporal distance; noise ceiling.</li>
+      <li>Inter-listener agreement: ICC from a crossed (stimulus × listener) random-effects model, jackknife CIs.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Key numbers</summary>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Result</th><th>Estimate</th></tr></thead>
+      <tbody>
+        <tr><td>α, listening − rest (global)</td><td>dz = −1.70 [−2.21, −1.41]; all 64 channels in cluster</td></tr>
+        <tr><td>α drop, parieto-occipital vs temporal</td><td>dz = −0.59 [−0.96, −0.28], q = .047</td></tr>
+        <tr><td>Movement → α (global, within-listener)</td><td>β = −0.037, r<sub>rm</sub> = −.15, q = .001; unchanged with arousal/valence/dominance, gamma and crossed stimulus effects; β = −0.058 when speed is stated</td></tr>
+        <tr><td>Movement → α with listener random slopes</td><td>parieto-occipital p = .002; two-stage per-listener slopes dz = −0.38, p = .058 (18/27 negative); no posterior &gt; temporal difference (p = .79)</td></tr>
+        <tr><td>Movement × stimulus set</td><td>synthetic β = −0.035 (p = .004); soundscapes β = −0.014 (p = .19); interaction p = .29</td></tr>
+        <tr><td>Soundscape category (1/f exponent, global)</td><td>F = 5.05, p<sub>GG</sub> = .0009, q = .028; 49-channel cluster p = .0002</td></tr>
+        <tr><td>Envelope block (central θ)</td><td>F = 10.96, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .30; percussive − neutral dz = 0.58</td></tr>
+        <tr><td>Valence ↔ temporal complexity</td><td>r<sub>rm</sub> ≈ .19, but shrinks 70–85% when controlling gamma (likely partly muscular)</td></tr>
+        <tr><td>Group agreement (ICC, average of 27)</td><td>valence .82, size .82, temperature .73, movement .68</td></tr>
+        <tr><td>RSA, own valence-arousal-dominance | time</td><td>ρ = .029 [.008, .053], q = .006</td></tr>
+      </tbody>
+    </table></div>
+  </details>
 </section>
 
 <footer>
-  <p>Preliminary results of an ongoing pilot study; figures and numbers may change before publication. Only aggregated results are shown. Pending: meaning of the 'sc' label in block 5; blind validation of free-text coding.</p>
+  <p>Preliminary results of an ongoing pilot study; numbers may change before publication. Only group-level results are shown. Pending: the meaning of the "sc" label of the first soundscape version; a human check of the free-text coding.</p>
 </footer>
 </div>
 </body>
