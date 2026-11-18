@@ -185,13 +185,16 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   </article>
 
   <article class="finding">
-    <div class="head"><span class="num">Hallazgo 4</span><span class="badge promising">prometedor</span></div>
+    <div class="head"><span class="num">Hallazgo 4</span><span class="badge solid">sólido</span></div>
     <h3>Entre los sonidos sintéticos, lo que más importó fue la envolvente</h3>
     <figure>
       <div class="plate"><img src="../figs/es/envelope_theta.png?v=202611181330" alt="Gráfico de líneas de theta central para las cuatro envolventes, con un pico en la percusiva y una línea gris por oyente"></div>
       <figcaption>Bloque 2: proporción de theta, un ritmo lento (4–8 ciclos por segundo), en el centro de la cabeza para cada envolvente. Azul = media de todos los oyentes con su incertidumbre; líneas grises = cada oyente.</figcaption>
     </figure>
-    <p>Cambiar la envolvente (neutra, percusiva, de viento, on-off) cambió la actividad cerebral. La envolvente percusiva destacó: más actividad theta y, de forma aún más clara, una pendiente del espectro más inclinada en el centro de la cabeza. Cambiar la altura, el ancho de banda o los parciales no produjo diferencias claras. Los sonidos de cada bloque se pusieron siempre en el mismo orden, así que hay que confirmarlo.</p>
+    <p>Cambiar la envolvente (neutra, percusiva, de viento, on-off) cambió la actividad cerebral. La envolvente percusiva destacó: más actividad theta y, de forma aún más clara, una pendiente del espectro más inclinada en el centro de la cabeza. Cambiar la altura, el ancho de banda o los parciales no produjo diferencias claras.</p>
+    <div class="label">Intentamos tumbarlo</div>
+    <p>La pendiente más inclinada aguantó todas las pruebas. No es el momento de la sesión ni la actividad muscular. No es la respuesta automática del cerebro a cada golpe: localizamos los golpes en el archivo de audio, y la pendiente sigue más inclinada incluso en los momentos tranquilos entre golpes. Tampoco es el orden fijo: la percusiva sonaba siempre en segundo lugar en su bloque, pero el segundo sonido de los demás bloques no muestra nada parecido. Tres de cada cuatro oyentes lo muestran (20 de 27), y la evidencia estadística es muy fuerte (unas 125 a 1).</p>
+    <p>El aumento de theta convence menos. En parte es solo un efecto secundario de la pendiente más inclinada, que por sí misma sube la proporción de ritmos lentos.</p>
   </article>
 
   <article class="finding">
@@ -236,7 +239,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>Próximos pasos</h2>
   <ol class="steps">
-    <li><b>Hecho:</b> primer análisis acústico de los 27 audios (hallazgo 8) y pruebas de resistencia de los hallazgos 2 y 3.</li>
+    <li><b>Hecho:</b> primer análisis acústico de los 27 audios (hallazgo 8) y pruebas de resistencia de los hallazgos 2, 3 y 4.</li>
     <li><b>Hecho:</b> eliminada de los registros la actividad de ojos y músculos; medida la sincronía cerebral entre oyentes.</li>
     <li><b>Hecho:</b> una compañera codificó por su cuenta, sin ver la nuestra, una muestra de 120 descripciones de texto libre. El acuerdo fue casi perfecto en tamaño y temperatura, muy alto en intensidad del movimiento y bueno en dirección del movimiento.</li>
     <li><b>Diseñar el estudio principal</b> con el orden barajado para cada persona, más participantes y una escala sencilla de 1 a 7 para el movimiento imaginado, poniendo a prueba el hallazgo 2 y la idea de "movimiento construido frente a reconocido" como hipótesis prerregistradas.</li>
@@ -249,7 +252,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <summary>Procesado del EEG y medidas</summary>
     <ul>
       <li>Eliminación de artefactos: ICA infomax extendido (40 componentes) por sujeto, ajustado sobre una copia a 250 Hz y aplicado a los datos a 500 Hz; se eliminaron los componentes que ICLabel clasificó como músculo, ojo, corazón, red eléctrica o ruido de canal con p ≥ ,70 (mediana de 7 por sujeto, rango 2–19). Medidas recalculadas a 500 Hz con las definiciones de MEDUSA (sin ICA: ρ = ,91–,995 con las medidas originales de MEDUSA, medianas idénticas). Todos los resultados usan las medidas limpiadas con ICA; las originales se usan como comprobación de sensibilidad.</li>
-      <li>64 canales, 500 Hz; notch 49–51 Hz; paso banda FIR 1–70 Hz; referencia promedio; épocas de 5 s normalizadas (z) por época (por eso la media, la varianza y la potencia absoluta no informan y se excluyeron); rechazo de artefactos por umbral. Mediana de 9 épocas limpias por estímulo; 9 registros ausentes o con menos de 5 épocas.</li>
+      <li>64 canales, 500 Hz; notch 49–51 Hz; paso banda FIR 0,5–70 Hz (orden 1000); referencia promedio; épocas de 5 s normalizadas (z) por época (por eso la media, la varianza y la potencia absoluta no informan y se excluyeron); rechazo de artefactos por umbral. En un oyente el programa de reproducción intercambió los audios de los bloques 1 y 4 (detectado en el plan de registro); ningún resultado de esos bloques cambia tanto si se reetiqueta a este oyente como si se excluye. Mediana de 9 épocas limpias por estímulo; 9 registros ausentes o con menos de 5 épocas.</li>
       <li>17 medidas principales: potencia relativa (δ, θ, α, β, γ), frecuencia mediana, entropía espectral, entropía muestral, complejidad de Lempel-Ziv, medida de tendencia central, exponente aperiódico (ajuste log-log 2–40 Hz excluyendo 7–14 Hz), frecuencia alfa individual, fuerza nodal wPLI (5 bandas). Mediana entre épocas; 6 regiones más la media global.</li>
     </ul>
   </details>
@@ -279,6 +282,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Movimiento → α, pruebas de resistencia</td><td>α periódico (sobre 1/f) β = −0,025, p = ,005; exponente 1/f β = 0,01, p = ,41; + intensidad emocional y n.º de descriptores β = −0,035, p &lt; ,0001; BF<sub>10</sub> (BIC) = 90; quitando uno a uno β −0,027 a −0,037; mitades negativas en ambas el 100 %, ambas p &lt; ,05 el 67 %</td></tr>
         <tr><td>Correlación entre sujetos (CorrCA, 3 componentes)</td><td>estímulos frente a reposo d<sub>z</sub> = −0,01, p = ,96; trueno ISC = ,046, p = ,002 (q = ,054); olas ,031, p = ,012</td></tr>
         <tr><td>Bloque de envolvente (central)</td><td>exponente 1/f F = 12,10, p<sub>GG</sub> &lt; ,001, η²<sub>p</sub> = ,32, percusiva − neutra d<sub>z</sub> = 0,82; θ F = 5,71, p<sub>GG</sub> = ,002, η²<sub>p</sub> = ,18, percusiva − neutra d<sub>z</sub> = 0,53</td></tr>
+        <tr><td>Envolvente, pruebas de resistencia (central, percusiva − neutra)</td><td>exponente 1/f: BF<sub>10</sub> (JZS) = 126, 20/27 positivos, mitades ambas p &lt; ,05 el 81 %; LMM con posición en la sesión + gamma p &lt; ,0001; ventanas de 1 s sin golpes (≥ 0,5 s tras cada inicio) d<sub>z</sub> = 0,55, p = ,008; segundo menos primer sonido en los demás bloques d<sub>z</sub> −0,40 a 0,01 (todas p ≥ ,05). θ: θ periódico (sobre 1/f, ventanas de 2 s) d<sub>z</sub> = 0,08, p = ,68; BF<sub>10</sub> = 4,2</td></tr>
         <tr><td>Valencia ↔ complejidad temporal</td><td>r<sub>rm</sub> ≈ ,15–,17, pero se reduce cerca de un 90 % al controlar gamma (probablemente muscular)</td></tr>
         <tr><td>Movimiento → α frente a acústica</td><td>con 5 covariables acústicas independientes del nivel β = −0,029, p = ,0006; + sonoridad del archivo sin cambios; desviación del oyente respecto al consenso del estímulo β = −0,038, p = ,002; consenso del estímulo β = −0,08, p = ,65</td></tr>
         <tr><td>Acústica ↔ valoraciones medias (27 estímulos, Spearman)</td><td>movimiento: planitud espectral ρ = ,59, factor de cresta ,56, modulación 4–16 Hz ,53; valencia: planitud ,63; activación: cambio tímbrico ,60, tasa de eventos ,49 (todas q &lt; ,05)</td></tr>

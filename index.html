@@ -185,13 +185,16 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   </article>
 
   <article class="finding">
-    <div class="head"><span class="num">Finding 4</span><span class="badge promising">promising</span></div>
+    <div class="head"><span class="num">Finding 4</span><span class="badge solid">solid</span></div>
     <h3>Among the synthetic sounds, the envelope mattered most</h3>
     <figure>
       <div class="plate"><img src="figs/en/envelope_theta.png?v=202611181330" alt="Line plot of central theta for the four envelopes, peaking for the percussive envelope, with one grey line per listener"></div>
       <figcaption>Block 2: share of theta, a slow rhythm (4–8 cycles per second), at the centre of the head for each envelope. Blue = average of all listeners with its uncertainty; grey lines = individual listeners.</figcaption>
     </figure>
-    <p>Changing the envelope (neutral, percussive, wind-like, on-off) changed brain activity. The percussive envelope stood out: more slow theta activity and, even more clearly, a steeper spectrum at the centre of the head. Changing pitch, bandwidth or partials did not produce clear differences. The sounds within each block were always played in the same order, so this needs confirming.</p>
+    <p>Changing the envelope (neutral, percussive, wind-like, on-off) changed brain activity. The percussive envelope stood out: more slow theta activity and, even more clearly, a steeper spectrum at the centre of the head. Changing pitch, bandwidth or partials did not produce clear differences.</p>
+    <div class="label">We tried to knock it down</div>
+    <p>The steeper spectrum survived every test. It is not the time in the session or muscle activity. It is not the brain's automatic "click" response to each hit: we found the hits in the audio file, and the spectrum stays steeper even in the quiet moments between hits. It is not the fixed order either: the percussive sound was always second in its block, but the second sound of the other blocks shows nothing similar. Three out of four listeners show it (20 of 27), and the statistical evidence is very strong (about 125 to 1).</p>
+    <p>The extra theta is less convincing. Part of it is simply a side effect of the steeper spectrum, which raises the share of slow rhythms by itself.</p>
   </article>
 
   <article class="finding">
@@ -236,7 +239,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>What comes next</h2>
   <ol class="steps">
-    <li><b>Done:</b> first acoustic analysis of the 27 audio files (finding 8), and stress tests of findings 2 and 3.</li>
+    <li><b>Done:</b> first acoustic analysis of the 27 audio files (finding 8), and stress tests of findings 2, 3 and 4.</li>
     <li><b>Done:</b> eye and muscle activity removed from the recordings; brain synchrony between listeners measured.</li>
     <li><b>Done:</b> a colleague independently coded a sample of 120 free-text descriptions, without seeing ours. Agreement was almost perfect for size and temperature, very high for movement intensity and good for movement direction.</li>
     <li><b>Design the main study</b> with the order shuffled for every person, more participants and a simple 1–7 scale for imagined movement, testing finding 2 and the "built vs recognised movement" idea as pre-registered hypotheses.</li>
@@ -249,7 +252,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <summary>EEG processing and measures</summary>
     <ul>
       <li>Artefact removal: extended-infomax ICA (40 components) per subject, fitted on a 250 Hz copy and applied to the 500 Hz data; components labelled by ICLabel as muscle, eye, heart, line or channel noise with p ≥ .70 removed (median 7 per subject, range 2–19). Features recomputed at 500 Hz with the MEDUSA definitions (without ICA: ρ = .91–.995 with the original MEDUSA features, identical medians). All results below use the ICA-cleaned features; the original features are used as a sensitivity check.</li>
-      <li>64 channels, 500 Hz; notch 49–51 Hz; 1–70 Hz FIR band-pass; common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
+      <li>64 channels, 500 Hz; notch 49–51 Hz; 0.5–70 Hz FIR band-pass (order 1000); common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. In one listener the audio of blocks 1 and 4 was swapped by the playback software (detected from the recording plan); none of the block 1 or 4 results changes whether this listener is relabelled or excluded. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
       <li>17 primary features: relative power (δ, θ, α, β, γ), median frequency, spectral entropy, sample entropy, Lempel-Ziv complexity, central tendency measure, aperiodic exponent (log-log fit 2–40 Hz excluding 7–14 Hz), individual alpha frequency, wPLI node strength (5 bands). Median across epochs; 6 ROIs plus global.</li>
     </ul>
   </details>
@@ -279,6 +282,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Movement → α, stress tests</td><td>periodic α (above 1/f) β = −0.025, p = .005; 1/f exponent β = 0.01, p = .41; + emotion intensity and n descriptors β = −0.035, p &lt; .0001; BIC BF<sub>10</sub> = 90; leave-one-out β −0.027 to −0.037; split halves negative in both 100 %, both p &lt; .05 in 67 %</td></tr>
         <tr><td>Inter-subject correlation (CorrCA, 3 components)</td><td>stimuli vs rest dz = −0.01, p = .96; thunder ISC = .046, p = .002 (q = .054); sea waves .031, p = .012</td></tr>
         <tr><td>Envelope block (central)</td><td>1/f exponent F = 12.10, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .32, percussive − neutral dz = 0.82; θ F = 5.71, p<sub>GG</sub> = .002, η²<sub>p</sub> = .18, percussive − neutral dz = 0.53</td></tr>
+        <tr><td>Envelope, stress tests (central, percussive − neutral)</td><td>1/f exponent: JZS BF<sub>10</sub> = 126, 20/27 positive, split halves both p &lt; .05 in 81 %; LMM with session position + gamma p &lt; .0001; hit-free 1-s windows (≥ 0.5 s after each onset) dz = 0.55, p = .008; second-minus-first sound in other blocks dz −0.40 to 0.01 (all p ≥ .05). θ: periodic θ (above 1/f, 2-s windows) dz = 0.08, p = .68; BF<sub>10</sub> = 4.2</td></tr>
         <tr><td>Valence ↔ temporal complexity</td><td>r<sub>rm</sub> ≈ .15–.17, but shrinks by about 90% when controlling gamma (likely muscular)</td></tr>
         <tr><td>Movement → α vs acoustics</td><td>with 5 level-free acoustic covariates β = −0.029, p = .0006; + file loudness unchanged; listener's deviation from the stimulus consensus β = −0.038, p = .002; stimulus consensus β = −0.08, p = .65</td></tr>
         <tr><td>Acoustics ↔ mean ratings (27 stimuli, Spearman)</td><td>movement: flatness ρ = .59, crest factor .56, 4–16 Hz modulation .53; valence: flatness .63; arousal: timbral change .60, onset rate .49 (all q &lt; .05)</td></tr>
