@@ -101,154 +101,194 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <header>
   <div class="eyebrow">BrainSound · estudio piloto · resultados preliminares</div>
   <h1>¿Qué ocurre en el cerebro cuando escuchamos el sonido como materia?</h1>
-  <p class="lede">Un resumen en lenguaje sencillo de lo que hemos encontrado hasta ahora. 27 personas escucharon 27 sonidos con los ojos cerrados mientras registrábamos su actividad cerebral, y nos contaron qué les hacía sentir e imaginar cada sonido.</p>
+  <p class="lede">Un resumen en lenguaje sencillo de lo que hemos encontrado hasta ahora. Veintisiete personas escucharon 27 sonidos con los ojos cerrados mientras registrábamos su actividad cerebral. Después de cada sonido, nos contaron qué les había hecho sentir e imaginar.</p>
 </header>
 
 <section>
   <h2>Qué hicimos</h2>
   <ol class="steps">
-    <li><b>Los sonidos.</b> 13 sonidos sintéticos creados en SuperCollider, cada bloque variando una propiedad (altura, envolvente, ancho de banda o parciales), y 7 paisajes sonoros naturales (pájaros, lluvia, río, olas, trueno, viento, terremoto), cada uno escuchado dos veces: primero como una imitación creada en SuperCollider y después como la grabación real. Todos duraban unos 50 segundos. El volumen se ajustó una vez al principio con un sonido de prueba y no se volvió a tocar, porque la intensidad forma parte del carácter de cada sonido: algunos sonaban hasta 30 dB más fuerte que otros, a propósito.</li>
-    <li><b>El cerebro.</b> Mientras escuchaban, cada persona llevaba un gorro con 64 sensores (EEG) que captan los diminutos ritmos eléctricos del cerebro a través del cuero cabelludo. También registramos 3 minutos de reposo en silencio, con los ojos cerrados, antes y después.</li>
-    <li><b>La experiencia.</b> Tras cada sonido, valoraban cuánto les agradaba, cuánto les activaba y cuánto control sentían, nombraban una emoción y describían la imagen que les evocaba: su color, tamaño, temperatura, textura y movimiento.</li>
+    <li><b>Los sonidos.</b> Trece sonidos sintéticos abstractos creados en SuperCollider, en cuatro bloques, cada uno de los cuales variaba una sola propiedad (altura, envolvente, ancho de banda o parciales). Después, siete paisajes sonoros naturales (pájaros, lluvia, río, olas, trueno, viento y terremoto), cada uno escuchado dos veces: primero como una imitación creada en SuperCollider y más tarde como la grabación real. Cada sonido duraba unos 50 segundos. El volumen de reproducción se ajustó una sola vez al principio con un sonido de prueba y no se volvió a tocar, porque la intensidad forma parte del carácter de cada sonido: por diseño, algunos archivos sonaban hasta 30 decibelios más fuerte que otros.</li>
+    <li><b>El cerebro.</b> Mientras escuchaban, cada persona llevaba un gorro con 64 sensores (EEG) que captan los diminutos ritmos eléctricos del cerebro a través del cuero cabelludo. También registramos tres minutos de reposo en silencio, con los ojos cerrados, antes y después de los sonidos.</li>
+    <li><b>La experiencia.</b> Tras cada sonido, las personas valoraban cuánto les agradaba, cuánto les activaba y cuánto control sentían, nombraban una emoción y describían la imagen que el sonido les evocaba: su color, tamaño, temperatura, textura y movimiento.</li>
   </ol>
 
   <div class="box note">
-    <h3>Tres palabras que necesitas para esta página</h3>
+    <h3>Cuatro términos que se usan en esta página</h3>
     <dl class="gloss">
       <dt>Ritmos cerebrales</dt>
       <dd>El EEG es como una grabación del "zumbido" del cerebro. Mezcla ritmos lentos y rápidos, un poco como los graves, medios y agudos de una mezcla. Miramos cuánto hay de cada uno.</dd>
       <dt>Ritmo alfa</dt>
-      <dd>Un ritmo de unos 10 ciclos por segundo, máximo cuando descansamos con los ojos cerrados. Funciona como una señal de "ralentí": cuando el cerebro se pone a trabajar (atender, imaginar), el alfa baja. <b>Menos alfa = cerebro más implicado.</b></dd>
+      <dd>Un ritmo de unos 10 ciclos por segundo, máximo cuando descansamos con los ojos cerrados. Se comporta como una señal de ralentí: cuando el cerebro se pone a trabajar (prestar atención, imaginar), el alfa baja. <b>Menos alfa = cerebro más implicado.</b></dd>
+      <dt>Pendiente del espectro</dt>
+      <dd>La rapidez con que la señal cerebral se debilita al pasar de los ritmos lentos a los rápidos. Una pendiente más inclinada indica relativamente más actividad lenta y menos rápida, y suele interpretarse como un estado más tranquilo.</dd>
       <dt>Complejidad</dt>
-      <dd>Lo predecible o variada que es la señal cerebral, como comparar un bordón con una improvisación libre.</dd>
+      <dd>Lo predecible o variada que es la señal cerebral, como la diferencia entre un bordón y una improvisación libre.</dd>
     </dl>
   </div>
 
   <div class="legend">
     ¿Cómo de seguros estamos?
-    <span><span class="badge solid">sólido</span> claro y consistente</span>
-    <span><span class="badge promising">prometedor</span> señal real, hay que confirmarla</span>
-    <span><span class="badge unclear">aún no se sabe</span> mezclado con otros factores</span>
+    <span><span class="badge solid">sólido</span> claro, y ha resistido nuestros intentos de tumbarlo</span>
+    <span><span class="badge promising">prometedor</span> una señal real que hay que confirmar</span>
+    <span><span class="badge unclear">aún no se sabe</span> débil, frágil o mezclado con otros factores</span>
   </div>
 </section>
 
 <section>
   <h2>Qué encontramos</h2>
+  <p>Los hallazgos están ordenados de más a menos sólidos.</p>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 1</span><span class="badge solid">sólido</span></div>
     <h3>Escuchar "enciende" el cerebro, sobre todo en la parte posterior de la cabeza</h3>
     <figure>
-      <div class="plate small"><img src="../figs/es/alpha_listening.png?v=202611181730" alt="Mapa de la cabeza visto desde arriba: la bajada de alfa es mayor (azul oscuro) en la parte posterior y menor (claro) delante y en los lados"></div>
-      <figcaption>La cabeza vista desde arriba (nariz arriba). Azul más oscuro = mayor bajada de alfa al escuchar respecto al reposo. El alfa bajó en todas partes, al menos 4 puntos porcentuales, así que la escala empieza en 4 para que se vea dónde bajó más.</figcaption>
+      <div class="plate small"><img src="../figs/es/alpha_listening.png?v=202611181900" alt="Mapa de la cabeza visto desde arriba: la bajada de alfa es mayor (azul oscuro) en la parte posterior y menor (claro) delante y en los lados"></div>
+      <figcaption>La cabeza vista desde arriba, con la nariz arriba. Un azul más oscuro indica una mayor bajada de alfa al escuchar, respecto al reposo. El alfa bajó en todas partes, al menos 4 puntos porcentuales, por eso la escala empieza en 4: así se ve dónde bajó más.</figcaption>
     </figure>
     <div class="label">Qué vimos</div>
-    <p>Comparado con el reposo, el alfa bajó en toda la cabeza en cuanto las personas escuchaban un sonido. La bajada fue mayor en la parte posterior, sobre zonas que solemos asociar a la visión, y menor en los lados, donde se procesa la audición.</p>
+    <p>Respecto al reposo, el alfa bajó en toda la cabeza en cuanto las personas escuchaban un sonido. La bajada fue mayor en la parte posterior, sobre zonas que se suelen asociar a la visión, y menor en los lados, sobre las zonas que procesan la audición.</p>
     <div class="label">Por qué importa</div>
-    <p>Las personas tuvieron los ojos cerrados todo el tiempo, así que no se trata de ver nada. Encaja con la idea del proyecto: escuchar estos sonidos implica regiones del cerebro que normalmente asociamos a la visión, quizá porque se construyen imágenes mentales.</p>
+    <p>Las personas tuvieron los ojos cerrados todo el tiempo, así que esto no tiene que ver con ver. Encaja con la idea del proyecto: escuchar estos sonidos implica regiones del cerebro que normalmente asociamos a la visión, quizá porque se forman imágenes mentales.</p>
     <div class="label">¿Qué tipo de escucha lo enciende más?</div>
     <figure>
-      <div class="plate"><img src="../figs/es/alpha_by_type.png?v=202611181730" alt="Seis mapas de la cabeza, uno por tipo de sonido, todos con la mayor bajada de alfa en la parte posterior; debajo, violines de la bajada de alfa de toda la cabeza por oyente, todos claramente por encima de cero, algo menores con las grabaciones reales"></div>
-      <figcaption>Arriba: el mismo mapa de la cabeza para cada tipo de sonido, todos con la misma escala de color. Abajo: la bajada en toda la cabeza de cada oyente (la forma muestra cómo se reparten los oyentes; el punto es la media con su incertidumbre).</figcaption>
+      <div class="plate"><img src="../figs/es/alpha_by_type.png?v=202611181900" alt="Seis mapas de la cabeza, uno por tipo de sonido, todos con la mayor bajada de alfa en la parte posterior; debajo, violines de la bajada de alfa de toda la cabeza por oyente, todos claramente por encima de cero, algo menores con las grabaciones reales"></div>
+      <figcaption>Arriba: el mismo mapa de la cabeza para cada tipo de sonido, todos con la misma escala de color. Abajo: la bajada en toda la cabeza de cada oyente. La forma muestra cómo se reparten los oyentes; el punto es la media, con su incertidumbre.</figcaption>
     </figure>
-    <p>Todos los tipos de sonido bajaron claramente el alfa, con el mismo patrón: más en la parte posterior de la cabeza. Entre los cuatro bloques sintéticos (altura, envolvente, ancho de banda, parciales), que cada oyente escuchó en un orden distinto, no podemos distinguirlos. Los paisajes, y sobre todo las grabaciones reales, lo bajaron algo menos. Pero sonaban siempre al final de la sesión, cuando el alfa sube de todos modos (hallazgo 8), así que no podemos atribuirlo al tipo de sonido.</p>
+    <p>Todos los tipos de sonido bajaron claramente el alfa, siempre con el mismo patrón: más en la parte posterior de la cabeza. No podemos distinguir entre sí los cuatro bloques sintéticos (altura, envolvente, ancho de banda y parciales), que cada oyente escuchó en un orden distinto. Los paisajes, sobre todo las grabaciones reales, lo bajaron algo menos. Sin embargo, sonaban siempre al final de la sesión, cuando el alfa sube de todos modos (hallazgo 8), así que no podemos atribuirlo al tipo de sonido.</p>
     <div class="label">Cuidado</div>
-    <p>El alfa también baja simplemente al prestar atención. Todavía no podemos decir que las zonas visuales estén haciendo un trabajo "visual". La bajada no es solo cansancio al final de la sesión: se ve igual de clara frente al reposo del principio que frente al del final. Con 27 oyentes solo podemos detectar diferencias medianas o grandes entre tipos de sonido, así que "no podemos distinguirlos" no significa "son iguales".</p>
+    <p>El alfa también baja simplemente al prestar atención, así que todavía no podemos decir que las zonas visuales estén haciendo un trabajo "visual". La bajada no es solo cansancio: es igual de clara frente al reposo del principio de la sesión que frente al del final. Con 27 oyentes solo se pueden detectar diferencias medianas o grandes entre tipos de sonido, así que "no podemos distinguirlos" no significa "son iguales".</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 2</span><span class="badge solid">sólido</span></div>
     <h3>Cuanto más movimiento imaginaban, menos alfa tenían</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/movement_alpha.png?v=202611181730" alt="Gráfico de barras: el alfa de toda la cabeza está por encima de la media del oyente con imágenes quietas y baja escalón a escalón con movimiento lento, moderado y rápido"></div>
+      <div class="plate"><img src="../figs/es/movement_alpha.png?v=202611181900" alt="Gráfico de barras: el alfa de toda la cabeza está por encima de la media del oyente con imágenes quietas y baja escalón a escalón con movimiento lento, moderado y rápido"></div>
       <figcaption>Cada barra compara a las personas consigo mismas: cuánto alfa tenían con ese tipo de imagen, respecto a su propia media. Las líneas negras muestran la incertidumbre.</figcaption>
     </figure>
     <div class="label">Qué vimos</div>
-    <p>Cuando alguien describía la imagen evocada como quieta, su alfa era más alto; cuando describía un movimiento rápido o intenso, era más bajo, escalón a escalón. Se mantiene al comparar a cada persona solo consigo misma.</p>
+    <p>Cuando alguien describía como quieta la imagen que le evocaba un sonido, su alfa era más alto; cuanto más rápido o intenso era el movimiento que describía, más bajo era, escalón a escalón. Se mantiene al comparar a cada persona solo consigo misma.</p>
     <div class="label">Por qué importa</div>
-    <p>Une una medida cerebral con lo que las personas vivieron, que es justo de lo que trata el proyecto: el sonido percibido como algo que se mueve en el espacio. No se explica por lo activador o agradable que resultaba el sonido, y se mantiene al eliminar de los registros la actividad de ojos y músculos. Es aún más claro cuando la persona mencionaba expresamente una velocidad. Y no es solo el sonido: el propio sonido sí baja el alfa (los sonidos cuyo nivel fluctúa deprisa lo bajan más, ver hallazgo 5), pero cuando varias personas escuchaban el mismo sonido, las que imaginaban más movimiento que las demás tenían menos alfa. Esa parte personal se mantiene al tener en cuenta la acústica. Así que se suman dos cosas: lo que el sonido hace a todos y lo que imagina cada persona.</p>
+    <p>Une una medida cerebral con lo que las personas vivieron, que es justo de lo que trata el proyecto: el sonido percibido como algo que se mueve en el espacio. No se explica por lo agradable o activador que resultaba el sonido, y se mantiene al eliminar de los registros la actividad de ojos y músculos. Es aún más claro cuando la persona mencionaba expresamente una velocidad.</p>
+    <div class="label">¿Es solo el sonido?</div>
+    <p>No solo. El propio sonido sí baja el alfa: los sonidos cuyo nivel fluctúa deprisa lo bajan más (hallazgo 5). Pero cuando varias personas escuchaban el mismo sonido, las que imaginaban más movimiento que las demás tenían menos alfa, y esta parte personal se mantiene al tener en cuenta la acústica. Se suman dos cosas: lo que el sonido hace a todos y lo que imagina cada persona.</p>
     <div class="label">Intentamos tumbarlo</div>
-    <p>Como encontramos esta relación buscando entre muchas posibilidades, pusimos a prueba las explicaciones que la convertirían en una ilusión. Es alfa de verdad, no un cambio en la forma general del espectro. No es implicación general: se refuerza un poco al tener en cuenta lo intensa que fue la emoción y cuánto escribió cada persona. Ningún oyente ni ningún sonido concreto la provoca. Al dividir a los oyentes al azar en dos grupos, 1000 veces, la relación fue en la misma dirección en las dos mitades todas las veces. También predice a personas nuevas: un modelo entrenado con 26 oyentes predice mejor el alfa del que queda fuera cuando sabe lo que esa persona imaginó. Y repetimos el análisis de 432 maneras razonables distintas (con y sin limpieza, distintas zonas de la cabeza, formas de codificar el movimiento, controles y modelos): la relación fue en la misma dirección en las 432, y fue estadísticamente clara en tres de cada cuatro. Un análisis bayesiano que deja que la relación cambie de una persona a otra sitúa en más de 99 a 1 la probabilidad de que sea realmente negativa.</p>
+    <p>Como encontramos esta relación buscando entre muchas posibilidades, pusimos a prueba las explicaciones que la convertirían en una ilusión. Es alfa de verdad, no un cambio en la forma general del espectro. No es implicación general: se refuerza ligeramente al tener en cuenta la intensidad de la emoción y cuánto escribió cada persona. Ningún oyente ni ningún sonido concreto la provoca. Al dividir a los oyentes al azar en dos grupos, 1000 veces, la relación fue en la misma dirección en las dos mitades todas las veces. También se generaliza a personas nuevas: un modelo entrenado con 26 oyentes predice mejor el alfa del que queda fuera cuando sabe lo que esa persona imaginó. Además, repetimos el análisis de 432 maneras razonables distintas (con y sin limpieza de los registros, en distintas zonas de la cabeza, codificando el movimiento de distintas formas, con distintos controles y modelos): la relación fue en la misma dirección en las 432 y fue estadísticamente clara en tres de cada cuatro. Por último, un análisis bayesiano que permite que la relación varíe de una persona a otra sitúa por encima del 99 % la probabilidad de que sea realmente negativa.</p>
     <div class="label">Un detalle intrigante</div>
-    <p>La relación fue más o menos igual de fuerte con los sonidos sintéticos abstractos y con las imitaciones de los paisajes hechas en SuperCollider, pero prácticamente desapareció con las grabaciones reales. Una idea: con una grabación de lluvia, la persona <i>reconoce</i> la fuente y ya sabe cómo se mueve; con un sonido sintetizado, aunque imite la lluvia, el oyente tiene que <i>construir</i> el movimiento a partir del propio sonido. La diferencia entre grabaciones y sonidos sintetizados aún no es estadísticamente clara, y las grabaciones reales siempre sonaron al final, así que por ahora es una hipótesis para el próximo estudio.</p>
+    <p>La relación fue más o menos igual de fuerte con los sonidos sintéticos abstractos que con las imitaciones de los paisajes hechas en SuperCollider, pero prácticamente desapareció con las grabaciones reales. Una posible explicación: con una grabación de lluvia, la persona <i>reconoce</i> la fuente y ya sabe cómo se mueve; con un sonido sintetizado, aunque imite la lluvia, el oyente tiene que <i>construir</i> el movimiento a partir del propio sonido. La diferencia entre grabaciones y sonidos sintetizados aún no es estadísticamente clara, y las grabaciones reales sonaron siempre al final, así que por ahora es una hipótesis para el próximo estudio.</p>
     <div class="label">Cuidado</div>
-    <p>Es pequeña y es una tendencia de grupo: algo más de la mitad de los oyentes (16 de 27) la muestran por sí solos, saber lo que alguien imaginó mejora la predicción en más o menos la mitad de los oyentes, y está repartida por la cabeza en lugar de solo en la parte posterior. Superar estas pruebas la hace sólida dentro de este estudio, pero solo participantes nuevos pueden confirmarla, idealmente como hipótesis planteada de antemano.</p>
+    <p>El efecto es pequeño y es una tendencia de grupo. Solo algo más de la mitad de los oyentes (16 de 27) lo muestran por sí solos; saber lo que alguien imaginó mejora la predicción en más o menos la mitad de ellos; y está repartido por la cabeza en lugar de concentrarse en la parte posterior. Superar estas pruebas lo hace sólido dentro de este estudio, pero solo participantes nuevos pueden confirmarlo, idealmente con la hipótesis planteada de antemano.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 3</span><span class="badge solid">sólido</span></div>
     <h3>Entre los sonidos sintéticos, lo que más importó fue la envolvente</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/envelope_slope.png?v=202611181730" alt="Gráficos de violín de la pendiente 1/f central para los sonidos de los bloques 1 a 4; solo el bloque de envolvente muestra diferencias, con la percusiva por encima de las otras tres"></div>
-      <figcaption>Pendiente del espectro (1/f) en el centro de la cabeza para cada sonido sintético. Cada valor es relativo a la media del propio oyente en el bloque, así que se eliminan las diferencias entre personas. La forma muestra cómo se reparten los oyentes; el punto es la media con su incertidumbre. Solo el bloque de envolvente muestra diferencias, y vienen de la envolvente percusiva, más inclinada que cada una de las otras tres. Una pendiente más inclinada significa relativamente más actividad lenta y menos rápida.</figcaption>
+      <div class="plate"><img src="../figs/es/envelope_slope.png?v=202611181900" alt="Gráficos de violín de la pendiente 1/f central para los sonidos de los bloques 1 a 4; solo el bloque de envolvente muestra diferencias, con la percusiva por encima de las otras tres"></div>
+      <figcaption>Pendiente del espectro (1/f) en el centro de la cabeza para cada sonido sintético. Cada valor es relativo a la media del propio oyente en ese bloque, lo que elimina las diferencias entre personas. La forma muestra cómo se reparten los oyentes; el punto es la media, con su incertidumbre. Solo el bloque de envolvente muestra diferencias, y vienen de la envolvente percusiva, más inclinada que cada una de las otras tres.</figcaption>
     </figure>
-    <p>Cambiar la envolvente (neutra, percusiva, de viento, on-off) cambió la actividad cerebral. La envolvente percusiva destacó: más actividad theta y, de forma aún más clara, una pendiente del espectro más inclinada en el centro de la cabeza. Cambiar la altura, el ancho de banda o los parciales no produjo diferencias claras.</p>
+    <p>Cambiar la envolvente (neutra, percusiva, de viento u on-off) cambió la actividad cerebral. La envolvente percusiva destacó: más actividad theta lenta y, de forma aún más clara, una pendiente del espectro más inclinada en el centro de la cabeza. Cambiar la altura, el ancho de banda o los parciales no produjo diferencias claras.</p>
     <div class="label">Intentamos tumbarlo</div>
-    <p>La pendiente más inclinada aguantó todas las pruebas. No es el momento de la sesión ni la actividad muscular. No es la respuesta automática del cerebro a cada golpe: localizamos los golpes en el archivo de audio, y la pendiente sigue más inclinada incluso en los momentos tranquilos entre golpes. Tampoco es el orden fijo: la percusiva sonaba siempre en segundo lugar en su bloque, pero el segundo sonido de los demás bloques no muestra nada parecido. Tres de cada cuatro oyentes lo muestran (20 de 27), y la evidencia estadística es muy fuerte (unas 125 a 1).</p>
-    <p>El aumento de theta convence menos. En parte es solo un efecto secundario de la pendiente más inclinada, que por sí misma sube la proporción de ritmos lentos.</p>
+    <p>La pendiente más inclinada resistió todas las pruebas. No se debe al momento de la sesión ni a la actividad muscular. No es la respuesta automática del cerebro a cada golpe: localizamos los golpes en el archivo de audio, y la pendiente sigue siendo más inclinada incluso en los momentos tranquilos entre ellos. Tampoco es el orden fijo: la percusiva sonaba siempre en segundo lugar en su bloque, pero el segundo sonido de los demás bloques no muestra nada parecido. Tres de cada cuatro oyentes lo muestran (20 de 27), y la evidencia es muy fuerte: los datos son unas 125 veces más probables si el efecto es real que si no lo es.</p>
+    <p>El aumento de theta convence menos. En parte es solo un efecto secundario de la pendiente más inclinada, que por sí misma aumenta la proporción de ritmos lentos.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 4</span><span class="badge solid">sólido</span></div>
-    <h3>Las personas coinciden en cómo se sienten los sonidos, sobre todo en agrado y tamaño</h3>
+    <h3>Como grupo, las personas coinciden en cómo se sienten los sonidos, sobre todo en agrado y tamaño</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/ratings.png?v=202611181730" alt="Gráficos de puntos con el agrado, la activación y el control medios de cada uno de los 27 sonidos, coloreados por bloque"></div>
-      <figcaption>Valoración media de cada sonido (1–7) con su incertidumbre. Izquierda: agrado (valencia). Centro: activación. Derecha: sensación de control (dominancia).</figcaption>
+      <div class="plate"><img src="../figs/es/ratings.png?v=202611181900" alt="Gráficos de puntos con el agrado, la activación y el control medios de cada uno de los 27 sonidos, coloreados por bloque"></div>
+      <figcaption>Valoración media de cada sonido (1–7), con su incertidumbre. Izquierda: agrado (valencia). Centro: activación. Derecha: sensación de control (dominancia).</figcaption>
     </figure>
-    <p>Los sonidos se diferenciaron claramente en agrado, activación y control, y en el tamaño, la temperatura y el movimiento de las imágenes que evocaban. Cada persona es muy distinta, pero las medias del grupo son muy consistentes, sobre todo en agrado y tamaño imaginado. Pájaros y río fueron los más agradables; el bloque de parciales, la envolvente on-off y el terremoto, de los que menos.</p>
+    <p>Los sonidos se diferenciaron claramente en lo agradables, activadores y controlables que resultaban, y en el tamaño, la temperatura y el movimiento de las imágenes que evocaban. Las respuestas individuales varían mucho, pero las medias del grupo son muy consistentes, sobre todo en agrado y tamaño imaginado. Los pájaros y el río fueron los más agradables; el bloque de parciales, la envolvente on-off y el terremoto, de los menos agradables.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 5</span><span class="badge promising">prometedor</span></div>
     <h3>Qué del sonido da forma a la experiencia, y al cerebro</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/acoustics_experience.png?v=202611181730" alt="Tres gráficos de dispersión con los 27 sonidos: más fluctuación rápida del nivel va con más movimiento imaginado, los sonidos más ruidosos con más agrado y los archivos más fuertes con menos agrado"></div>
-      <figcaption>Cada punto es uno de los 27 sonidos: su medida acústica (horizontal) frente a la valoración media del grupo (vertical). Gris: sonidos sintéticos abstractos; naranja: imitaciones de SuperCollider; verde: grabaciones reales. ρ es la correlación de rangos.</figcaption>
+      <div class="plate"><img src="../figs/es/acoustics_experience.png?v=202611181900" alt="Tres gráficos de dispersión con los 27 sonidos: más fluctuación rápida del nivel va con más movimiento imaginado, los sonidos más ruidosos con más agrado y los archivos más fuertes con menos agrado"></div>
+      <figcaption>Cada punto es uno de los 27 sonidos: su medida acústica (eje horizontal) frente a la valoración media del grupo (eje vertical). Gris: sonidos sintéticos abstractos; naranja: imitaciones de SuperCollider; verde: grabaciones reales. ρ es la correlación de rangos.</figcaption>
     </figure>
-    <p>Medimos la acústica de los 27 audios: cuánto ruido o tono tienen, cuánto brillo, lo impulsivos que son, cuántos eventos repentinos, cuánto fluctúa el nivel y cuánto se mueve el sonido entre el oído izquierdo y el derecho. Los sonidos más ruidosos, impulsivos y con fluctuaciones más rápidas (como la lluvia o el río) se imaginaron con más movimiento. Los sonidos más ruidosos y brillantes se valoraron como más agradables; los de timbre más cambiante, como más activadores.</p>
-    <p>El cerebro también sigue a la acústica: los sonidos cuyo nivel fluctúa deprisa bajaron más el alfa. Se mantiene dentro de los 13 sonidos sintéticos, que cada oyente escuchó en un orden distinto, así que no es el momento de la sesión.</p>
-    <p>Comparadas con las grabaciones reales, las imitaciones de SuperCollider cambiaban más de volumen de un momento a otro (las siete tenían más diferencia entre sus partes suaves y fuertes) y su sonido saltaba más de un oído al otro: los archivos son estéreo, y en las imitaciones cada evento sonoro se colocaba en un punto al azar entre el canal izquierdo y el derecho, mientras que en las grabaciones el sonido es más estable. Con solo siete parejas, estas diferencias son orientativas.</p>
+    <p>Medimos la acústica de los 27 archivos de audio: cuánto se parecen a un ruido o a un tono, cuánto brillo tienen, cuántos ataques repentinos contienen, cuánto fluctúa su nivel y cuánto se mueve el sonido entre el oído izquierdo y el derecho. Los sonidos más parecidos al ruido, con más ataques y fluctuaciones más rápidas (como la lluvia o un río), se imaginaron con más movimiento. Los sonidos más ruidosos y brillantes se valoraron como más agradables, y los de timbre más cambiante, como más activadores.</p>
+    <p>El cerebro también sigue a la acústica: los sonidos cuyo nivel fluctúa deprisa bajaron más el alfa. Se mantiene dentro de los 13 sonidos sintéticos, que cada oyente escuchó en un orden distinto, así que no es un efecto del momento de la sesión.</p>
+    <p>Comparadas con las grabaciones reales, las imitaciones de SuperCollider cambiaban más de nivel de un momento a otro (las siete tenían más diferencia entre sus pasajes suaves y fuertes) y su sonido saltaba más de un oído al otro. Los archivos son estéreo: en las imitaciones, cada evento sonoro se colocaba en un punto al azar entre los canales izquierdo y derecho, mientras que en las grabaciones la imagen sonora es más estable. Con solo siete parejas, estas diferencias son solo orientativas.</p>
     <div class="label">Intentamos tumbarlo</div>
-    <p>Una parte aguanta. Solo dentro de los sonidos sintéticos, los sonidos más ruidosos y las fluctuaciones más rápidas siguen yendo con más movimiento imaginado, y hay una prueba limpia dentro del bloque de ancho de banda: el mismo sonido con banda ancha se imaginó con claramente más movimiento que con banda estrecha, en las mismas personas. Las valoraciones no cambian a lo largo de la sesión, así que el orden no las explica. Las relaciones con el agrado, el control y el tamaño se mantienen entre los paisajes pero no entre los sonidos sintéticos, y la relación entre timbre cambiante y activación no se mantiene en ninguno de los dos grupos.</p>
+    <p>Una parte resiste. Solo dentro de los sonidos sintéticos, los sonidos más ruidosos y las fluctuaciones más rápidas siguen yendo con más movimiento imaginado, y el bloque de ancho de banda ofrece una prueba limpia: las mismas personas imaginaron claramente más movimiento con la versión de banda ancha del sonido que con la de banda estrecha. Las valoraciones no cambian a lo largo de la sesión, así que el orden no las explica. Las relaciones con el agrado, el control y el tamaño se mantienen entre los paisajes, pero no entre los sonidos sintéticos, y la relación entre timbre cambiante y activación no se mantiene en ninguno de los dos grupos.</p>
     <div class="label">Cuidado</div>
-    <p>Estas relaciones comparan solo 27 sonidos, y varias propiedades acústicas van juntas, así que aún no podemos decir cuál importa. La sonoridad formaba parte del diseño: los sonidos más fuertes se valoraron como menos agradables y más cálidos.</p>
+    <p>Estas relaciones comparan solo 27 sonidos, y varias propiedades acústicas van juntas, así que aún no podemos decir cuál importa. La intensidad formaba parte del diseño: los sonidos más fuertes se valoraron como menos agradables y más cálidos.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 6</span><span class="badge unclear">aún no se sabe</span></div>
     <h3>Cada tipo de sonido natural parecía dejar su propia huella, pero casi todo se ha caído</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/soundscapes.png?v=202611181730" alt="Barras horizontales para siete paisajes sonoros: trueno y terremoto los más altos, lluvia y río los más bajos, todos con barras de error amplias"></div>
-      <figcaption>La medida que más seguía diferenciando los paisajes tras la limpieza: la "pendiente" del espectro de la señal cerebral. Una pendiente más inclinada suele interpretarse como un estado cerebral más tranquilo, menos excitado. Las líneas negras muestran la incertidumbre, que es grande.</figcaption>
+      <div class="plate"><img src="../figs/es/soundscapes.png?v=202611181900" alt="Barras horizontales para siete paisajes sonoros: trueno y terremoto los más altos, lluvia y río los más bajos, todos con barras de error amplias"></div>
+      <figcaption>La medida que más seguía diferenciando los paisajes tras la limpieza: la pendiente del espectro. Las líneas negras muestran la incertidumbre, que es grande.</figcaption>
     </figure>
     <div class="label">Qué vimos</div>
     <p>En los registros sin limpiar, pájaros, río, lluvia, viento, olas, trueno y terremoto produjeron patrones cerebrales claramente distintos, sobre todo en el equilibrio entre ritmos lentos y rápidos y en la complejidad de la señal.</p>
     <div class="label">Por qué hemos cambiado de opinión</div>
-    <p>El EEG también recoge los movimientos de los ojos (que siguen moviéndose bajo los párpados cerrados) y la tensión de los músculos de la cara y la cabeza. Al eliminar esas señales, la mayoría de las diferencias entre paisajes desaparecieron. Solo quedó una débil, en la pendiente del espectro: el trueno y el terremoto iban con una señal algo más tranquila, y la lluvia y el río con una algo más viva. Así que buena parte del efecto original probablemente venía de que la gente movía los ojos o tensaba los músculos de forma distinta (piensa en un trueno), más que de la actividad cerebral en sí.</p>
+    <p>El EEG también recoge los movimientos de los ojos (que siguen moviéndose bajo los párpados cerrados) y la tensión de los músculos de la cara y la cabeza. Al eliminar esas señales, desaparecieron la mayoría de las diferencias entre paisajes. Solo quedó una débil, en la pendiente del espectro: el trueno y el terremoto iban con una señal algo más tranquila, y la lluvia y el río con una algo más viva. Por tanto, buena parte del efecto original probablemente se debía a que las personas movían los ojos o tensaban los músculos de forma distinta (pensemos en un trueno), más que a la actividad cerebral en sí.</p>
     <div class="label">La prueba decisiva</div>
-    <p>Cada paisaje se escuchó dos veces, como imitación de SuperCollider y como grabación real. Si cada tipo de sonido dejara de verdad su propia huella en el cerebro, el patrón de cada persona con las imitaciones debería repetirse con las grabaciones. No ocurrió con ninguna medida cerebral. Queda una pista: la pendiente del espectro en el centro de la cabeza situó al trueno y al terremoto en lo más alto en las dos versiones, y no se explicaba por la actividad muscular ni por el momento de la sesión. Es una sola medida entre muchas, así que por ahora es solo una pista. Estos datos no pueden resolverlo: solo un estudio nuevo puede.</p>
+    <p>Cada paisaje se escuchó dos veces, como imitación de SuperCollider y como grabación real. Si cada tipo de sonido dejara de verdad su propia huella en el cerebro, el patrón de cada persona con las imitaciones debería reaparecer con las grabaciones. No ocurrió con ninguna medida cerebral. Queda una pista: la pendiente del espectro en el centro de la cabeza situó al trueno y al terremoto en lo más alto en las dos versiones, y eso no se explicaba por la actividad muscular ni por el momento de la sesión. Es una sola medida entre muchas, así que por ahora es solo una pista, y estos datos no pueden resolverlo: solo un estudio nuevo puede hacerlo.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 7</span><span class="badge unclear">aún no se sabe</span></div>
     <h3>Los cerebros de los oyentes solo parecieron sincronizarse con sonidos llenos de eventos, como el trueno</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/isc.png?v=202611181730" alt="Gráfico de puntos para los 27 sonidos: la sincronía entre oyentes es casi nula en la mayoría; solo las grabaciones de trueno y olas, el fundamental del B4 y la imitación del viento superan su nivel de azar"></div>
-      <figcaption>Sincronía entre oyentes para cada sonido (punto) frente al nivel que daría el azar por sí solo (marca vertical). Azul: por encima del azar. La línea de puntos es la media en reposo.</figcaption>
+      <div class="plate"><img src="../figs/es/isc.png?v=202611181900" alt="Gráfico de puntos para los 27 sonidos: la sincronía entre oyentes es casi nula en la mayoría; solo las grabaciones de trueno y olas, el fundamental del bloque de parciales y la imitación del viento superan su nivel de azar"></div>
+      <figcaption>Sincronía entre oyentes para cada sonido (punto), frente al nivel que produciría el azar por sí solo (marca vertical). Azul: por encima del azar. La línea de puntos es la media durante el reposo.</figcaption>
     </figure>
-    <p>Comprobamos si las señales cerebrales de distintas personas suben y bajan en los mismos momentos al escuchar el mismo sonido, como ocurre con películas o música. En general no fue así: con la mayoría de sonidos la sincronía no fue mayor que en reposo. La excepción fueron los sonidos con eventos claros y repentinos, sobre todo la grabación de trueno, y también las olas. Tiene sentido: nuestros sonidos son sobre todo texturas estables que evolucionan despacio, así que hay pocos momentos compartidos a los que los cerebros puedan "engancharse".</p>
+    <p>Comprobamos si las señales cerebrales de distintas personas suben y bajan en los mismos momentos al escuchar el mismo sonido, como ocurre con películas o música. En general no fue así: con la mayoría de sonidos, la sincronía no fue mayor que en reposo. Las excepciones fueron sonidos con eventos claros y repentinos, sobre todo la grabación del trueno, y también las olas. Tiene sentido: nuestros sonidos son sobre todo texturas estables que evolucionan despacio, y ofrecen pocos momentos compartidos a los que los cerebros puedan engancharse.</p>
     <div class="label">Intentamos tumbarlo</div>
-    <p>Es frágil. El trueno aguanta al quitar el segundo que sigue a cada evento sonoro y al dejar fuera los sensores más expuestos a la actividad de ojos y músculos, así que no es solo la respuesta automática del cerebro a cada golpe ni que la gente se sobresalte. Pero al dividir a los oyentes en dos mitades, las dos lo muestran solo una vez de cada cuatro. Cuatro de los 27 sonidos superan su nivel de azar (también el fundamental del B4 y la imitación del viento, que no tienen eventos repentinos), y con 27 sonidos probados, uno o dos lo superarían solo por azar. Las imitaciones de SuperCollider del trueno y las olas no muestran ninguna sincronía. Entre los 27 sonidos, la sincronía no sigue al número de eventos sonoros ni a la sonoridad.</p>
+    <p>El resultado es frágil. El efecto del trueno resiste al quitar el segundo que sigue a cada evento sonoro y al dejar fuera los sensores más expuestos a la actividad de ojos y músculos, así que no es solo la respuesta del cerebro a cada evento ni que la gente se sobresalte. Pero al dividir a los oyentes en dos mitades, las dos lo muestran solo una vez de cada cuatro. Cuatro de los 27 sonidos superan su nivel de azar, incluidos dos sin eventos repentinos (el fundamental del bloque de parciales y la imitación del viento), y con 27 sonidos probados, uno o dos lo superarían solo por azar. Las imitaciones de SuperCollider del trueno y las olas no muestran ninguna sincronía. Entre los 27 sonidos, la sincronía no sigue al número de eventos sonoros ni a la intensidad.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 8</span><span class="badge unclear">aún no se sabe</span></div>
     <h3>Sonidos abstractos frente a paisajes, e imitaciones frente a grabaciones reales</h3>
     <figure>
-      <div class="plate"><img src="../figs/es/session_drift.png?v=202611181730" alt="Gráfico de dispersión del alfa frente a la posición en la sesión del 1 al 27: el alfa sube de forma continua, con los sonidos sintéticos al principio, las imitaciones en medio y las grabaciones reales al final"></div>
+      <div class="plate"><img src="../figs/es/session_drift.png?v=202611181900" alt="Gráfico de dispersión del alfa frente a la posición en la sesión del 1 al 27: el alfa sube de forma continua, con los sonidos sintéticos al principio, las imitaciones en medio y las grabaciones reales al final"></div>
       <figcaption>Alfa de toda la cabeza en cada posición de la sesión (del 1.º al 27.º sonido), respecto a la media de cada oyente. La línea discontinua es la tendencia general. Como los paisajes iban siempre al final, el tipo de sonido y el momento de la sesión van juntos.</figcaption>
     </figure>
-    <p>Las imitaciones de SuperCollider fueron con menos alfa y más actividad lenta (delta) que las grabaciones reales, y el bloque de paisajes se diferenció de los bloques abstractos. Pero no podemos interpretar estas diferencias por cómo estaba ordenada la sesión (ver abajo): los paisajes siempre iban al final, cada imitación siempre antes que su grabación, y el alfa sube de forma continua a medida que avanza la sesión. Cuando tenemos en cuenta el momento de la sesión, la diferencia entre imitaciones y grabaciones desaparece.</p>
+    <p>Las imitaciones de SuperCollider fueron acompañadas de menos alfa y más actividad lenta (delta) que las grabaciones reales, y el bloque de paisajes se diferenció de los bloques abstractos. Pero no podemos interpretar estas diferencias por cómo estaba ordenada la sesión (ver la limitación más abajo): los paisajes iban siempre al final, cada imitación precedía siempre a su grabación y el alfa sube de forma continua a medida que avanza la sesión. Al tener en cuenta el momento de la sesión, la diferencia entre imitaciones y grabaciones desaparece.</p>
+  </article>
+</section>
+
+<section>
+  <h2>Qué significan estos resultados para la tesis doctoral</h2>
+  <p>Este estudio forma parte de una tesis doctoral de investigación artística sobre instalaciones sonoras concebidas para vivirse como el arte visual: en el espacio, fuera de una línea temporal y con un público activo. Estos son los resultados más relevantes para ella.</p>
+
+  <article class="finding">
+    <h3>Los sonidos evocan cualidades visuales concretas, con cierta coincidencia</h3>
+    <p>Las alturas más agudas evocaron colores más claros: el sonido agudo del bloque de altura se describió con colores más claros que el grave, en las mismas personas, y además se imaginó más pequeño que el sonido neutro. En el conjunto de los 27 sonidos, cuanto más brillante era el sonido, más claro era el color y más pequeña la imagen imaginada; los sonidos más ruidosos y ásperos se imaginaron más fríos, y los más fuertes, más cálidos. Los oyentes coincidieron en el color más de lo que predeciría el azar, aunque de forma modesta: el color más nombrado para cada sonido reunió de media el 31 % de las respuestas, frente al 26 % esperable por azar. Los casos más claros fueron los pájaros (verde, para la mitad de los oyentes) y las olas (azul). Son correspondencias conocidas entre los sentidos, y muestran que las cualidades visuales buscadas en el diseño sonoro sí llegan a quien escucha.</p>
+  </article>
+
+  <article class="finding">
+    <h3>Un significado compartido que cada oyente completa</h3>
+    <p>Las medias del grupo son fiables (hallazgo 4), pero en una persona concreta el sonido explica solo entre el 4 % y el 15 % de su valoración; el resto depende de la persona y del encuentro particular entre esa persona y ese sonido. El tamaño y el agrado son las cualidades que más dependen del propio sonido. El cerebro muestra una huella compartida pequeña: un modelo entrenado con los demás oyentes reconoce qué sonido escuchaba alguien más a menudo de lo que daría el azar, pero pocas veces (en torno al 5 % de las veces, frente al 4 % por azar). Junto con el hallazgo 2, esto sugiere que la obra propone y cada oyente completa: el sonido fija un marco común, y la imaginación de cada persona aporta una parte sustancial de la experiencia.</p>
+  </article>
+
+  <article class="finding">
+    <h3>Las texturas estables no imponen una línea temporal compartida</h3>
+    <p>Los cerebros de los oyentes apenas se sincronizaron con las texturas estables, y solo lo hicieron, de forma frágil, con sonidos llenos de eventos (hallazgo 7). Esto encaja con la idea de una obra sonora que se habita, como un lugar, más que seguirse, como un relato. Es una interpretación que tendría que comprobar un estudio diseñado para ello.</p>
+  </article>
+
+  <article class="finding">
+    <h3>Las imitaciones se acercan a lo real</h3>
+    <p>Cinco de las siete imitaciones de SuperCollider se vivieron más parecidas a su propia grabación que a cualquier otra, considerando a la vez agrado, activación, control, tamaño, temperatura y movimiento. La imitación de la lluvia quedó más cerca de la grabación del río, y la del trueno, de la grabación del terremoto. Las diferencias más claras: la imitación del río resultó menos agradable que el río real, y la de las olas se imaginó más pequeña.</p>
+  </article>
+
+  <article class="finding">
+    <h3>La experiencia no depende de la formación musical</h3>
+    <p>Los oyentes con formación instrumental (11) y sin ella (16) coincidieron en cómo se sentían los sonidos y en lo que imaginaban, no se diferenciaron en ninguna valoración y mostraron la misma relación entre movimiento imaginado y alfa. Con grupos de este tamaño la comparación es solo orientativa, pero respalda un arte sonoro dirigido a un público amplio.</p>
+  </article>
+
+  <article class="finding">
+    <h3>Lo que no funcionó</h3>
+    <p>Esperábamos que, cuanto más rica fuera la imagen visual evocada por un sonido (nombrar un color, una textura, más cualidades), más bajaría el alfa en la parte posterior de la cabeza. No fue así. Casi todo el mundo describió un color y cuatro o cinco cualidades para cada sonido, lo que deja poco margen para detectarlo, pero por ahora el EEG no muestra directamente que el sonido "se vea".</p>
   </article>
 </section>
 
@@ -256,19 +296,8 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   <h2>La principal limitación, en un párrafo</h2>
   <div class="box warn">
     <h3>El orden de los sonidos no se barajó lo suficiente</h3>
-    <p>Todo el mundo escuchó los paisajes al final, la imitación de SuperCollider de cada paisaje antes que la grabación real, y los sonidos de cada bloque sintético en el mismo orden. En una sesión larga la gente se cansa y se adormece, y eso por sí solo cambia la señal cerebral (el alfa era más alto en el reposo final que en el inicial). Así que cuando dos tipos de sonido iban siempre en el mismo orden, no podemos saber si una diferencia viene del sonido o del momento.</p>
+    <p>Todo el mundo escuchó los paisajes al final, la imitación de SuperCollider de cada paisaje antes que su grabación real y los sonidos de cada bloque sintético en el mismo orden. En una sesión larga la gente se cansa y se adormece, y eso por sí solo cambia la señal cerebral (el alfa era más alto en el reposo final que en el inicial). Así que, cuando dos tipos de sonido iban siempre en el mismo orden, no podemos saber si una diferencia se debe al sonido o al momento de la sesión.</p>
   </div>
-</section>
-
-<section>
-  <h2>Próximos pasos</h2>
-  <ol class="steps">
-    <li><b>Hecho:</b> análisis acústico de los 27 audios (hallazgo 5) y pruebas de resistencia de los hallazgos 2, 3, 5, 6 y 7, incluidos 432 análisis alternativos del hallazgo 2 y una prueba de si predice a oyentes nuevos.</li>
-    <li><b>Hecho:</b> eliminada de los registros la actividad de ojos y músculos; medida la sincronía cerebral entre oyentes.</li>
-    <li><b>Hecho:</b> una compañera codificó por su cuenta, sin ver la nuestra, una muestra de 120 descripciones de texto libre. El acuerdo fue casi perfecto en tamaño y temperatura, muy alto en intensidad del movimiento y bueno en dirección del movimiento.</li>
-    <li><b>Diseñar el estudio principal</b> con el orden barajado para cada persona, más participantes y una escala sencilla de 1 a 7 para el movimiento imaginado, poniendo a prueba el hallazgo 2 y la idea de "movimiento construido frente a reconocido" como hipótesis prerregistradas.</li>
-    <li><b>Resolver el hallazgo 6 en ese estudio.</b> Dejaríamos escrita la hipótesis antes de registrar ("el trueno y el terremoto inclinan la pendiente del espectro en el centro de la cabeza"). Usaríamos varias grabaciones distintas de cada paisaje, por ejemplo tres o cuatro truenos, para separar el tipo de sonido de un archivo concreto. Añadiríamos versiones del mismo sonido con el timbre más claro o más oscuro, para ver si importa el tipo de sonido o solo su timbre. Y pondríamos sensores en el cuello y la mandíbula para medir directamente la tensión muscular. Para tener buenas opciones de ver un efecto del tamaño que encontramos en las grabaciones reales hacen falta unas 90 personas; ese número cubriría también los hallazgos 2 y 3.</li>
-  </ol>
 </section>
 
 <section>
@@ -323,6 +352,10 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Sensibilidad, N = 27</td><td>menor efecto pareado detectable con potencia del 80 % d<sub>z</sub> = 0,56 (α = ,05), 0,72 (Holm, seis pares)</td></tr>
         <tr><td>ISC, pruebas de resistencia</td><td>trueno: sin eventos (quitando 1 s tras cada evento) ,026, p = ,043; sin canales frontales/temporales ,037, p = ,007; las dos mitades por encima del azar en el 26 %; olas 5 %; imitaciones de trueno y olas −,008 y ,008 (n.s.)</td></tr>
         <tr><td>Acústica ↔ valoraciones, pruebas de resistencia</td><td>dentro de los 13 estímulos sintéticos: planitud → movimiento ρ = ,74, modulación de 4–16 Hz → movimiento ,58; bloque de ancho de banda ancho − estrecho movimiento +0,73, d<sub>z</sub> = 0,64, p = ,003; sin deriva de las valoraciones con la posición en la sesión (todas p ≥ ,10); relaciones de valencia/dominancia/tamaño se mantienen dentro de los paisajes (|ρ| ,76–,87), no dentro de los sintéticos; 7 parejas imitación–grabación todas n.s.</td></tr>
+              <tr><td>Sonido → cualidades visuales (tesis)</td><td>bloque de altura agudo − grave claridad del color d<sub>z</sub> = 0,63, p = ,010; tamaño agudo − neutro d<sub>z</sub> = −0,70, p = ,004; 27 estímulos: centroide → claridad ρ = ,62, → tamaño −,58 (q ≤ ,012); planitud y modulación de 30–150 Hz → más frío (ρ ≈ −,50), intensidad → más cálido ,53 (q &lt; ,03); proporción del color modal ,31 frente a ,26 bajo permutación, p = ,0005</td></tr>
+        <tr><td>Riqueza de la imagen → α (tesis)</td><td>color + textura + n.º de descriptores, intra-oyente, estímulo cruzado: parieto-occipital β = 0,001, p = ,96; parieto-occipital − temporal β = −0,012, p = ,49</td></tr>
+        <tr><td>Varianza y decodificación (tesis)</td><td>proporción de la varianza de las valoraciones debida al estímulo ,04–,15 (tamaño ,15, valencia ,12), al oyente ,03–,13, residual ,78–,88; decodificación del EEG entre oyentes (102 valores ROI × medida, correlación con los otros 26): rango medio 12,0 frente a 14 por azar, acierto 4,8 % frente a 3,7 %, p<sub>perm</sub> = ,001</td></tr>
+        <tr><td>Fidelidad de las imitaciones y formación musical (tesis)</td><td>imitación más cercana a su propia grabación en 5/7 (6 valoraciones z); río valencia −1,07, olas tamaño −0,63 (q = ,044); formación instrumental (11) frente al resto (16): acuerdo de medias ρ = ,44–,71, sin diferencias en valoraciones (todas p ≥ ,24), movimiento × formación sobre α p = ,82</td></tr>
       </tbody>
     </table></div>
   </details>
