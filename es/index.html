@@ -160,7 +160,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="label">Qué vimos</div>
     <p>Cuando alguien describía la imagen evocada como quieta, su alfa era más alto; cuando describía un movimiento rápido o intenso, era más bajo, escalón a escalón. Se mantiene al comparar a cada persona solo consigo misma.</p>
     <div class="label">Por qué importa</div>
-    <p>Une una medida cerebral con lo que las personas vivieron, que es justo de lo que trata el proyecto: el sonido percibido como algo que se mueve en el espacio. No se explica por lo activador o agradable que resultaba el sonido, y se mantiene al eliminar de los registros la actividad de ojos y músculos. Es aún más claro cuando la persona mencionaba expresamente una velocidad.</p>
+    <p>Une una medida cerebral con lo que las personas vivieron, que es justo de lo que trata el proyecto: el sonido percibido como algo que se mueve en el espacio. No se explica por lo activador o agradable que resultaba el sonido, y se mantiene al eliminar de los registros la actividad de ojos y músculos. Es aún más claro cuando la persona mencionaba expresamente una velocidad. Y no es el sonido en sí: cuando varias personas escuchaban el mismo sonido, las que imaginaban más movimiento que las demás tenían menos alfa. Las propiedades acústicas de los sonidos (eventos, fluctuaciones, brillo, sonoridad) no lo explican.</p>
     <div class="label">Un detalle intrigante</div>
     <p>La relación fue más o menos igual de fuerte con los sonidos sintéticos abstractos y con las imitaciones de los paisajes hechas en SuperCollider, pero prácticamente desapareció con las grabaciones reales. Una idea: con una grabación de lluvia, la persona <i>reconoce</i> la fuente y ya sabe cómo se mueve; con un sonido sintetizado, aunque imite la lluvia, el oyente tiene que <i>construir</i> el movimiento a partir del propio sonido. La diferencia entre grabaciones y sonidos sintetizados aún no es estadísticamente clara, y las grabaciones reales siempre sonaron al final, así que por ahora es una hipótesis para el próximo estudio.</p>
     <div class="label">Cuidado</div>
@@ -203,13 +203,21 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 6</span><span class="badge promising">prometedor</span></div>
     <h3>Los cerebros de los oyentes solo se sincronizaron con sonidos llenos de eventos, como el trueno</h3>
-    <p>Comprobamos si las señales cerebrales de distintas personas suben y bajan en los mismos momentos al escuchar el mismo sonido, como ocurre con películas o música. En general no fue así: con la mayoría de sonidos la sincronía no fue mayor que en reposo. La excepción fueron los sonidos con eventos claros y repentinos, sobre todo la grabación de trueno, y también las olas. Tiene sentido: nuestros sonidos son sobre todo texturas estables que evolucionan despacio, así que hay pocos momentos compartidos a los que los cerebros puedan "engancharse". Con los audios ya podemos comprobar si la sincronía sigue al número de eventos sonoros.</p>
+    <p>Comprobamos si las señales cerebrales de distintas personas suben y bajan en los mismos momentos al escuchar el mismo sonido, como ocurre con películas o música. En general no fue así: con la mayoría de sonidos la sincronía no fue mayor que en reposo. La excepción fueron los sonidos con eventos claros y repentinos, sobre todo la grabación de trueno, y también las olas. Tiene sentido: nuestros sonidos son sobre todo texturas estables que evolucionan despacio, así que hay pocos momentos compartidos a los que los cerebros puedan "engancharse". Con los audios comprobamos si la sincronía sigue al número de eventos sonoros o a la sonoridad: entre los 27 sonidos no es así, así que por qué destacan el trueno y las olas sigue abierto.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Hallazgo 7</span><span class="badge unclear">aún no se sabe</span></div>
     <h3>Sonidos abstractos frente a paisajes, e imitaciones frente a grabaciones reales</h3>
     <p>Las imitaciones de SuperCollider fueron con menos alfa y más actividad lenta (delta) que las grabaciones reales, y el bloque de paisajes se diferenció de los bloques abstractos. Pero no podemos interpretar estas diferencias por cómo estaba ordenada la sesión (ver abajo): los paisajes siempre iban al final, y cada imitación siempre antes que su grabación. Cuando tenemos en cuenta el momento de la sesión, la diferencia entre imitaciones y grabaciones desaparece.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Hallazgo 8</span><span class="badge promising">prometedor</span></div>
+    <h3>Qué del sonido da forma a la experiencia</h3>
+    <p>Medimos la acústica de los 27 audios: cuánto ruido o tono tienen, cuánto brillo, lo impulsivos que son, cuántos eventos repentinos, cuánto fluctúa el nivel y cuánto se mueve el sonido entre izquierda y derecha. Los sonidos más ruidosos, impulsivos y con fluctuaciones más rápidas (como la lluvia o el río) se imaginaron con más movimiento. Los sonidos más ruidosos y brillantes se valoraron como más agradables; los de timbre más cambiante y con más eventos, como más activadores. La actividad cerebral siguió a la acústica mucho menos que la experiencia. Las imitaciones de SuperCollider fluctuaban más y se movían más entre izquierda y derecha que las grabaciones reales.</p>
+    <div class="label">Cuidado</div>
+    <p>Estas relaciones comparan solo 27 sonidos, y varias propiedades acústicas van juntas, así que aún no podemos decir cuál importa. Además, los audios tienen niveles muy distintos (hasta 30 dB); estamos comprobando si se igualaron durante la sesión.</p>
   </article>
 </section>
 
@@ -224,7 +232,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>Próximos pasos</h2>
   <ol class="steps">
-    <li><b>Analizar los propios sonidos.</b> Ya tenemos los 27 audios y el código de SuperCollider. Siguiente paso: medir la acústica de cada archivo (sonoridad, ataques, modulaciones, brillo, rugosidad) para ver qué propiedades del sonido impulsan el movimiento imaginado y la respuesta cerebral.</li>
+    <li><b>Hecho:</b> primer análisis acústico de los 27 audios (hallazgo 8). <b>Pendiente:</b> confirmar si todos los sonidos se reprodujeron a la misma sonoridad, porque los archivos tienen niveles distintos.</li>
     <li><b>Hecho:</b> eliminada de los registros la actividad de ojos y músculos; medida la sincronía cerebral entre oyentes.</li>
     <li><b>Hecho:</b> una compañera codificó por su cuenta, sin ver la nuestra, una muestra de 120 descripciones de texto libre. El acuerdo fue casi perfecto en tamaño y temperatura, muy alto en intensidad del movimiento y bueno en dirección del movimiento.</li>
     <li><b>Diseñar el estudio principal</b> con el orden barajado para cada persona, más participantes y una escala sencilla de 1 a 7 para el movimiento imaginado, poniendo a prueba el hallazgo 2 y la idea de "movimiento construido frente a reconocido" como hipótesis prerregistradas.</li>
@@ -266,6 +274,9 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Correlación entre sujetos (CorrCA, 3 componentes)</td><td>estímulos frente a reposo d<sub>z</sub> = −0,01, p = ,96; trueno ISC = ,046, p = ,002 (q = ,054); olas ,031, p = ,012</td></tr>
         <tr><td>Bloque de envolvente (central)</td><td>exponente 1/f F = 12,10, p<sub>GG</sub> &lt; ,001, η²<sub>p</sub> = ,32, percusiva − neutra d<sub>z</sub> = 0,82; θ F = 5,71, p<sub>GG</sub> = ,002, η²<sub>p</sub> = ,18, percusiva − neutra d<sub>z</sub> = 0,53</td></tr>
         <tr><td>Valencia ↔ complejidad temporal</td><td>r<sub>rm</sub> ≈ ,15–,17, pero se reduce cerca de un 90 % al controlar gamma (probablemente muscular)</td></tr>
+        <tr><td>Movimiento → α frente a acústica</td><td>con 5 covariables acústicas independientes del nivel β = −0,029, p = ,0006; + sonoridad del archivo sin cambios; desviación del oyente respecto al consenso del estímulo β = −0,038, p = ,002; consenso del estímulo β = −0,08, p = ,65</td></tr>
+        <tr><td>Acústica ↔ valoraciones medias (27 estímulos, Spearman)</td><td>movimiento: planitud espectral ρ = ,59, factor de cresta ,56, modulación 4–16 Hz ,53; valencia: planitud ,63; activación: cambio tímbrico ,60, tasa de eventos ,49 (todas q &lt; ,05)</td></tr>
+        <tr><td>ISC ↔ acústica</td><td>tasa de eventos ρ = ,11, sonoridad del archivo −,18 (ninguna q &lt; ,05)</td></tr>
         <tr><td>Acuerdo del grupo (ICC, media de 27)</td><td>valencia ,82, tamaño ,82, temperatura ,73, movimiento ,68</td></tr>
         <tr><td>Fiabilidad de la codificación (codificadora independiente, 120 descripciones)</td><td>κ de Cohen: tamaño ,998, temperatura ,998, intensidad del movimiento ,948, dirección del movimiento ,796</td></tr>
         <tr><td>RSA, valencia, activación y dominancia propias | tiempo</td><td>ρ = ,028 [,004; ,053], q = ,007</td></tr>

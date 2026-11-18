@@ -160,7 +160,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="label">What we saw</div>
     <p>When someone described the image a sound evoked as still, their alpha was higher; when they described fast or intense movement, it was lower, step by step. This holds when we compare each person only with themselves.</p>
     <div class="label">Why it matters</div>
-    <p>It links a brain measure to what people actually experienced, which is exactly what the project is about: sound perceived as something that moves in space. It is not explained by how activating or pleasant the sound felt, and it survives removing eye and muscle activity from the recordings. It is clearer still when people explicitly mentioned a speed.</p>
+    <p>It links a brain measure to what people actually experienced, which is exactly what the project is about: sound perceived as something that moves in space. It is not explained by how activating or pleasant the sound felt, and it survives removing eye and muscle activity from the recordings. It is clearer still when people explicitly mentioned a speed. And it is not the sound itself: when several people heard the same sound, those who imagined more movement than the others had less alpha. The acoustic properties of the sounds (events, fluctuations, brightness, loudness) do not explain it.</p>
     <div class="label">An intriguing detail</div>
     <p>The link was about equally strong for the abstract synthetic sounds and for the SuperCollider imitations of the soundscapes, but practically absent for the real recordings. One idea: with a recording of rain, people <i>recognise</i> the source and already know how it moves; with a synthesised sound, even one imitating rain, the listener has to <i>build</i> the movement from the sound itself. The difference between recordings and synthesised sounds is not yet statistically clear, and the real recordings always came last, so for now this is a hypothesis to test in the next study.</p>
     <div class="label">Be careful</div>
@@ -203,13 +203,21 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   <article class="finding">
     <div class="head"><span class="num">Finding 6</span><span class="badge promising">promising</span></div>
     <h3>Listeners' brains only fell into step with sounds full of events, like thunder</h3>
-    <p>We checked whether the brain signals of different people rise and fall at the same moments while hearing the same sound, as happens with films or music. Overall they did not: for most sounds the synchrony was no higher than during rest. The exception was the sounds with clear, sudden events, above all the thunder recording, and also the sea waves. This makes sense: our sounds are mostly steady textures that unfold slowly, so there are few shared moments for brains to lock onto. With the audio files we can now test whether synchrony follows the number of sound events.</p>
+    <p>We checked whether the brain signals of different people rise and fall at the same moments while hearing the same sound, as happens with films or music. Overall they did not: for most sounds the synchrony was no higher than during rest. The exception was the sounds with clear, sudden events, above all the thunder recording, and also the sea waves. This makes sense: our sounds are mostly steady textures that unfold slowly, so there are few shared moments for brains to lock onto. With the audio files we checked whether synchrony follows the number of sound events or their loudness: across the 27 sounds it does not, so why thunder and sea waves stand out is still open.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Finding 7</span><span class="badge unclear">can't tell yet</span></div>
     <h3>Abstract sounds vs soundscapes, and imitations vs real recordings</h3>
     <p>The SuperCollider imitations went with less alpha and more slow (delta) activity than the real recordings, and the soundscape block differed from the abstract blocks. But we cannot interpret these differences because of how the session was ordered (see below): the soundscapes always came last, and each imitation always came before its recording. When we account for the time in the session, the difference between imitations and recordings disappears.</p>
+  </article>
+
+  <article class="finding">
+    <div class="head"><span class="num">Finding 8</span><span class="badge promising">promising</span></div>
+    <h3>What in the sound shapes the experience</h3>
+    <p>We measured the acoustics of the 27 audio files: how noisy or tonal, how bright, how impulsive, how many sudden events, how much the level fluctuates and how much the sound moves between left and right. Sounds that were noisier, more impulsive and with faster fluctuations (like rain or a river) were imagined with more movement. Noisier and brighter sounds were rated as more pleasant; sounds whose timbre kept changing, and with more events, as more activating. Brain activity followed the acoustics much less than the experience did. The SuperCollider imitations fluctuated more and moved more between left and right than the real recordings.</p>
+    <div class="label">Be careful</div>
+    <p>These links compare only 27 sounds, and several acoustic properties go together, so we cannot yet say which one matters. The audio files also differ a lot in level (up to 30 dB); we are checking whether this was evened out during the session.</p>
   </article>
 </section>
 
@@ -224,7 +232,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>What comes next</h2>
   <ol class="steps">
-    <li><b>Analyse the sounds themselves.</b> We now have the 27 audio files and the SuperCollider code. Next: measure the acoustics of each file (loudness, attacks, modulations, brightness, roughness) to see which sound properties drive the imagined movement and the brain response.</li>
+    <li><b>Done:</b> first acoustic analysis of the 27 audio files (finding 8). <b>Pending:</b> confirm whether all sounds were played at the same loudness, since the files differ in level.</li>
     <li><b>Done:</b> eye and muscle activity removed from the recordings; brain synchrony between listeners measured.</li>
     <li><b>Done:</b> a colleague independently coded a sample of 120 free-text descriptions, without seeing ours. Agreement was almost perfect for size and temperature, very high for movement intensity and good for movement direction.</li>
     <li><b>Design the main study</b> with the order shuffled for every person, more participants and a simple 1–7 scale for imagined movement, testing finding 2 and the "built vs recognised movement" idea as pre-registered hypotheses.</li>
@@ -266,6 +274,9 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Inter-subject correlation (CorrCA, 3 components)</td><td>stimuli vs rest dz = −0.01, p = .96; thunder ISC = .046, p = .002 (q = .054); sea waves .031, p = .012</td></tr>
         <tr><td>Envelope block (central)</td><td>1/f exponent F = 12.10, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .32, percussive − neutral dz = 0.82; θ F = 5.71, p<sub>GG</sub> = .002, η²<sub>p</sub> = .18, percussive − neutral dz = 0.53</td></tr>
         <tr><td>Valence ↔ temporal complexity</td><td>r<sub>rm</sub> ≈ .15–.17, but shrinks by about 90% when controlling gamma (likely muscular)</td></tr>
+        <tr><td>Movement → α vs acoustics</td><td>with 5 level-free acoustic covariates β = −0.029, p = .0006; + file loudness unchanged; listener's deviation from the stimulus consensus β = −0.038, p = .002; stimulus consensus β = −0.08, p = .65</td></tr>
+        <tr><td>Acoustics ↔ mean ratings (27 stimuli, Spearman)</td><td>movement: flatness ρ = .59, crest factor .56, 4–16 Hz modulation .53; valence: flatness .63; arousal: timbral change .60, onset rate .49 (all q &lt; .05)</td></tr>
+        <tr><td>ISC ↔ acoustics</td><td>onset rate ρ = .11, file loudness −.18 (none q &lt; .05)</td></tr>
         <tr><td>Group agreement (ICC, average of 27)</td><td>valence .82, size .82, temperature .73, movement .68</td></tr>
         <tr><td>Coding reliability (independent coder, 120 descriptions)</td><td>Cohen's κ: size .998, temperature .998, movement intensity .948, movement direction .796</td></tr>
         <tr><td>RSA, own valence-arousal-dominance | time</td><td>ρ = .028 [.004, .053], q = .007</td></tr>
