@@ -107,7 +107,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>What we did</h2>
   <ol class="steps">
-    <li><b>The sounds.</b> 13 synthetic sounds built in SuperCollider, each block changing one property (pitch, envelope, bandwidth or partials), and 7 natural soundscapes (birds, rain, river, sea waves, thunder, wind, earthquake), each heard twice: first as an imitation built in SuperCollider, then as the real recording. Every sound lasted 50 seconds, all at the same loudness.</li>
+    <li><b>The sounds.</b> 13 synthetic sounds built in SuperCollider, each block changing one property (pitch, envelope, bandwidth or partials), and 7 natural soundscapes (birds, rain, river, sea waves, thunder, wind, earthquake), each heard twice: first as an imitation built in SuperCollider, then as the real recording. Every sound lasted about 50 seconds. The volume was set once at the start with a test sound and then never changed, because loudness is part of each sound's character: some sounds were up to 30 dB louder than others, by design.</li>
     <li><b>The brain.</b> While listening, each person wore a cap with 64 sensors (EEG) that pick up the tiny electrical rhythms of the brain through the scalp. We also recorded 3 minutes of quiet rest, eyes closed, before and after.</li>
     <li><b>The experience.</b> After each sound, people rated how pleasant, how activating and how "in control" it felt, named an emotion, and described the image it evoked: its colour, size, temperature, texture and movement.</li>
   </ol>
@@ -151,7 +151,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
   </article>
 
   <article class="finding">
-    <div class="head"><span class="num">Finding 2</span><span class="badge promising">promising</span></div>
+    <div class="head"><span class="num">Finding 2</span><span class="badge solid">solid</span></div>
     <h3>The more movement people imagined, the less alpha they had</h3>
     <figure>
       <div class="plate"><img src="figs/en/movement_alpha.png?v=202611181330" alt="Bar chart: alpha over the whole head is above the listener's average for still images and falls step by step for slow, moderate and fast imagined movement"></div>
@@ -161,15 +161,17 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <p>When someone described the image a sound evoked as still, their alpha was higher; when they described fast or intense movement, it was lower, step by step. This holds when we compare each person only with themselves.</p>
     <div class="label">Why it matters</div>
     <p>It links a brain measure to what people actually experienced, which is exactly what the project is about: sound perceived as something that moves in space. It is not explained by how activating or pleasant the sound felt, and it survives removing eye and muscle activity from the recordings. It is clearer still when people explicitly mentioned a speed. And it is not the sound itself: when several people heard the same sound, those who imagined more movement than the others had less alpha. The acoustic properties of the sounds (events, fluctuations, brightness, loudness) do not explain it.</p>
+    <div class="label">We tried to knock it down</div>
+    <p>Because we found this link while searching through many possibilities, we tested the explanations that would make it an illusion. It is real alpha, not a change in the overall shape of the spectrum. It is not general engagement: it gets slightly stronger when we account for how intense the emotion was and how much people wrote. No single listener or sound drives it. And when we split the listeners at random into two groups, 1000 times, the link went in the same direction in both halves every single time. The statistical evidence for it is strong (about 90 to 1).</p>
     <div class="label">An intriguing detail</div>
     <p>The link was about equally strong for the abstract synthetic sounds and for the SuperCollider imitations of the soundscapes, but practically absent for the real recordings. One idea: with a recording of rain, people <i>recognise</i> the source and already know how it moves; with a synthesised sound, even one imitating rain, the listener has to <i>build</i> the movement from the sound itself. The difference between recordings and synthesised sounds is not yet statistically clear, and the real recordings always came last, so for now this is a hypothesis to test in the next study.</p>
     <div class="label">Be careful</div>
-    <p>It is a group trend: a bit more than half of the listeners (16 of 27) show it on their own. It is small, it is spread over the head rather than only at the back, and we found it while searching through many possible links. It needs to be confirmed with new participants.</p>
+    <p>It is small and a group trend: a bit more than half of the listeners (16 of 27) show it on their own, and it is spread over the head rather than only at the back. Passing these tests makes it solid within this study, but only new participants can confirm it, ideally as a hypothesis stated in advance.</p>
   </article>
 
   <article class="finding">
     <div class="head"><span class="num">Finding 3</span><span class="badge unclear">can't tell yet</span></div>
-    <h3>Each kind of natural sound seemed to leave a different trace, but it may come from the eyes and muscles</h3>
+    <h3>Each kind of natural sound seemed to leave its own trace, but most of it did not hold up</h3>
     <figure>
       <div class="plate"><img src="figs/en/soundscapes.png?v=202611181330" alt="Horizontal bars for seven soundscapes: thunder and earthquake highest, rain and river lowest, all with wide error bars"></div>
       <figcaption>The measure that still differed most between soundscapes after cleaning: the "steepness" of the brain signal's spectrum. A steeper spectrum is usually read as a calmer, less excited brain state. The black lines show the uncertainty, which is large.</figcaption>
@@ -177,7 +179,9 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <div class="label">What we saw</div>
     <p>In the raw recordings, birds, river, rain, wind, sea waves, thunder and earthquake produced clearly different brain patterns, mainly in the balance between slow and fast rhythms and in signal complexity.</p>
     <div class="label">Why we changed our mind</div>
-    <p>The EEG also picks up eye movements (the eyes keep moving under closed lids) and tension in face and scalp muscles. When we removed these signals, most of the differences between soundscapes disappeared. Only a weak one remained, in the steepness of the spectrum: thunder and earthquake went with a slightly calmer signal, rain and river with a slightly livelier one. So much of the original effect probably came from people moving their eyes or tensing their muscles differently (think of a thunderclap), rather than from brain activity itself. What remains is too weak to be sure of.</p>
+    <p>The EEG also picks up eye movements (the eyes keep moving under closed lids) and tension in face and scalp muscles. When we removed these signals, most of the differences between soundscapes disappeared. Only a weak one remained, in the steepness of the spectrum: thunder and earthquake went with a slightly calmer signal, rain and river with a slightly livelier one. So much of the original effect probably came from people moving their eyes or tensing their muscles differently (think of a thunderclap), rather than from brain activity itself.</p>
+    <div class="label">The decisive test</div>
+    <p>Every soundscape was heard twice, as a SuperCollider imitation and as the real recording. If each kind of sound really left its own trace in the brain, a person's pattern for the imitations should repeat with the recordings. It did not, for any brain measure. One lead remains: the steepness of the spectrum at the centre of the head kept ranking thunder and earthquake highest in both versions, and was not explained by muscle activity or by the time in the session. It is a single measure among many, so for now it is only a lead.</p>
   </article>
 
   <article class="finding">
@@ -217,7 +221,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
     <h3>What in the sound shapes the experience</h3>
     <p>We measured the acoustics of the 27 audio files: how noisy or tonal, how bright, how impulsive, how many sudden events, how much the level fluctuates and how much the sound moves between left and right. Sounds that were noisier, more impulsive and with faster fluctuations (like rain or a river) were imagined with more movement. Noisier and brighter sounds were rated as more pleasant; sounds whose timbre kept changing, and with more events, as more activating. Brain activity followed the acoustics much less than the experience did. The SuperCollider imitations fluctuated more and moved more between left and right than the real recordings.</p>
     <div class="label">Be careful</div>
-    <p>These links compare only 27 sounds, and several acoustic properties go together, so we cannot yet say which one matters. The audio files also differ a lot in level (up to 30 dB); we are checking whether this was evened out during the session.</p>
+    <p>These links compare only 27 sounds, and several acoustic properties go together, so we cannot yet say which one matters. Loudness was part of the design: louder sounds were rated as less pleasant and as warmer.</p>
   </article>
 </section>
 
@@ -232,7 +236,7 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
 <section>
   <h2>What comes next</h2>
   <ol class="steps">
-    <li><b>Done:</b> first acoustic analysis of the 27 audio files (finding 8). <b>Pending:</b> confirm whether all sounds were played at the same loudness, since the files differ in level.</li>
+    <li><b>Done:</b> first acoustic analysis of the 27 audio files (finding 8), and stress tests of findings 2 and 3.</li>
     <li><b>Done:</b> eye and muscle activity removed from the recordings; brain synchrony between listeners measured.</li>
     <li><b>Done:</b> a colleague independently coded a sample of 120 free-text descriptions, without seeing ours. Agreement was almost perfect for size and temperature, very high for movement intensity and good for movement direction.</li>
     <li><b>Design the main study</b> with the order shuffled for every person, more participants and a simple 1–7 scale for imagined movement, testing finding 2 and the "built vs recognised movement" idea as pre-registered hypotheses.</li>
@@ -271,6 +275,8 @@ footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
         <tr><td>Movement × stimulus set</td><td>abstract synthetic β = −0.029 (p = .018); SuperCollider imitations β = −0.028 (p = .056); real recordings β = −0.006 (p = .71); recording × movement p = .64 (vs all synthesised), p = .48 (vs own imitations)</td></tr>
         <tr><td>Movement → α, original features (no ICA)</td><td>β = −0.037, p &lt; .0001; with crossed stimulus effect p = .0002</td></tr>
         <tr><td>Soundscape category (1/f exponent, global)</td><td>after ICA F = 2.52, p<sub>GG</sub> = .045, η²<sub>p</sub> = .09 (channel cluster q = .026); before ICA F = 4.05, p<sub>GG</sub> = .003</td></tr>
+        <tr><td>Category profile, imitation → recording (11 measures)</td><td>within-listener mean r = −.18 to .05, all p<sub>perm</sub> ≥ .25; central 1/f exponent: category effect p<sub>GG</sub> = .007, with gamma covariate p = .0009, category effect q = .07 over measures; group profile r = .84 (exact p = .012, q = .13 over measures)</td></tr>
+        <tr><td>Movement → α, stress tests</td><td>periodic α (above 1/f) β = −0.025, p = .005; 1/f exponent β = 0.01, p = .41; + emotion intensity and n descriptors β = −0.035, p &lt; .0001; BIC BF<sub>10</sub> = 90; leave-one-out β −0.027 to −0.037; split halves negative in both 100 %, both p &lt; .05 in 67 %</td></tr>
         <tr><td>Inter-subject correlation (CorrCA, 3 components)</td><td>stimuli vs rest dz = −0.01, p = .96; thunder ISC = .046, p = .002 (q = .054); sea waves .031, p = .012</td></tr>
         <tr><td>Envelope block (central)</td><td>1/f exponent F = 12.10, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .32, percussive − neutral dz = 0.82; θ F = 5.71, p<sub>GG</sub> = .002, η²<sub>p</sub> = .18, percussive − neutral dz = 0.53</td></tr>
         <tr><td>Valence ↔ temporal complexity</td><td>r<sub>rm</sub> ≈ .15–.17, but shrinks by about 90% when controlling gamma (likely muscular)</td></tr>
