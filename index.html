@@ -2,381 +2,515 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Cache-Control" content="no-cache">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BrainSound Pilot Results</title>
-<link rel="alternate" hreflang="en" href="https://jgompil.github.io/BrainSound/">
-<link rel="alternate" hreflang="es" href="https://jgompil.github.io/BrainSound/es/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BrainSound: What Does a Sound Look Like?</title>
+<meta name="description" content="An experiment on listening, imagination and the brain: listen to the 27 sounds and see what 27 people imagined and how their brains responded.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap">
 <style>
-/* Plain-language results page for a mostly non-expert team (musicians). One reading column,
-   findings as cards with a "how sure are we" badge, technical detail folded at the end. */
 :root {
-  --bg: #f6f7f9; --fg: #15181d; --muted: #586070; --line: #dde1e8; --card: #ffffff;
-  --accent: #2a78d6; --accent-ink: #1c5cab;
-  --solid: #0b7a3e; --promising: #9a5b00; --unclear: #6b7280;
-  --warn-bg: #fff4e5; --warn-line: #f2c48d; --warn: #9a4a06;
-  --note-bg: #eef4fc; --note-line: #c4d8f3; --plate: #fcfcfb; --plate-line: #e3e5ea;
+  --bg: #f7f5f0; --fg: #17191e; --muted: #5d6270; --line: #e2ded5; --card: #ffffff; --soft: #efece4;
+  --accent: #d9572b; --accent-ink: #b2421b; --accent-soft: #fbe6dc;
+  --a: #2a6fdb; --b: #d9572b;
+  --hero-bg: #12141a; --hero-fg: #f4f1ea; --hero-muted: #a9adb8;
   --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
-  --accent: #5d9fea; --accent-ink: #8cbcf2;
-  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
-  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
-  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark } }
+  --bg: #111318; --fg: #ecebe6; --muted: #a2a6b1; --line: #2a2e37; --card: #191c22; --soft: #20242c;
+  --accent: #f07a4a; --accent-ink: #f59a74; --accent-soft: #3a2219;
+  --a: #6aa2f5; --b: #f07a4a; --hero-bg: #0a0b0e; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #0f1216; --fg: #e7eaf0; --muted: #9ba4b4; --line: #29303a; --card: #161a20;
-  --accent: #5d9fea; --accent-ink: #8cbcf2;
-  --solid: #4cc27f; --promising: #f0b45e; --unclear: #9ba4b4;
-  --warn-bg: #2a1f12; --warn-line: #6b4a22; --warn: #f3b46b;
-  --note-bg: #142235; --note-line: #2b4566; --plate: #fcfcfb; --plate-line: #3a414c; color-scheme: dark }
-
+  --bg: #111318; --fg: #ecebe6; --muted: #a2a6b1; --line: #2a2e37; --card: #191c22; --soft: #20242c;
+  --accent: #f07a4a; --accent-ink: #f59a74; --accent-soft: #3a2219;
+  --a: #6aa2f5; --b: #f07a4a; --hero-bg: #0a0b0e; color-scheme: dark }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.65;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.wrap { max-width: 760px; margin: 0 auto; padding-block: 44px 80px; }
-h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 600; }
-h2 { font-size: 1.5rem; font-weight: 600; margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); }
-h3 { font-size: 1.2rem; font-weight: 600; margin: 0; }
-p { margin: 12px 0; }
-.eyebrow { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
-.lede { font-size: 1.15rem; color: var(--muted); }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); font-weight: 600; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+p { margin: 0 0 1em; }
 a { color: var(--accent-ink); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.narrow { max-width: 720px; }
+section { padding: 80px 0; }
+.kicker { font-family: var(--f-display); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-ink); font-weight: 600; margin-bottom: 12px; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 680px; }
 
-.box { border-radius: 10px; padding: 16px 20px; margin: 22px 0; border: 1px solid; }
-.box.note { background: var(--note-bg); border-color: var(--note-line); }
-.box.warn { background: var(--warn-bg); border-color: var(--warn-line); }
-.box h3 { font-size: 1.02rem; margin-bottom: 4px; }
-.box.warn h3 { color: var(--warn); }
-.box p:last-child { margin-bottom: 0; }
-dl.gloss { margin: 8px 0 0; }
-dl.gloss dt { font-weight: 600; margin-top: 10px; }
-dl.gloss dd { margin: 2px 0 0; color: var(--muted); }
+/* top bar */
+.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--hero-bg) 88%, transparent); backdrop-filter: blur(8px); color: var(--hero-fg); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 54px; }
+.brand { font-family: var(--f-display); font-weight: 700; letter-spacing: 0.02em; color: var(--hero-fg); text-decoration: none; }
+.top nav { display: flex; gap: 18px; font-size: 0.9rem; }
+.top nav a { color: var(--hero-muted); text-decoration: none; }
+.top nav a:hover { color: var(--hero-fg); }
+.top nav .lang { border: 1px solid #3a3e48; border-radius: 99px; padding: 2px 10px; }
+@media (max-width: 720px) { .top nav a.opt { display: none; } }
 
-.legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 14px; font-size: 0.92rem; color: var(--muted); }
-.badge { display: inline-block; font-family: var(--f-mono); font-size: 0.74rem; font-weight: 500; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
-.badge.solid { color: var(--solid); } .badge.promising { color: var(--promising); } .badge.unclear { color: var(--unclear); }
+/* hero */
+.hero { background: var(--hero-bg); color: var(--hero-fg); padding: 70px 0 90px; position: relative; overflow: hidden; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5.4rem); font-weight: 700; letter-spacing: -0.02em; max-width: 900px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { color: var(--hero-muted); margin-top: 22px; font-size: 1.2rem; }
+.hero .cta { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 1rem var(--f-display); padding: 12px 22px; border-radius: 99px; border: 1px solid transparent; cursor: pointer; text-decoration: none; }
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.ghost { border-color: #3a3e48; color: var(--hero-fg); background: transparent; }
+.btn.line { border-color: var(--line); color: var(--fg); background: var(--card); }
+.btn:focus-visible, button:focus-visible { outline: 3px solid var(--a); outline-offset: 2px; }
+#wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 160px; opacity: 0.55; pointer-events: none; }
+.thanks { margin-top: 40px; font-size: 0.95rem; color: var(--hero-muted); border-left: 3px solid var(--accent); padding-left: 14px; max-width: 620px; }
 
-.finding { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-top: 22px; }
-.finding .head { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; margin-bottom: 6px; }
-.finding .num { font-family: var(--f-mono); color: var(--muted); font-size: 0.85rem; }
-.finding .label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 16px 0 2px; }
-.finding .label + p { margin-top: 2px; }
-figure { margin: 18px 0 6px; }
-.plate { background: var(--plate); border: 1px solid var(--plate-line); border-radius: 8px; padding: 8px; }
-.plate img { display: block; width: 100%; height: auto; }
-.plate.small { max-width: 420px; }
-figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+/* numbers */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px; margin-top: 36px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.stat b { display: block; font: 700 2.8rem var(--f-display); color: var(--accent-ink); line-height: 1; }
+.stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 0.95rem; }
+.steps { counter-reset: s; display: grid; gap: 14px; margin-top: 30px; padding: 0; list-style: none; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); font: 700 1.1rem var(--f-display); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink); }
 
-.steps { counter-reset: s; list-style: none; padding: 0; margin: 14px 0; }
-.steps li { position: relative; padding-left: 42px; margin: 14px 0; }
-.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
-  background: var(--accent); color: #fff; font-family: var(--f-mono); font-size: 0.85rem; display: grid; place-items: center; }
+/* explorer */
+.alt { background: var(--soft); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 14px; }
+.tab { font: 500 0.92rem var(--f-body); padding: 7px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.tabnote { color: var(--muted); font-size: 0.95rem; min-height: 1.5em; margin-bottom: 14px; }
+.sounds { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr)); gap: 10px; }
+.snd { text-align: left; font: 500 0.95rem var(--f-body); padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; display: flex; flex-direction: column; gap: 8px; min-height: 76px; }
+.snd small { color: var(--muted); font-size: 0.78rem; }
+.snd .chip { display: flex; height: 6px; border-radius: 3px; overflow: hidden; gap: 1px; }
+.snd[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.panel { margin-top: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media (max-width: 820px) { .panel { grid-template-columns: 1fr; padding: 18px; } }
+.panel h3 { font-size: 1.6rem; }
+.sub { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+.player { display: flex; align-items: center; gap: 12px; margin: 18px 0 22px; }
+.play { width: 52px; height: 52px; border-radius: 50%; border: none; background: var(--accent); color: #fff; cursor: pointer; display: grid; place-items: center; flex: none; }
+.play svg { width: 20px; height: 20px; }
+.prog { flex: 1; height: 6px; background: var(--soft); border-radius: 3px; overflow: hidden; }
+.prog i { display: block; height: 100%; width: 0; background: var(--accent); }
+.block-label { font: 600 0.78rem var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
+.huebar { display: flex; height: 30px; border-radius: 8px; overflow: hidden; gap: 2px; }
+.huebar div { min-width: 3px; }
+.huekey { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 0.85rem; color: var(--muted); }
+.huekey span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.meter { margin: 12px 0 4px; }
+.meter .lab { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--muted); }
+.meter .lab b { color: var(--fg); font-weight: 600; }
+.track { position: relative; height: 22px; margin: 4px 0; }
+.track::before { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 2px; background: var(--line); border-radius: 1px; }
+.track .o { position: absolute; top: 7px; width: 2px; height: 8px; background: var(--muted); opacity: .35; }
+.track .d { position: absolute; top: 3px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: var(--accent); border: 3px solid var(--card); box-shadow: 0 0 0 1px var(--accent); transition: left .4s ease; }
+.track .d.a { background: var(--a); box-shadow: 0 0 0 1px var(--a); }
+.track .d.b { background: var(--b); box-shadow: 0 0 0 1px var(--b); }
+.legend-note { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+.brainbox { background: var(--soft); border-radius: 14px; padding: 16px 18px; margin-top: 18px; }
+.brainbox b.big { font: 700 2rem var(--f-display); color: var(--accent-ink); }
+.wheelwrap { display: flex; flex-direction: column; align-items: center; }
+svg.wheel { width: 100%; max-width: 320px; height: auto; }
+svg.wheel text { font: 600 11px var(--f-body); fill: var(--fg); }
+svg.wheel text.pc { font-weight: 500; fill: var(--muted); font-size: 10px; }
+.wheelcap { font-size: 0.9rem; color: var(--muted); text-align: center; max-width: 340px; }
 
-details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px; margin-top: 14px; }
-summary { cursor: pointer; font-weight: 600; }
-details[open] summary { margin-bottom: 8px; }
-details p, details li { font-size: 0.93rem; }
-details ul { padding-left: 20px; }
-.table-wrap { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
-th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-th { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 500; }
-.lang { display: flex; justify-content: flex-end; gap: 6px; font-family: var(--f-mono); font-size: 0.85rem; margin-bottom: 18px; }
-.lang a, .lang span { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; }
-.lang span[aria-current] { background: var(--accent); border-color: var(--accent); color: #fff; }
-.lang a:hover { border-color: var(--accent); }
-footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); }
+/* findings */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 18px; margin-top: 36px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+.card .n { font: 700 0.85rem var(--f-display); color: var(--accent-ink); letter-spacing: 0.1em; }
+.card h3 { font-size: 1.3rem; }
+.card p { color: var(--muted); margin: 0; }
+.card .viz { margin-top: auto; padding-top: 12px; }
+.card .fig { width: 100%; border-radius: 12px; background: #fcfcfb; border: 1px solid var(--line); }
+.bars { display: grid; gap: 6px; font-size: 0.85rem; }
+.bars .r { display: grid; grid-template-columns: minmax(110px, 40%) 1fr 46px; gap: 8px; align-items: center; }
+.bars .t { height: 12px; background: var(--soft); border-radius: 6px; overflow: hidden; }
+.bars .t i { display: block; height: 100%; background: var(--accent); border-radius: 6px; }
+.bars .v { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+.badge { align-self: flex-start; font: 600 0.75rem var(--f-display); padding: 3px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent-ink); }
+
+/* game */
+.game { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; margin-top: 30px; }
+.choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.sw { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; background: var(--c); }
+.sw[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--card), 0 0 0 5px var(--fg); }
+.pt { font: 500 0.9rem var(--f-body); padding: 8px 14px; border-radius: 99px; border: 2px solid var(--c); background: var(--card); color: var(--fg); cursor: pointer; }
+.pt[aria-pressed="true"] { background: var(--c); color: #111; }
+.reveal { margin-top: 22px; padding-top: 20px; border-top: 1px dashed var(--line); display: none; }
+.reveal.on { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+@media (max-width: 820px) { .reveal.on { grid-template-columns: 1fr; } }
+.verdict { font: 600 1.25rem var(--f-display); }
+.mystery { font: 700 1.4rem var(--f-display); }
+
+/* compare */
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+@media (max-width: 640px) { .cmp { grid-template-columns: 1fr; } }
+.cmp .side { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.cmp .side h4 { margin: 0; font: 600 1.05rem var(--f-display); display: flex; align-items: center; gap: 8px; }
+.cmp .side h4::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+.cmpmeters { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin-top: 16px; }
+
+footer { background: var(--hero-bg); color: var(--hero-muted); padding: 50px 0; font-size: 0.92rem; }
+footer h3 { color: var(--hero-fg); margin-bottom: 10px; }
+footer a { color: var(--hero-fg); }
+footer .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 30px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .track .d { transition: none; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-<nav class="lang" aria-label="Language"><span aria-current="page">English</span><a href="es/" hreflang="es" lang="es">Español</a></nav>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#">BrainSound</a>
+  <nav>
+    <a class="opt" href="#explore">Sounds</a>
+    <a class="opt" href="#found">Findings</a>
+    <a class="opt" href="#play">Play</a>
+    <a href="report/">Report for co-authors</a>
+    <a class="lang" href="es/" hreflang="es">ES</a>
+  </nav>
+</div></header>
 
-<header>
-  <div class="eyebrow">BrainSound · pilot study · preliminary results</div>
-  <h1>What happens in the brain when we listen to sound as material?</h1>
-  <p class="lede">A summary of what we have found so far. Twenty-seven people listened to 27 sounds with their eyes closed while we recorded their brain activity. After each sound, they told us what it made them feel and imagine.</p>
-  <p class="lede"><a href="explore/"><b>New: listen to the sounds and explore the results interactively →</b></a></p>
-</header>
-
-<section>
-  <h2>What we did</h2>
-  <ol class="steps">
-    <li><b>The sounds.</b> Thirteen abstract synthetic sounds made in SuperCollider, in four blocks, each block varying a single property (pitch, envelope, bandwidth or partials). Then seven natural soundscapes (birds, rain, river, sea waves, thunder, wind and earthquake), each heard twice: first as an imitation made in SuperCollider, later as the real recording. Each sound lasted about 50 seconds. The playback volume was set once at the start with a test sound and never changed, because loudness is part of each sound's character: by design, some files were up to 30 decibels louder than others.</li>
-    <li><b>The brain.</b> While listening, each person wore a cap with 64 sensors (EEG) that pick up the brain's tiny electrical rhythms through the scalp. We also recorded three minutes of quiet rest with eyes closed, before and after the sounds.</li>
-    <li><b>The experience.</b> After each sound, people rated how pleasant and how activating it was and how much in control they felt, named an emotion, and described the image the sound evoked: its colour, size, temperature, texture and movement.</li>
-  </ol>
-
-  <div class="box note">
-    <h3>Four terms used on this page</h3>
-    <dl class="gloss">
-      <dt>Brain rhythms</dt>
-      <dd>The EEG is like a recording of the brain's "hum". It mixes slow and fast rhythms, a bit like the low, mid and high frequencies of a mix. We look at how much of each is present.</dd>
-      <dt>Alpha rhythm</dt>
-      <dd>A rhythm of about 10 cycles per second, strongest when we rest with our eyes closed. It behaves like an idling signal: when the brain gets busy (paying attention, imagining), alpha drops. <b>Less alpha = a more engaged brain.</b></dd>
-      <dt>Steepness of the spectrum</dt>
-      <dd>How quickly the brain signal fades from slow to fast rhythms. A steeper spectrum means relatively more slow activity and less fast activity, and is usually read as a calmer state.</dd>
-      <dt>Complexity</dt>
-      <dd>How predictable or varied the brain signal is, like the difference between a drone and a free improvisation.</dd>
-    </dl>
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--accent)">BrainSound · sound, imagination and the brain</div>
+    <h1>What does a sound <em>look</em> like?</h1>
+    <p class="lead">Twenty-seven people listened to twenty-seven sounds with their eyes closed while we recorded their brain activity. Afterwards they told us what they had imagined: a colour, a size, a temperature, a movement, an emotion. This page shows what we found, and lets you listen for yourself.</p>
+    <div class="cta">
+      <a class="btn primary" href="#explore">Listen to the sounds</a>
+      <a class="btn ghost" href="#found">See what we found</a>
+    </div>
+    <p class="thanks">To everyone who took part: thank you. Together you gave us more than seven hundred descriptions of what you heard. This page is for you.</p>
   </div>
-
-  <div class="legend">
-    How sure are we?
-    <span><span class="badge solid">solid</span> clear, and it survived our attempts to knock it down</span>
-    <span><span class="badge promising">promising</span> a real signal that needs confirming</span>
-    <span><span class="badge unclear">can't tell yet</span> weak, fragile or mixed up with other factors</span>
-  </div>
-</section>
-
-<section>
-  <h2>What we found</h2>
-  <p>The findings are ordered from the most solid to the least.</p>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 1</span><span class="badge solid">solid</span></div>
-    <h3>Listening switches the brain on, especially at the back of the head</h3>
-    <figure>
-      <div class="plate small"><img src="figs/en/alpha_listening.png?v=202611181900" alt="Head map seen from above: the alpha drop is largest (dark blue) over the back of the head and smallest (pale) at the front and sides"></div>
-      <figcaption>The head seen from above, nose at the top. Darker blue means a bigger drop in alpha while listening, compared with rest. Alpha dropped everywhere, by at least 4 percentage points, so the colour scale starts at 4 to show where the drop was largest.</figcaption>
-    </figure>
-    <div class="label">What we saw</div>
-    <p>Compared with rest, alpha dropped over the whole head as soon as people listened to a sound. The drop was largest at the back of the head, over areas usually linked to vision, and smaller at the sides, over the areas that process hearing.</p>
-    <div class="label">Why it matters</div>
-    <p>People kept their eyes closed throughout, so this has nothing to do with seeing. It fits the idea behind the project: listening to these sounds engages brain regions we normally associate with vision, perhaps because people form mental images.</p>
-    <div class="label">Which kind of listening switches it on most?</div>
-    <figure>
-      <div class="plate"><img src="figs/en/alpha_by_type.png?v=202611181900" alt="Six head maps, one per kind of sound, all with the strongest alpha drop at the back of the head; below, violin plots of the whole-head alpha drop per listener, all clearly above zero, slightly lower for the real recordings"></div>
-      <figcaption>Top: the same head map for each kind of sound, all on the same colour scale. Bottom: the drop over the whole head for each listener. The shape shows how the listeners are spread; the dot is the average, with its uncertainty.</figcaption>
-    </figure>
-    <p>Every kind of sound clearly lowered alpha, always with the same pattern: most at the back of the head. We cannot tell the four synthetic blocks apart (pitch, envelope, bandwidth and partials), which each listener heard in a different order. The soundscapes, especially the real recordings, lowered alpha somewhat less. However, they always came at the end of the session, when alpha rises anyway (finding 8), so we cannot attribute this to the kind of sound.</p>
-    <div class="label">Beyond alpha: complexity and connectivity</div>
-    <p>While people listened, the brain signal also became more irregular and less predictable (its complexity rose), and the synchrony of alpha between regions fell. Much of this goes hand in hand with the drop in alpha: a strong alpha rhythm makes the signal regular and synchronised, so when alpha weakens both measures change. Once alpha is taken into account, about a third of the rise in complexity remains, but the fall in synchrony disappears. Complexity therefore adds a little information of its own; connectivity, for now, does not. Looking connection by connection tells a more interesting story. In the coupling of the amplitude of slow rhythms (a measure that ignores the signal two electrodes simply share), connections fell over most of the head while people listened, but the connections between the hearing areas at the sides and the visual areas at the back held up better than the rest of the network (alpha band). This fits the idea behind the project, but it is a single result among many tests and needs to be confirmed. At the level of brain regions (see below) it points the same way but is weaker and does not survive the correction for many tests. We found no clear networks distinguishing real recordings from imitations, nor linked to imagined movement.</p>
-    <div class="label">Where in the brain?</div>
-    <p>The electrodes record the head surface. With a standard head model, we estimated the activity of 68 brain regions. The largest drop in alpha was in the primary visual cortex and the neighbouring parietal and occipital areas, larger than in the hearing areas, which confirms the picture from the electrodes. A network analysis of these regions showed that, while people listened, the coupling of slow rhythms became less globally integrated than at rest, with no special role for the hearing or visual areas. Without an MRI of each person, these locations are approximate, to within a few centimetres.</p>
-    <div class="label">Be careful</div>
-    <p>Alpha also drops simply when we pay attention, so we cannot yet say that the visual areas are doing "visual" work. The drop is not just tiredness: it is as clear against the rest at the start of the session as against the rest at the end. With 27 listeners, only medium or large differences between kinds of sound can be detected, so "we cannot tell them apart" does not mean "they are the same".</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 2</span><span class="badge solid">solid</span></div>
-    <h3>The more movement people imagined, the less alpha they had</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/movement_alpha.png?v=202611181900" alt="Bar chart: alpha over the whole head is above the listener's average for still images and falls step by step for slow, moderate and fast imagined movement"></div>
-      <figcaption>Each bar compares people with themselves: how much alpha they had with that kind of image, relative to their own average. The black lines show the uncertainty.</figcaption>
-    </figure>
-    <div class="label">What we saw</div>
-    <p>When someone described the image a sound evoked as still, their alpha was higher; the faster or more intense the movement they described, the lower it was, step by step. This holds when each person is compared only with themselves.</p>
-    <div class="label">Why it matters</div>
-    <p>It links a brain measure to what people actually experienced, which is exactly what the project is about: sound perceived as something that moves in space. It is not explained by how pleasant or activating the sound felt, and it survives removing eye and muscle activity from the recordings. It is even clearer when people explicitly mentioned a speed.</p>
-    <div class="label">Is it just the sound?</div>
-    <p>Not only. The sound itself does lower alpha: sounds whose level fluctuates quickly lower it more (finding 5). But when several people heard the same sound, those who imagined more movement than the others had less alpha, and this personal part holds when the acoustics are taken into account. Two things add up: what the sound does to everyone, and what each person imagines.</p>
-    <div class="label">We tried to knock it down</div>
-    <p>Because we found this link while searching among many possibilities, we tested the explanations that would make it an illusion. It is genuine alpha, not a change in the overall shape of the spectrum. It is not general engagement: it becomes slightly stronger when we account for how intense the emotion was and how much people wrote. No single listener or sound drives it. When we split the listeners at random into two groups, 1,000 times, the link went in the same direction in both halves every time. It also generalises to new people: a model trained on 26 listeners predicts the alpha of the one left out better when it knows what that person imagined. We also repeated the analysis in 432 different reasonable ways (with and without cleaning the recordings, over different head regions, coding movement in different ways, with different controls and models): the link went in the same direction in all 432 and was statistically clear in three out of four. Finally, a Bayesian analysis that allows the link to differ from person to person puts the probability that it is truly negative above 99 %.</p>
-    <div class="label">An intriguing detail</div>
-    <p>The link was about as strong for the abstract synthetic sounds as for the SuperCollider imitations of the soundscapes, but practically absent for the real recordings. One possible explanation: with a recording of rain, people <i>recognise</i> the source and already know how it moves; with a synthesised sound, even one that imitates rain, the listener has to <i>build</i> the movement from the sound itself. The difference between recordings and synthesised sounds is not yet statistically clear, and the real recordings always came last, so for now this is a hypothesis for the next study.</p>
-    <div class="label">In brain regions</div>
-    <p>Estimated in the 68 brain regions, the link holds just as clearly, and it points in the same direction in all 68. It is strongest in the precuneus, the upper parietal cortex and the primary visual cortex, areas involved in mental imagery and spatial representation.</p>
-    <div class="label">Be careful</div>
-    <p>The effect is small and is a group trend. Only a little over half of the listeners (16 of 27) show it on their own; knowing what someone imagined improves the prediction for about half of them; and it is spread over the head rather than concentrated at the back. Passing these tests makes it solid within this study, but only new participants can confirm it, ideally with the hypothesis stated in advance.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 3</span><span class="badge solid">solid</span></div>
-    <h3>Among the synthetic sounds, the envelope mattered most</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/envelope_slope.png?v=202611181900" alt="Violin plots of the central 1/f steepness for the sounds of blocks 1 to 4; only the envelope block differs, with the percussive envelope higher than the other three"></div>
-      <figcaption>Steepness of the spectrum (1/f) at the centre of the head for every synthetic sound. Each value is relative to the listener's own average in that block, which removes differences between people. The shape shows how the listeners are spread; the dot is the average, with its uncertainty. Only the envelope block shows differences, and they come from the percussive envelope, which is steeper than each of the other three.</figcaption>
-    </figure>
-    <p>Changing the envelope (neutral, percussive, wind-like or on-off) changed brain activity. The percussive envelope stood out: more slow theta activity and, even more clearly, a steeper spectrum at the centre of the head. Changing the pitch, the bandwidth or the partials produced no clear differences.</p>
-    <div class="label">We tried to knock it down</div>
-    <p>The steeper spectrum survived every test. It is not due to the time in the session or to muscle activity. It is not the brain's automatic "click" response to each hit: we located the hits in the audio file, and the spectrum remains steeper even in the quiet moments between them. Nor is it the fixed order: the percussive sound was always second in its block, but the second sound of the other blocks shows nothing similar. Three in four listeners show it (20 of 27), and the evidence is very strong: the data are about 125 times more likely if the effect is real than if it is not.</p>
-    <p>In brain regions, the steeper spectrum with the percussive sound appears in the sensorimotor cortex and the posterior cingulate.</p>
-    <p>The extra theta is less convincing. Part of it is simply a side effect of the steeper spectrum, which by itself increases the share of slow rhythms.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 4</span><span class="badge solid">solid</span></div>
-    <h3>As a group, people agree on how the sounds feel, especially on pleasantness and size</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/ratings.png?v=202611181900" alt="Dot plots of average pleasantness, activation and control for each of the 27 sounds, coloured by block"></div>
-      <figcaption>Average rating of each sound (1–7), with its uncertainty. Left: pleasantness (valence). Middle: activation (arousal). Right: feeling in control (dominance).</figcaption>
-    </figure>
-    <p>The sounds clearly differed in how pleasant, activating and controllable they felt, and in the size, temperature and movement of the images they evoked. Individual answers vary a lot, but the group averages are very consistent, especially for pleasantness and imagined size. Birds and river were the most pleasant; the partials block, the on-off envelope and the earthquake were among the least pleasant.</p>
-    <p>The emotions, chosen on a wheel of eight, also followed the sound. Birds and the real river brought joy to more than half of the listeners, and the imitated thunder brought fear to half, when chance would give one in eight. The choices were coherent with the ratings: sounds that brought joy or trust were rated as much more pleasant (5.6 against 3.1 on the 1–7 scale), and the more intense the emotion chosen on the wheel, the more activating the sound felt. The kind of emotion, however, was not related to alpha.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 5</span><span class="badge promising">promising</span></div>
-    <h3>What in the sound shapes the experience, and the brain</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/acoustics_experience.png?v=202611181900" alt="Three scatter plots over the 27 sounds: faster level fluctuation goes with more imagined movement, noisier sounds with more pleasantness, louder files with less pleasantness"></div>
-      <figcaption>Each dot is one of the 27 sounds: its acoustic measure (horizontal axis) against the group's average rating (vertical axis). Grey: abstract synthetic sounds; orange: SuperCollider imitations; green: real recordings. ρ is the rank correlation.</figcaption>
-    </figure>
-    <p>We measured the acoustics of the 27 audio files: how noise-like or tonal they are, how bright, how many sudden attacks they contain, how much their level fluctuates and how much the sound moves between the left and right ear. Sounds that were more noise-like, with more attacks and faster fluctuations (such as rain or a river), were imagined with more movement. Noisier and brighter sounds were rated as more pleasant, and sounds whose timbre kept changing, as more activating.</p>
-    <p>The brain follows the acoustics too: sounds whose level fluctuates quickly lowered alpha more. This holds within the 13 synthetic sounds, which each listener heard in a different order, so it is not an effect of the time in the session.</p>
-    <p>Compared with the real recordings, the SuperCollider imitations changed level more from moment to moment (all seven had a larger difference between their soft and loud passages), and their sound jumped more from one ear to the other. The files are stereo: in the imitations, each sound event was placed at a random point between the left and right channels, whereas in the recordings the sound image is steadier. With only seven pairs, these differences are only indicative.</p>
-    <div class="label">We tried to knock it down</div>
-    <p>Part of it holds. Within the synthetic sounds alone, noisier sounds and faster fluctuations still go with more imagined movement, and the bandwidth block offers a clean test: the same listeners imagined clearly more movement for the wide-band version of the sound than for the narrow-band one. The ratings do not drift over the session, so the order does not explain them. The links with pleasantness, control and size hold among the soundscapes but not among the synthetic sounds, and the link between changing timbre and activation holds in neither group.</p>
-    <div class="label">Be careful</div>
-    <p>These links compare only 27 sounds, and several acoustic properties go together, so we cannot yet say which one matters. Loudness was part of the design: louder sounds were rated as less pleasant and as warmer.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 6</span><span class="badge unclear">can't tell yet</span></div>
-    <h3>Each kind of natural sound seemed to leave its own trace, but most of it did not hold up</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/soundscapes.png?v=202611181900" alt="Horizontal bars for seven soundscapes: thunder and earthquake highest, rain and river lowest, all with wide error bars"></div>
-      <figcaption>The measure that still differed most between the soundscapes after cleaning: the steepness of the spectrum. The black lines show the uncertainty, which is large.</figcaption>
-    </figure>
-    <div class="label">What we saw</div>
-    <p>In the uncleaned recordings, birds, river, rain, wind, sea waves, thunder and earthquake produced clearly different brain patterns, mainly in the balance between slow and fast rhythms and in the complexity of the signal.</p>
-    <div class="label">Why we changed our mind</div>
-    <p>The EEG also picks up eye movements (the eyes keep moving under closed lids) and tension in the face and scalp muscles. When we removed these signals, most of the differences between soundscapes disappeared. Only a weak one remained, in the steepness of the spectrum: thunder and earthquake went with a slightly calmer signal, rain and river with a slightly livelier one. Much of the original effect therefore probably came from people moving their eyes or tensing their muscles differently (think of a thunderclap), rather than from brain activity itself.</p>
-    <div class="label">The decisive test</div>
-    <p>Each soundscape was heard twice, as a SuperCollider imitation and as the real recording. If each kind of sound really left its own trace in the brain, a person's pattern for the imitations should reappear with the recordings. It did not, for any brain measure. One lead remains: the steepness of the spectrum at the centre of the head ranked thunder and earthquake highest in both versions, and this was not explained by muscle activity or by the time in the session. It is a single measure among many, so for now it is only a lead, and these data cannot settle it: only a new study can.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 7</span><span class="badge unclear">can't tell yet</span></div>
-    <h3>Listeners' brains seemed to fall into step only with sounds full of events, such as thunder</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/isc.png?v=202611181900" alt="Dot plot for the 27 sounds: synchrony between listeners is near zero for most sounds; only the thunder and sea-waves recordings, the fundamental of the partials block and the wind imitation pass their chance level"></div>
-      <figcaption>Synchrony between listeners for each sound (dot), against the level that chance alone would produce (vertical mark). Blue: above chance. The dotted line is the average during rest.</figcaption>
-    </figure>
-    <p>We checked whether the brain signals of different people rise and fall at the same moments while they hear the same sound, as happens with films or music. Overall they did not: for most sounds, synchrony was no higher than at rest. The exceptions were sounds with clear, sudden events, above all the thunder recording, and also the sea waves. This makes sense: our sounds are mostly steady textures that unfold slowly, offering few shared moments for brains to lock onto.</p>
-    <div class="label">We tried to knock it down</div>
-    <p>The result is fragile. The thunder effect survives removing the second after every sound event and leaving out the sensors most exposed to eye and muscle activity, so it is not just the brain's response to each event or people flinching. But when we split the listeners into two halves, both halves show it only one time in four. Four of the 27 sounds pass their chance level, including two without sudden events (the fundamental of the partials block and the wind imitation), and with 27 sounds tested, one or two would pass by chance alone. The SuperCollider imitations of thunder and sea waves show no synchrony at all. Across the 27 sounds, synchrony does not follow the number of sound events or the loudness.</p>
-  </article>
-
-  <article class="finding">
-    <div class="head"><span class="num">Finding 8</span><span class="badge unclear">can't tell yet</span></div>
-    <h3>Abstract sounds vs soundscapes, and imitations vs real recordings</h3>
-    <figure>
-      <div class="plate"><img src="figs/en/session_drift.png?v=202611181900" alt="Scatter plot of alpha against position in the session from 1 to 27: alpha rises steadily, with the synthetic sounds early, the imitations in the middle and the real recordings at the end"></div>
-      <figcaption>Alpha over the whole head at each position in the session (1st to 27th sound), relative to each listener's own average. The dashed line is the overall trend. Because the soundscapes always came last, the kind of sound and the time in the session go together.</figcaption>
-    </figure>
-    <p>The SuperCollider imitations went with less alpha and more slow (delta) activity than the real recordings, and the soundscape block differed from the abstract blocks. But we cannot interpret these differences because of how the session was ordered (see the limitation below): the soundscapes always came last, each imitation always preceded its recording, and alpha rises steadily as the session goes on. Once the time in the session is taken into account, the difference between imitations and recordings disappears.</p>
-  </article>
-</section>
-
-<section>
-  <h2>What these results mean for the doctoral thesis</h2>
-  <p>This study is part of a doctoral thesis in artistic research on sound installations conceived to be experienced like visual art: in space, outside a timeline, with an active audience. These are the results most relevant to it.</p>
-
-  <article class="finding">
-    <h3>Sounds evoke concrete visual qualities, with some consistency</h3>
-    <p>Higher pitches evoked lighter colours: the high sound of the pitch block was described with lighter colours than the low one, in the same listeners, and it was also imagined as smaller than the neutral sound. Across all 27 sounds, the brighter the sound, the lighter the colour and the smaller the imagined image; noisier and rougher sounds were imagined as cooler, and louder ones as warmer. Listeners agreed on colour more than chance would predict, although modestly: the most frequently named colour of a sound gathered on average 31 % of the answers, against 26 % expected by chance. The clearest cases were birds (green, for half of the listeners) and sea waves (blue). These are known correspondences between the senses, and they show that the visual qualities sought in the sound design do reach the listeners.</p>
-  </article>
-
-  <article class="finding">
-    <h3>A shared meaning, completed by each listener</h3>
-    <p>The group averages are reliable (finding 4), but for any one person the sound explains only between 4 % and 15 % of the rating; the rest depends on the person and on the particular encounter between that person and that sound. Size and pleasantness are the qualities that depend most on the sound itself. The brain shows a small shared signature: a model trained on the other listeners recognises which sound someone was hearing more often than chance, but rarely (about 5 % of the time, against 4 % by chance). Together with finding 2, this suggests that the work proposes and each listener completes: the sound sets a common frame, and each person's imagination adds a substantial part of the experience.</p>
-  </article>
-
-  <article class="finding">
-    <h3>Steady textures do not impose a shared timeline</h3>
-    <p>Listeners' brains hardly moved in step with the steady textures, and did so only, and fragilely, with sounds full of events (finding 7). This fits the idea of a sound work that one inhabits, like a place, rather than follows, like a story. It is an interpretation that a study designed for the purpose would need to test.</p>
-  </article>
-
-  <article class="finding">
-    <h3>The imitations come close to the real thing</h3>
-    <p>Five of the seven SuperCollider imitations were experienced as closer to their own recording than to any other, considering pleasantness, activation, control, size, temperature and movement together. The rain imitation was closer to the river recording, and the thunder imitation to the earthquake recording. The clearest differences: the river imitation was less pleasant than the real river, and the sea-waves imitation was imagined as smaller.</p>
-  </article>
-
-  <article class="finding">
-    <h3>The experience does not depend on musical training</h3>
-    <p>Listeners with instrumental training (11) and without it (16) agreed on how the sounds felt and on what they imagined, showed no differences in any rating, and showed the same link between imagined movement and alpha. With groups of this size the comparison is only indicative, but it supports a sound art addressed to a broad audience.</p>
-  </article>
-
-  <article class="finding">
-    <h3>What did not work</h3>
-    <p>We expected that the richer the visual image a sound evoked (naming a colour, a texture, more qualities), the more alpha would drop at the back of the head. That was not the case. Almost everyone described a colour and four or five qualities for every sound, which leaves little room to detect it, but for now the EEG does not show directly that the sound is "seen".</p>
-  </article>
-</section>
-
-<section>
-  <h2>The main limitation, in one paragraph</h2>
-  <div class="box warn">
-    <h3>The order of the sounds was not shuffled enough</h3>
-    <p>Everyone heard the soundscapes at the end, the SuperCollider imitation of each soundscape before its real recording, and the sounds within each synthetic block in the same order. Over a long session people become tired and drowsy, which by itself changes the brain signal (alpha was higher in the final rest than in the first). So whenever two kinds of sound always came in the same order, we cannot tell whether a difference comes from the sound or from the moment in the session.</p>
-  </div>
-</section>
-
-<section>
-  <h2>For the technical reader</h2>
-  <details>
-    <summary>EEG processing and measures</summary>
-    <ul>
-      <li>Artefact removal: extended-infomax ICA (40 components) per subject, fitted on a 250 Hz copy and applied to the 500 Hz data; components labelled by ICLabel as muscle, eye, heart, line or channel noise with p ≥ .70 removed (median 7 per subject, range 2–19). Features recomputed at 500 Hz with the MEDUSA definitions (without ICA: ρ = .91–.995 with the original MEDUSA features, identical medians). All results below use the ICA-cleaned features; the original features are used as a sensitivity check.</li>
-      <li>64 channels, 500 Hz; notch 49–51 Hz; 0.5–70 Hz FIR band-pass (order 1000); common average reference; 5-s epochs z-normalised per epoch (so mean, variance and absolute power are uninformative and were excluded); threshold-based artefact rejection. In one listener the playback software swapped the audio of blocks 1 and 4 (detected from the recording plan). This listener's recordings and answers are analysed under the sound they heard; no block 1 or 4 result depends on this listener. Median 9 clean epochs per stimulus; 9 recordings missing or with fewer than 5 epochs.</li>
-      <li>17 primary features: relative power (δ, θ, α, β, γ), median frequency, spectral entropy, sample entropy, Lempel-Ziv complexity, central tendency measure, aperiodic exponent (log-log fit 2–40 Hz excluding 7–14 Hz), individual alpha frequency, wPLI node strength (5 bands). Median across epochs; 6 ROIs plus global.</li>
-    </ul>
-  </details>
-  <details>
-    <summary>Statistics</summary>
-    <ul>
-      <li>Channel level: within-subject spatial cluster permutation tests (cluster mass, 5000 permutations; paired sign-flip or within-subject label permutation of a repeated-measures F).</li>
-      <li>ROI level: repeated-measures ANOVA (Greenhouse-Geisser) and linear mixed models with session position as covariate (LRT); Cohen's dz with bootstrap CIs; Benjamini-Hochberg FDR per family.</li>
-      <li>Brain–experience: trial-level mixed models with within/between-listener decomposition of each rating (833 tests; 27 at q &lt; .05). Sensitivity: crossed stimulus random effect, gamma power as EMG proxy, arousal/valence/dominance covariates, listener-specific random slopes.</li>
-      <li>RSA: per-listener 27 × 27 EEG dissimilarity matrices vs design and subjective models; stimulus-label permutation; partial correlations controlling temporal distance; noise ceiling.</li>
-      <li>Inter-listener agreement: ICC from a crossed (stimulus × listener) random-effects model, jackknife CIs.</li>
-    </ul>
-  </details>
-  <details>
-    <summary>Key numbers</summary>
-    <div class="table-wrap"><table>
-      <thead><tr><th>Result</th><th>Estimate</th></tr></thead>
-      <tbody>
-        <tr><td>α, listening − rest (global)</td><td>dz = −1.21 [−1.61, −1.00]; all 64 channels in cluster; vs initial rest only dz = −0.95, vs final rest only dz = −1.21</td></tr>
-        <tr><td>α drop, parieto-occipital vs temporal</td><td>dz = −0.60 [−0.92, −0.32], q = .040</td></tr>
-        <tr><td>Movement → α (global, within-listener)</td><td>β = −0.033, r<sub>rm</sub> = −.13, q = .005; with arousal/valence/dominance β = −0.033, with gamma (EMG proxy) β = −0.030, with crossed stimulus effect β = −0.032 (all p &lt; .001); β = −0.062 when speed is stated</td></tr>
-        <tr><td>Movement → α with listener random slopes</td><td>REML global β = −0.035, p = .0005; parieto-occipital p = .0035; two-stage per-listener slopes dz = −0.41, p = .045 (16/27 negative); no posterior &gt; temporal difference (p = .11)</td></tr>
-        <tr><td>Movement × stimulus set</td><td>abstract synthetic β = −0.029 (p = .014); SuperCollider imitations β = −0.028 (p = .049); real recordings β = −0.007 (p = .63); recording × movement p = .57 (vs all synthesised), p = .50 (vs own imitations)</td></tr>
-        <tr><td>Movement → α, original features (no ICA)</td><td>β = −0.037, p &lt; .0001; with crossed stimulus effect p = .0002</td></tr>
-        <tr><td>Soundscape category (1/f exponent, global)</td><td>after ICA F = 2.52, p<sub>GG</sub> = .045, η²<sub>p</sub> = .09 (channel cluster q = .026); before ICA F = 4.05, p<sub>GG</sub> = .003</td></tr>
-        <tr><td>Category profile, imitation → recording (11 measures)</td><td>within-listener mean r = −.18 to .05, all p<sub>perm</sub> ≥ .25; central 1/f exponent: category effect p<sub>GG</sub> = .007, with gamma covariate p = .0009, category effect q = .07 over measures; group profile r = .84 (exact p = .012, q = .13 over measures)</td></tr>
-        <tr><td>Movement → α, stress tests</td><td>periodic α (above 1/f) β = −0.025, p = .005; 1/f exponent β = 0.01, p = .37; + emotion intensity and n descriptors β = −0.035, p &lt; .0001; BIC BF<sub>10</sub> = 89; leave-one-out β −0.027 to −0.037; split halves negative in both 100 %, both p &lt; .05 in 67 %</td></tr>
-        <tr><td>Inter-subject correlation (CorrCA, 3 components)</td><td>stimuli vs rest dz = −0.06, p = .75; thunder ISC = .047, p = .002 (q = .054); sea waves .030, p = .022</td></tr>
-        <tr><td>Envelope block (central)</td><td>1/f exponent F = 12.09, p<sub>GG</sub> &lt; .001, η²<sub>p</sub> = .32, percussive − neutral dz = 0.82; θ F = 5.72, p<sub>GG</sub> = .002, η²<sub>p</sub> = .18, percussive − neutral dz = 0.53</td></tr>
-        <tr><td>Envelope, stress tests (central, percussive − neutral)</td><td>1/f exponent: JZS BF<sub>10</sub> = 125, 20/27 positive, split halves both p &lt; .05 in 81 %; LMM with session position + gamma p &lt; .0001; hit-free 1-s windows (≥ 0.5 s after each onset) dz = 0.55, p = .008; second-minus-first sound in other blocks dz −0.37 to 0.01 (all p ≥ .05). θ: periodic θ (above 1/f, 2-s windows) dz = 0.08, p = .68; BF<sub>10</sub> = 4.3</td></tr>
-        <tr><td>Complexity / α wPLI beyond α power (listening vs rest)</td><td>sample entropy d<sub>z</sub> = 1.06, Lempel-Ziv 1.10, CTM −1.07, α wPLI −0.79 (global, q &lt; .001); change correlates with the α change (|r| ≈ .5); trial-level LMM controlling α: complexity β 0.42 → 0.15 SD (p ≈ .003), α wPLI −0.47 → −0.12 (p = .11)</td></tr>
-        <tr><td>Source level (fsaverage template, 10-05 positions, eLORETA fixed orientation, λ² = 1/9, 68 Desikan-Killiany regions, mean-flip)</td><td>sanity: rest α highest in pericalcarine / precuneus / parietal; sensor–source global α r = .99. Listening vs rest α: 68/68 regions q &lt; .05, largest in pericalcarine (−0.10), inferior parietal, precuneus, lateral occipital; visual − auditory drop d<sub>z</sub> = −0.59, p = .005. Movement → α (within, crossed stimulus): global β = −0.029, p = .0004; visual −0.028, p = .004; auditory −0.027, p = .004; 68/68 regions negative, 21 q &lt; .05 (precuneus, superior parietal, pericalcarine). Percussive 1/f exponent: sensorimotor d<sub>z</sub> = 0.66, p = .002; 7 regions q &lt; .05 (postcentral, posterior cingulate). NBS listening vs rest: wPLI α ↓ 352 edges, AEC θ ↓ 265, AEC α ↓ 151, wPLI θ ↑ 24 (all q &lt; .05); imitation vs recording and movement: none after correction; auditory–visual edges relative to all, AEC α d<sub>z</sub> = 0.54, p = .010, q = .14. Graphs (weighted, 20 weight-shuffled nulls): listening lowers normalised efficiency (AEC α d<sub>z</sub> = −0.69, θ −0.78) and small-worldness (AEC θ, α, β, d<sub>z</sub> −0.76 to −0.87, q &lt; .01); wPLI α strength, clustering, efficiency ↓ (d<sub>z</sub> ≈ −0.95); no effect on participation of auditory or visual regions or on their co-assignment to modules; no graph metric related to imagined movement after correction</td></tr>
-        <tr><td>Edge-level connectivity (NBS, |t| &gt; 3, 5000 sign flips; wPLI and orthogonalised AEC, 5 bands)</td><td>listening vs rest: wPLI α network ↓ (680 edges, p<sub>FWER</sub> &lt; .001), AEC θ ↓ (422 edges, posterior and right temporal, p &lt; .001), AEC β ↓ (259 edges, fronto-central, p &lt; .001), all q &lt; .05 over 30 tests; a priori temporal–parieto-occipital edges relative to all edges, AEC α d<sub>z</sub> = 0.86, q = .009 (raw AV edges n.s.); imitation vs recording AEC θ 38 edges p = .019, q = .29; imagined movement: no network (all p<sub>FWER</sub> &gt; .1)</td></tr>
-        <tr><td>Valence ↔ temporal complexity</td><td>r<sub>rm</sub> ≈ .15–.17, but shrinks by about 90% when controlling gamma (likely muscular)</td></tr>
-        <tr><td>Movement → α vs acoustics</td><td>with 5 level-free acoustic covariates β = −0.029, p = .0006; + file loudness unchanged; listener's deviation from the stimulus consensus β = −0.037, p = .0003, with 4–16 Hz modulation in the model β = −0.035, p = .005. Stimulus level (27 stimuli, + mean position): 4–16 Hz modulation p &lt; .001 with consensus movement in the model; consensus p = .47</td></tr>
-        <tr><td>Acoustics ↔ mean ratings (27 stimuli, Spearman)</td><td>movement: flatness ρ = .60, crest factor .57, 4–16 Hz modulation .56; valence: flatness .62; arousal: timbral change .64 (all q &lt; .05); loudness: valence −.59, temperature .53 (q &lt; .05)</td></tr>
-        <tr><td>ISC ↔ acoustics</td><td>onset rate ρ = .11, file loudness −.20 (none q &lt; .05)</td></tr>
-        <tr><td>Group agreement (ICC, average of 27)</td><td>valence .81, size .82, temperature .70, movement .68</td></tr>
-        <tr><td>Emotion wheel (Plutchik)</td><td>stimulus × petal Cramér's V = .31, p<sub>perm</sub> &lt; .001; modal petal: birds joy 56%, river joy 52%, thunder imitation fear 52%; valence on positive (joy, trust) vs negative petals 5.58 vs 3.06, d<sub>z</sub> = 2.84; arousal ~ wheel intensity (within) β = 0.21, p &lt; .001; α ~ intensity β = −0.014, p = .09; α ~ polarity p = .95</td></tr>
-        <tr><td>Coding reliability (independent coder, 120 descriptions)</td><td>Cohen's κ: size .998, temperature .998, movement intensity .948, movement direction .796</td></tr>
-        <tr><td>RSA, own valence-arousal-dominance | time</td><td>mean ρ = .031 [.005, .058], q = .005</td></tr>
-        <tr><td>Movement → α, Bayesian mixed model</td><td>random listener slopes + crossed stimulus, prior SD 0.1: β = −0.033, 95 % CrI [−0.054, −0.012], P(β &lt; 0) = .998, Savage–Dickey BF<sub>10</sub> = 7.3 (16 with prior SD 0.05, 3.1 with 0.25); parieto-occipital P(β &lt; 0) = .994; periodic α P(β &lt; 0) = .993</td></tr>
-        <tr><td>Movement → α, multiverse (432 specifications)</td><td>data × region × movement coding × controls × random structure × trimming: 100 % negative, 75 % p &lt; .05, 0 % positive with p &lt; .05; median β = −0.027 [5–95 %: −0.038, −0.010]; intensity coding 100 % p &lt; .05, binary coding 50 %; periodic α 50 %</td></tr>
-        <tr><td>Movement → α, leave-one-listener-out prediction</td><td>adding the listener's own movement to a baseline (stimulus effect from the other 26 + position + affect): out-of-sample R² .033 → .050, permutation p = .001; improved in 14/27 listeners; training β −0.039 to −0.029</td></tr>
-        <tr><td>Acoustics → α (stimulus level, + mean position)</td><td>4–16 Hz level modulation: 27 stimuli q = .0003; 13 synthetic (counterbalanced) q = .003; also 0.5–4 Hz modulation and onset rate (27 stimuli, q &lt; .05)</td></tr>
-        <tr><td>α drop by kind of listening (global, pp)</td><td>pitch 8.4 (dz 1.32), envelope 7.8, bandwidth 7.2, partials 7.3, imitations 6.9, recordings 5.5 (dz 0.94), all p &lt; .001; blocks 1–4 F = 2.42, p<sub>GG</sub> = .092 (LMM with position p = .097), no Holm pair &lt; .05; JZS BF<sub>01</sub> 0.9–4.6</td></tr>
-        <tr><td>Sensitivity, N = 27</td><td>smallest paired effect detectable with 80 % power dz = 0.56 (α = .05), 0.72 (Holm, six pairs)</td></tr>
-        <tr><td>ISC, stress tests</td><td>thunder: event-free (1 s after each onset removed) .026, p = .043; without frontal/temporal channels .037, p = .007; both split halves above chance in 26 %; sea waves 5 %; thunder and sea-waves imitations −.008 and .008 (n.s.)</td></tr>
-        <tr><td>Acoustics ↔ ratings, stress tests</td><td>within the 13 synthetic stimuli: flatness → movement ρ = .74, 4–16 Hz modulation → movement .58; bandwidth block wide − narrow movement +0.73, dz = 0.64, p = .003; no rating drift with session position (all p ≥ .10); valence/dominance/size links hold within soundscapes (|ρ| .76–.87), not within synthetic stimuli; 7 imitation–recording pairs all n.s.</td></tr>
-              <tr><td>Sound → visual qualities (thesis)</td><td>pitch block high − low colour lightness dz = 0.63, p = .010; size high − neutral dz = −0.70, p = .004; 27 stimuli: centroid → lightness ρ = .62, → size −.58 (q ≤ .012); flatness, 30–150 Hz modulation → cooler (ρ ≈ −.50), loudness → warmer .53 (q &lt; .03); modal colour family share .31 vs permutation null .26, p = .0005</td></tr>
-        <tr><td>Imagery richness → α (thesis)</td><td>colour + texture + n descriptors, within listener, crossed stimulus: parieto-occipital β = 0.001, p = .96; parieto-occipital − temporal β = −0.012, p = .49</td></tr>
-        <tr><td>Variance shares and decoding (thesis)</td><td>share of rating variance due to stimulus .04–.15 (size .15, valence .12), listener .03–.13, residual .78–.88; cross-listener EEG decoding (102 ROI × feature values, correlation to the other 26): mean rank 12.0 vs 14 by chance, top-1 4.8 % vs 3.7 %, p<sub>perm</sub> = .001</td></tr>
-        <tr><td>Imitation fidelity and music training (thesis)</td><td>imitation closest to its own recording in 5/7 (6 z-scored ratings); river valence −1.07, sea waves size −0.63 (q = .044); instrumental (11) vs others (16): group-mean agreement ρ = .44–.71, no rating difference (all p ≥ .24), movement × training on α p = .82</td></tr>
-      </tbody>
-    </table></div>
-  </details>
-</section>
-
-<footer>
-  <p>Preliminary results of an ongoing pilot study; numbers may change before publication. Only group-level results are shown.</p>
-</footer>
+  <svg id="wave" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true"></svg>
 </div>
+
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">The experiment</div>
+    <h2>Listening as if sound were a material you could see</h2>
+    <div class="stats">
+      <div class="stat"><b>27</b><span>people took part, 11 of them with instrumental training</span></div>
+      <div class="stat"><b>27</b><span>sounds of about 50 seconds each, heard with eyes closed</span></div>
+      <div class="stat"><b>64</b><span>electrodes recording the brain's electrical activity (EEG)</span></div>
+      <div class="stat"><b>~700</b><span>written descriptions of colours, sizes, temperatures, textures and movements</span></div>
+    </div>
+    <ol class="steps narrow">
+      <li><div><b>Synthetic sounds.</b> Thirteen sounds were made from scratch in SuperCollider, a program for creating sound. Each group changes one thing at a time: the pitch, the shape of the sound in time (its envelope), how wide or narrow its band of frequencies is, and how its partials (overtones) are spaced.</div></li>
+      <li><div><b>Nature, real and imitated.</b> Seven recordings of nature (birds, earthquake, rain, river, sea waves, thunder and wind) and seven imitations of those same recordings, built in SuperCollider.</div></li>
+      <li><div><b>After each sound</b>, people rated how pleasant and how activating it was, chose an emotion on a wheel of eight emotions, and described the image it had evoked.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="explore" class="alt">
+  <div class="wrap">
+    <div class="kicker">Interactive</div>
+    <h2>Explore the 27 sounds</h2>
+    <p class="lead">Choose a sound and press play. You will see the colours people imagined, how they felt, which emotion they chose most often, and what their brains did while listening. Everything shown is the average of the group.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="tabnote" id="tabnote"></div>
+    <div class="sounds" id="grid"></div>
+    <div class="panel" id="panel" aria-live="polite">
+      <div>
+        <div class="kicker" id="p-group"></div>
+        <h3 id="p-name"></h3>
+        <div class="sub" id="p-desc"></div>
+        <div class="player">
+          <button class="play" id="p-play" aria-label="Play"></button>
+          <div class="prog"><i id="p-prog"></i></div>
+        </div>
+        <div class="block-label">Colours people imagined</div>
+        <div class="huebar" id="p-hue"></div>
+        <div class="huekey" id="p-huekey"></div>
+        <div class="block-label">How it felt, on average</div>
+        <div id="p-meters"></div>
+        <div class="legend-note">The coloured dot is this sound; the small grey marks are the other 26 sounds, so you can see where it sits among them.</div>
+      </div>
+      <div>
+        <div class="block-label" style="margin-top:0">The emotion people chose</div>
+        <div class="wheelwrap"><svg class="wheel" id="p-wheel" viewBox="-160 -160 320 320" role="img"></svg>
+        <div class="wheelcap" id="p-wheelcap"></div></div>
+        <div class="brainbox">
+          <div class="block-label" style="margin-top:0">What the brain did</div>
+          <div><b class="big" id="p-alpha"></b> <span id="p-alphatxt"></span></div>
+          <div id="p-alphameter"></div>
+          <div class="legend-note">Alpha is a brain rhythm that is strong when we rest with our eyes closed and weakens when the brain gets busy. Every sound lowered it; the grey marks are the other 26 sounds.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="found">
+  <div class="wrap">
+    <div class="kicker">What we found</div>
+    <h2>Eight things we learned</h2>
+    <p class="lead">This was a pilot study: a first, small experiment to see what is worth testing on a larger scale. The first four findings are the most solid; the others are promising leads that a larger study should confirm.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="n">01</div><h3>Listening changes the rhythm of the brain, especially at the back of the head</h3><p>Every sound weakened alpha, a rhythm the brain produces when it is idle, by about a fifth. The drop was largest at the back of the head, over areas usually linked to vision, even though people had their eyes closed. At the same time the brain signal became more varied and less predictable.</p>
+        <div class="viz"><img class="fig" src="figs/en/alpha_listening.png?v=202611191200" alt="Head seen from above: the drop in alpha while listening, largest at the back of the head." loading="lazy"></div>
+      </article>
+      <article class="card">
+        <div class="n">02</div><h3>The more movement people imagined, the more alpha dropped</h3><p>When someone imagined a still image, their alpha stayed higher; when they imagined fast or intense movement, it dropped more. We tried to break this result in 432 different ways, and it always pointed in the same direction.</p>
+        <div class="viz"><img class="fig" src="figs/en/movement_alpha.png?v=202611191200" alt="Bars: alpha relative to each person's average, from still images to fast movement." loading="lazy"></div>
+      </article>
+      <article class="card">
+        <div class="n">03</div><h3>The shape of a sound in time leaves a mark in the brain</h3><p>Of the four properties varied in the synthetic sounds, only the envelope (how the sound starts, grows and stops) changed brain activity clearly, and above all the percussive sound.</p>
+      </article>
+      <article class="card">
+        <div class="n">04</div><h3>A shared meaning, completed by each listener</h3><p>As a group, people agreed remarkably well on how pleasant or how big each sound was. Yet each person's answer depended mostly on their own imagination: the sound explained only between 4% and 15% of it.</p>
+      </article>
+      <article class="card">
+        <div class="n">05</div><h3>High sounds look lighter</h3><p>With a high pitch, people imagined lighter colours and smaller objects than with a low one. Across all sounds, brighter sounds evoked lighter colours, and rough or noisy sounds evoked cooler images. Birds were green for half the listeners.</p>
+        <div class="viz bars" id="viz-light"></div>
+      </article>
+      <article class="card">
+        <div class="n">06</div><h3>Sounds evoke shared emotions</h3><p>Birds and the river brought joy, and the imitated thunder brought fear. With eight emotions to choose from, chance would give each one about 12%. The choices were also coherent: sounds that brought joy or trust were rated as much more pleasant.</p>
+        <div class="viz bars" id="viz-emo"></div>
+      </article>
+      <article class="card">
+        <div class="n">07</div><h3>The imitations come close to the real thing</h3><p>Five of the seven SuperCollider imitations felt more like their own recording than like any other. The rain imitation resembled the river, and the thunder imitation the earthquake.</p>
+        <div class="viz"><a class="btn line" href="#compare">Compare them yourself</a></div>
+      </article>
+      <article class="card">
+        <div class="n">08</div><h3>You do not need to be a musician</h3><p>People with and without instrumental training experienced the sounds in the same way, and their brains responded in the same way.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="play" class="alt">
+  <div class="wrap">
+    <div class="kicker">Your turn</div>
+    <h2>Do you hear what they heard?</h2>
+    <p class="lead">Listen to a mystery sound, choose the colour and the emotion it evokes in you, and compare your answer with the 27 participants.</p>
+    <div class="game">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <button class="play" id="g-play" aria-label="Play"></button>
+        <div><div class="mystery" id="g-name">Mystery sound</div><div class="sub" id="g-sub">Press play and listen with your eyes closed.</div></div>
+        <button class="btn line" id="g-new" style="margin-left:auto">Another sound</button>
+      </div>
+      <div class="block-label">What colour is it?</div>
+      <div class="choices" id="g-hues"></div>
+      <div class="block-label">What emotion does it bring?</div>
+      <div class="choices" id="g-petals"></div>
+      <div style="margin-top:20px"><button class="btn primary" id="g-go" disabled>Compare with the group</button></div>
+      <div class="reveal" id="g-reveal">
+        <div><div class="verdict" id="g-verdict"></div><div class="block-label">Colours people imagined</div><div class="huebar" id="g-hue"></div><div class="huekey" id="g-huekey"></div></div>
+        <div class="wheelwrap"><svg class="wheel" id="g-wheel" viewBox="-160 -160 320 320" role="img"></svg></div>
+      </div>
+    </div>
+    <p class="legend-note" style="margin-top:12px">Your answers stay in your browser. Nothing is saved or sent.</p>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="kicker">Real or imitated?</div>
+    <h2>Recordings and their imitations</h2>
+    <p class="lead">Choose a pair, listen to both, and see how people experienced each one. The blue dot is the real recording; the orange one is the SuperCollider imitation.</p>
+    <div class="tabs" id="cmp-tabs" role="tablist"></div>
+    <div class="cmp">
+      <div class="side" style="--c:var(--a)"><h4>Real recording</h4><div class="player" style="margin:12px 0 0"><button class="play" id="c-play-a" aria-label="Play" style="background:var(--a)"></button><div class="prog"><i id="c-prog-a" style="background:var(--a)"></i></div></div></div>
+      <div class="side" style="--c:var(--b)"><h4>SuperCollider imitation</h4><div class="player" style="margin:12px 0 0"><button class="play" id="c-play-b" aria-label="Play" style="background:var(--b)"></button><div class="prog"><i id="c-prog-b" style="background:var(--b)"></i></div></div></div>
+    </div>
+    <div class="cmpmeters"><div id="c-meters"></div><p class="legend-note" id="c-verdict" style="font-size:0.95rem;color:var(--fg)"></p></div>
+  </div>
+</section>
+
+<section id="next" class="alt">
+  <div class="wrap narrow">
+    <div class="kicker">What comes next</div>
+    <h2>From a pilot to a full study</h2>
+    <p class="lead" style="margin-top:14px">These results are part of a doctoral thesis in artistic research that explores whether sound can be experienced the way we experience visual art: as something with space, colour and texture rather than as something that only unfolds in time. They will also be published as a scientific article.</p>
+    <p class="lead">Because this was a small pilot, the next step is to repeat the experiment with new people, shuffling the order of the sounds and stating in advance what we expect to find. The detailed report explains every result, its strength and its limits.</p>
+    <a class="btn line" href="report/">Report for co-authors</a>
+  </div>
+</section>
+
+<footer><div class="wrap cols">
+  <div><h3>BrainSound</h3><p>A research project that brings together sound art and neuroscience to study how people imagine sound.</p></div>
+  <div><h3>The sounds</h3><p>The clips on this page are 20-second excerpts of the sounds used in the experiment. They are the project's own recordings and SuperCollider creations, shared under a Creative Commons licence.</p></div>
+  <div><h3>Your data</h3><p>Everything on this page is a group average. No individual answer, name or brain recording is published.</p></div>
+</div></footer>
+
+<audio id="aud" preload="none"></audio>
+<script>
+const L = {"play": "Play", "stop": "Stop", "groups": [{"name": "Pitch", "note": "The same tone at a middle, a low and a high pitch.", "tasks": ["02neutro", "03fqgrave", "04fqagudo"]}, {"name": "Envelope", "note": "The same sound shaped differently in time: steady, percussive, swelling like wind, or switching on and off.", "tasks": ["05neutro", "06envperc", "07envwind", "08envonoff"]}, {"name": "Bandwidth", "note": "A band of noise that is medium, wide or narrow.", "tasks": ["09rqintermedio", "10rqancho", "11rqestrecho"]}, {"name": "Partials", "note": "A tone built from its fundamental alone, or with its partials squeezed together or spread apart.", "tasks": ["12ovtfundamental", "13ovtcomprimidos", "14ovtdistantes"]}, {"name": "Nature recordings", "note": "Real recordings of nature.", "tasks": ["22birds", "23earthquake", "24rain", "25river", "26seawaves", "27thunder", "28wind"]}, {"name": "Imitations", "note": "SuperCollider imitations of the seven nature recordings.", "tasks": ["15birdssc", "16earthquakesc", "17rainsc", "18riversc", "19seawavessc", "20thundersc", "21windsc"]}], "names": {"02neutro": ["Middle tone", "pitch · reference", "A steady tone at a middle pitch, the reference for the pitch group."], "03fqgrave": ["Low tone", "pitch", "The same tone, lower."], "04fqagudo": ["High tone", "pitch", "The same tone, higher."], "05neutro": ["Steady", "envelope · reference", "A tone that simply stays on, the reference for the envelope group."], "06envperc": ["Percussive", "envelope", "Short hits that start sharply and die away."], "07envwind": ["Wind-like", "envelope", "A sound that swells and fades like gusts of wind."], "08envonoff": ["On–off", "envelope", "A sound that switches abruptly on and off."], "09rqintermedio": ["Medium band", "bandwidth", "A band of noise of medium width."], "10rqancho": ["Wide band", "bandwidth", "A wide band of noise, close to a hiss."], "11rqestrecho": ["Narrow band", "bandwidth", "A narrow band of noise, almost a whistle."], "12ovtfundamental": ["Fundamental", "partials", "A tone made of its fundamental only."], "13ovtcomprimidos": ["Squeezed partials", "partials", "A tone whose partials are squeezed close together."], "14ovtdistantes": ["Spread partials", "partials", "A tone whose partials are spread far apart."], "22birds": ["Birds", "recording", "The real recording."], "23earthquake": ["Earthquake", "recording", "The real recording."], "24rain": ["Rain", "recording", "The real recording."], "25river": ["River", "recording", "The real recording."], "26seawaves": ["Sea waves", "recording", "The real recording."], "27thunder": ["Thunder", "recording", "The real recording."], "28wind": ["Wind", "recording", "The real recording."], "15birdssc": ["Birds", "imitation", "Its imitation in SuperCollider."], "16earthquakesc": ["Earthquake", "imitation", "Its imitation in SuperCollider."], "17rainsc": ["Rain", "imitation", "Its imitation in SuperCollider."], "18riversc": ["River", "imitation", "Its imitation in SuperCollider."], "19seawavessc": ["Sea waves", "imitation", "Its imitation in SuperCollider."], "20thundersc": ["Thunder", "imitation", "Its imitation in SuperCollider."], "21windsc": ["Wind", "imitation", "Its imitation in SuperCollider."]}, "hue": {"blue": "Blue", "green": "Green", "white": "White", "grey": "Grey", "black": "Black", "brown": "Brown", "yellow": "Yellow", "orange": "Orange", "red": "Red", "purple": "Purple / pink"}, "petal": {"joy": "Joy", "trust": "Trust", "fear": "Fear", "surprise": "Surprise", "sadness": "Sadness", "disgust": "Disgust", "anger": "Anger", "anticipation": "Anticipation"}, "m": {"valence": ["unpleasant", "pleasant", "Pleasantness"], "arousal": ["calming", "activating", "Activation"], "size": ["small", "large", "Imagined size"], "temperature": ["cold", "warm", "Temperature"], "movement": ["still", "moving", "Movement"], "light": ["dark colours", "light colours", "Colour lightness"]}, "wheelcap": "The longer and stronger the petal, the more people chose it. Most often: {e} ({p} of listeners).", "alpha_txt": "alpha compared with rest", "alpha_more": "bigger drop", "alpha_less": "smaller drop", "mystery": "Mystery sound", "g_hint": "Press play and listen with your eyes closed.", "verdict": "{h} of the participants also saw it {hn}, and {p} also felt {pn}.", "pairs": {"birds": "Birds", "earthquake": "Earthquake", "rain": "Rain", "river": "River", "seawaves": "Sea waves", "thunder": "Thunder", "wind": "Wind"}, "cmp_verdict": {"birds": "The imitation felt closest to its own recording. It tended to be a little less pleasant and smaller, but these differences are not clear.", "earthquake": "The most faithful pair: the imitation and the recording were experienced almost identically.", "rain": "The imitation felt closer to the river recording than to the real rain.", "river": "The imitation felt closest to its own recording, but clearly less pleasant than the real river.", "seawaves": "The imitation felt closest to its own recording, but was imagined clearly smaller.", "thunder": "The imitation felt closer to the earthquake recording than to the real thunder, and it brought fear to half the listeners.", "wind": "The imitation felt closest to its own recording; the two were experienced very similarly."}, "light_rows": [["03fqgrave", "Low tone"], ["04fqagudo", "High tone"], ["23earthquake", "Earthquake"], ["27thunder", "Thunder"], ["22birds", "Birds"], ["18riversc", "River (imit.)"]], "light_cap": "Average lightness of the colours people named (−1 all dark, +1 all light)", "emo_rows": [["22birds", "joy", "Birds"], ["25river", "joy", "River"], ["20thundersc", "fear", "Thunder (imit.)"], ["24rain", "sadness", "Rain"]], "emo_cap": "Share of listeners who chose that emotion (12% would be chance)."};
+const D = [{"task":"02neutro","n":27,"valence":4.33,"arousal":4.11,"size":2.8,"temperature":-0.2,"movement":1.73,"light":0.17,"hue":{"blue":0.273,"white":0.227,"green":0.182,"grey":0.091,"brown":0.091,"yellow":0.045,"purple":0.045,"red":0.045},"petal":{"joy":0.259,"anticipation":0.185,"trust":0.185,"sadness":0.111,"anger":0.074,"surprise":0.074,"fear":0.074,"disgust":0.037},"alpha_pct":-22.2},{"task":"03fqgrave","n":27,"valence":3.56,"arousal":4.37,"size":2.56,"temperature":0.24,"movement":1.46,"light":-0.32,"hue":{"black":0.238,"red":0.19,"brown":0.095,"grey":0.095,"orange":0.095,"blue":0.095,"white":0.048,"yellow":0.048,"green":0.048,"purple":0.048},"petal":{"fear":0.222,"anticipation":0.222,"disgust":0.148,"sadness":0.111,"anger":0.111,"surprise":0.074,"trust":0.074,"joy":0.037},"alpha_pct":-27.9},{"task":"04fqagudo","n":27,"valence":3.56,"arousal":4.11,"size":2.14,"temperature":-0.25,"movement":1.81,"light":0.39,"hue":{"blue":0.217,"yellow":0.217,"orange":0.174,"red":0.087,"green":0.087,"white":0.087,"grey":0.043,"black":0.043,"purple":0.043},"petal":{"anticipation":0.333,"surprise":0.222,"anger":0.148,"fear":0.148,"joy":0.037,"disgust":0.037,"sadness":0.037,"trust":0.037},"alpha_pct":-27.3},{"task":"05neutro","n":27,"valence":4.81,"arousal":4.33,"size":2.33,"temperature":-0.03,"movement":1.7,"light":-0.08,"hue":{"blue":0.364,"white":0.091,"grey":0.091,"orange":0.091,"yellow":0.091,"brown":0.091,"green":0.045,"purple":0.045,"red":0.045,"black":0.045},"petal":{"joy":0.222,"surprise":0.222,"anticipation":0.222,"trust":0.185,"fear":0.074,"disgust":0.074},"alpha_pct":-22.5},{"task":"06envperc","n":27,"valence":4.3,"arousal":4.07,"size":1.67,"temperature":-0.37,"movement":1.59,"light":-0.1,"hue":{"blue":0.222,"yellow":0.167,"purple":0.111,"green":0.111,"red":0.111,"black":0.111,"brown":0.056,"white":0.056,"grey":0.056},"petal":{"anticipation":0.444,"surprise":0.259,"disgust":0.111,"joy":0.074,"trust":0.037,"sadness":0.037,"fear":0.037},"alpha_pct":-27.8},{"task":"07envwind","n":27,"valence":4.59,"arousal":3.41,"size":2.43,"temperature":-0.24,"movement":1.46,"light":0.1,"hue":{"blue":0.25,"grey":0.2,"white":0.15,"black":0.1,"brown":0.1,"purple":0.05,"red":0.05,"orange":0.05,"green":0.05},"petal":{"joy":0.333,"disgust":0.259,"surprise":0.222,"trust":0.074,"anticipation":0.074,"sadness":0.037},"alpha_pct":-22.8},{"task":"08envonoff","n":27,"valence":3.59,"arousal":4.3,"size":2.11,"temperature":-0.03,"movement":1.72,"light":-0.12,"hue":{"blue":0.353,"brown":0.176,"red":0.118,"green":0.118,"purple":0.059,"grey":0.059,"white":0.059,"black":0.059},"petal":{"surprise":0.407,"anticipation":0.185,"anger":0.111,"disgust":0.111,"fear":0.074,"trust":0.037,"joy":0.037,"sadness":0.037},"alpha_pct":-26.0},{"task":"09rqintermedio","n":27,"valence":4.67,"arousal":4.0,"size":2.54,"temperature":-0.29,"movement":1.76,"light":0.22,"hue":{"blue":0.435,"green":0.174,"yellow":0.087,"purple":0.087,"orange":0.043,"red":0.043,"grey":0.043,"black":0.043,"brown":0.043},"petal":{"joy":0.333,"trust":0.222,"sadness":0.148,"anticipation":0.111,"disgust":0.074,"surprise":0.074,"anger":0.037},"alpha_pct":-24.9},{"task":"10rqancho","n":27,"valence":4.52,"arousal":4.7,"size":2.76,"temperature":-0.39,"movement":2.11,"light":0.12,"hue":{"white":0.261,"grey":0.217,"brown":0.174,"blue":0.13,"green":0.087,"orange":0.043,"purple":0.043,"yellow":0.043},"petal":{"trust":0.296,"surprise":0.259,"anticipation":0.111,"sadness":0.111,"joy":0.074,"anger":0.074,"fear":0.074},"alpha_pct":-25.7},{"task":"11rqestrecho","n":27,"valence":4.15,"arousal":4.37,"size":2.38,"temperature":0.18,"movement":1.42,"light":0.11,"hue":{"purple":0.235,"white":0.235,"yellow":0.176,"orange":0.118,"blue":0.059,"green":0.059,"black":0.059,"red":0.059},"petal":{"anticipation":0.308,"joy":0.269,"disgust":0.231,"trust":0.077,"fear":0.077,"anger":0.038},"alpha_pct":-18.9},{"task":"12ovtfundamental","n":27,"valence":3.78,"arousal":4.37,"size":2.61,"temperature":-0.12,"movement":1.15,"light":0.32,"hue":{"blue":0.304,"white":0.217,"black":0.13,"green":0.087,"yellow":0.087,"grey":0.087,"brown":0.043,"orange":0.043},"petal":{"anticipation":0.296,"sadness":0.185,"surprise":0.185,"fear":0.111,"anger":0.111,"trust":0.037,"disgust":0.037,"joy":0.037},"alpha_pct":-21.4},{"task":"13ovtcomprimidos","n":27,"valence":3.63,"arousal":4.37,"size":2.46,"temperature":-0.14,"movement":1.48,"light":0.05,"hue":{"grey":0.182,"red":0.182,"brown":0.136,"blue":0.136,"white":0.091,"green":0.091,"yellow":0.091,"orange":0.091},"petal":{"anticipation":0.296,"fear":0.185,"disgust":0.185,"joy":0.148,"anger":0.111,"trust":0.037,"surprise":0.037},"alpha_pct":-22.5},{"task":"14ovtdistantes","n":27,"valence":3.59,"arousal":4.89,"size":2.46,"temperature":0.21,"movement":1.46,"light":0.18,"hue":{"yellow":0.3,"red":0.2,"purple":0.15,"green":0.15,"white":0.15,"blue":0.05},"petal":{"anticipation":0.37,"fear":0.185,"disgust":0.111,"joy":0.111,"anger":0.074,"trust":0.074,"surprise":0.037,"sadness":0.037},"alpha_pct":-25.5},{"task":"15birdssc","n":27,"valence":4.59,"arousal":4.74,"size":1.78,"temperature":0.24,"movement":1.86,"light":0.32,"hue":{"green":0.208,"yellow":0.167,"white":0.125,"blue":0.125,"purple":0.125,"grey":0.083,"red":0.083,"brown":0.042,"black":0.042},"petal":{"surprise":0.37,"anticipation":0.296,"joy":0.148,"trust":0.074,"disgust":0.074,"anger":0.037},"alpha_pct":-19.3},{"task":"16earthquakesc","n":27,"valence":3.63,"arousal":4.63,"size":2.77,"temperature":0.25,"movement":1.93,"light":-0.41,"hue":{"brown":0.286,"grey":0.19,"black":0.143,"orange":0.095,"yellow":0.095,"purple":0.048,"blue":0.048,"white":0.048,"red":0.048},"petal":{"anticipation":0.444,"fear":0.259,"surprise":0.074,"joy":0.074,"anger":0.074,"sadness":0.037,"disgust":0.037},"alpha_pct":-19.8},{"task":"17rainsc","n":27,"valence":4.85,"arousal":4.41,"size":1.59,"temperature":-0.65,"movement":1.96,"light":0.27,"hue":{"white":0.286,"blue":0.19,"grey":0.143,"purple":0.095,"green":0.095,"black":0.048,"yellow":0.048,"red":0.048,"brown":0.048},"petal":{"surprise":0.37,"joy":0.222,"anticipation":0.111,"trust":0.111,"sadness":0.111,"disgust":0.074},"alpha_pct":-25.2},{"task":"18riversc","n":27,"valence":4.59,"arousal":4.63,"size":1.62,"temperature":-0.61,"movement":2.15,"light":0.64,"hue":{"white":0.333,"yellow":0.286,"blue":0.238,"grey":0.095,"green":0.048},"petal":{"anticipation":0.37,"surprise":0.296,"joy":0.148,"disgust":0.074,"trust":0.074,"fear":0.037},"alpha_pct":-24.5},{"task":"19seawavessc","n":27,"valence":4.37,"arousal":4.7,"size":2.2,"temperature":-0.53,"movement":1.96,"light":0.04,"hue":{"blue":0.435,"white":0.217,"red":0.087,"brown":0.087,"purple":0.043,"grey":0.043,"orange":0.043,"yellow":0.043},"petal":{"surprise":0.296,"disgust":0.185,"anticipation":0.185,"joy":0.111,"fear":0.074,"trust":0.074,"anger":0.074},"alpha_pct":-22.3},{"task":"20thundersc","n":27,"valence":3.67,"arousal":4.78,"size":3.0,"temperature":0.0,"movement":1.58,"light":-0.44,"hue":{"grey":0.25,"black":0.167,"white":0.125,"brown":0.125,"blue":0.083,"red":0.083,"green":0.083,"orange":0.042,"purple":0.042},"petal":{"fear":0.519,"anticipation":0.185,"surprise":0.111,"disgust":0.074,"sadness":0.037,"anger":0.037,"trust":0.037},"alpha_pct":-22.2},{"task":"21windsc","n":27,"valence":4.44,"arousal":4.44,"size":2.63,"temperature":-0.48,"movement":1.89,"light":0.08,"hue":{"blue":0.375,"white":0.167,"green":0.083,"grey":0.083,"brown":0.083,"purple":0.083,"yellow":0.042,"black":0.042,"orange":0.042},"petal":{"sadness":0.333,"joy":0.185,"surprise":0.148,"anticipation":0.111,"trust":0.111,"fear":0.074,"disgust":0.037},"alpha_pct":-21.1},{"task":"22birds","n":27,"valence":5.67,"arousal":5.19,"size":2.46,"temperature":0.29,"movement":1.26,"light":0.32,"hue":{"green":0.52,"yellow":0.2,"blue":0.08,"brown":0.04,"orange":0.04,"red":0.04,"purple":0.04,"white":0.04},"petal":{"joy":0.556,"trust":0.148,"surprise":0.148,"anticipation":0.111,"anger":0.037},"alpha_pct":-18.4},{"task":"23earthquake","n":27,"valence":3.59,"arousal":4.89,"size":2.96,"temperature":0.4,"movement":1.54,"light":-0.58,"hue":{"brown":0.318,"grey":0.227,"red":0.227,"black":0.091,"blue":0.045,"orange":0.045,"yellow":0.045},"petal":{"anticipation":0.407,"fear":0.296,"anger":0.148,"surprise":0.111,"joy":0.037},"alpha_pct":-17.3},{"task":"24rain","n":27,"valence":4.85,"arousal":3.52,"size":2.29,"temperature":-0.33,"movement":1.74,"light":-0.12,"hue":{"grey":0.261,"blue":0.174,"white":0.174,"green":0.13,"brown":0.087,"purple":0.043,"orange":0.043,"yellow":0.043,"black":0.043},"petal":{"sadness":0.333,"joy":0.259,"trust":0.222,"disgust":0.111,"fear":0.037,"anticipation":0.037},"alpha_pct":-16.8},{"task":"25river","n":27,"valence":5.67,"arousal":4.41,"size":2.37,"temperature":-0.5,"movement":1.81,"light":0.28,"hue":{"green":0.32,"blue":0.24,"white":0.2,"grey":0.12,"orange":0.04,"brown":0.04,"purple":0.04},"petal":{"joy":0.519,"trust":0.296,"surprise":0.111,"anger":0.037,"anticipation":0.037},"alpha_pct":-16.2},{"task":"26seawaves","n":27,"valence":3.89,"arousal":4.89,"size":2.83,"temperature":-0.39,"movement":2.33,"light":0.04,"hue":{"blue":0.462,"white":0.231,"grey":0.115,"black":0.077,"orange":0.038,"brown":0.038,"yellow":0.038},"petal":{"surprise":0.269,"anticipation":0.231,"anger":0.192,"trust":0.077,"disgust":0.077,"fear":0.077,"joy":0.077},"alpha_pct":-20.6},{"task":"27thunder","n":27,"valence":4.48,"arousal":4.93,"size":2.85,"temperature":-0.66,"movement":1.56,"light":-0.32,"hue":{"grey":0.304,"blue":0.304,"black":0.174,"orange":0.087,"white":0.087,"red":0.043},"petal":{"anticipation":0.269,"fear":0.231,"trust":0.231,"sadness":0.115,"joy":0.077,"surprise":0.038,"disgust":0.038},"alpha_pct":-16.5},{"task":"28wind","n":27,"valence":4.63,"arousal":3.89,"size":2.69,"temperature":-0.43,"movement":1.48,"light":0.3,"hue":{"blue":0.304,"grey":0.217,"white":0.174,"yellow":0.087,"purple":0.087,"green":0.043,"black":0.043,"red":0.043},"petal":{"sadness":0.259,"joy":0.259,"surprise":0.222,"trust":0.111,"anticipation":0.111,"disgust":0.037},"alpha_pct":-15.6}];
+const AUDIO = "audio/";
+const PETALS = ["joy","trust","fear","surprise","sadness","disgust","anger","anticipation"];
+const PCOL = {joy:"#f6cf3c",trust:"#93c84a",fear:"#2f9e63",surprise:"#3ba7d4",sadness:"#3d6ec6",disgust:"#9160b8",anger:"#e0493c",anticipation:"#f39238"};
+const HUES = ["blue","green","white","grey","black","brown","yellow","orange","red","purple"];
+const HCOL = {blue:"#3f7fd0",green:"#4a9d4f",white:"#f3f2ec",grey:"#9aa1a9",black:"#24262b",brown:"#8a5a35",yellow:"#f2cf3a",orange:"#ee8a2f",red:"#d64534",purple:"#9b59b6"};
+const byTask = Object.fromEntries(D.map(d => [d.task, d]));
+const $ = id => document.getElementById(id);
+const pct = v => Math.round(v * 100) + "%";
+const ICON_PLAY = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M5 3l12 7-12 7z"/></svg>';
+const ICON_STOP = '<svg viewBox="0 0 20 20" fill="currentColor"><rect x="4" y="4" width="12" height="12" rx="2"/></svg>';
+
+/* ---------- audio: one element shared by all buttons */
+const aud = $("aud"); let cur = null;
+function setBtn(b, on) { b.innerHTML = on ? ICON_STOP : ICON_PLAY; b.setAttribute("aria-label", on ? L.stop : L.play); }
+function toggle(task, btn, bar) {
+  if (cur && cur.btn === btn && !aud.paused) { aud.pause(); return; }
+  if (cur) { setBtn(cur.btn, false); cur.bar.style.width = "0"; }
+  cur = { btn, bar }; aud.src = AUDIO + task.slice(0, 2) + ".mp3"; aud.play().catch(() => {}); setBtn(btn, true);
+}
+aud.addEventListener("timeupdate", () => { if (cur && aud.duration) cur.bar.style.width = (100 * aud.currentTime / aud.duration) + "%"; });
+aud.addEventListener("pause", () => { if (cur) setBtn(cur.btn, false); });
+aud.addEventListener("ended", () => { if (cur) { setBtn(cur.btn, false); cur.bar.style.width = "0"; } });
+function stopAudio() { if (!aud.paused) aud.pause(); if (cur) cur.bar.style.width = "0"; }
+
+/* ---------- shared drawing */
+function hueBar(el, key, dist) {
+  const items = HUES.filter(h => dist[h]).sort((a, b) => dist[b] - dist[a]);
+  el.innerHTML = items.map(h => `<div style="flex:${dist[h]};background:${HCOL[h]}" title="${L.hue[h]} ${pct(dist[h])}"></div>`).join("");
+  el.setAttribute("role", "img");
+  el.setAttribute("aria-label", items.map(h => `${L.hue[h]} ${pct(dist[h])}`).join(", "));
+  key.innerHTML = items.slice(0, 4).map(h => `<span style="--c:${HCOL[h]}">${L.hue[h]} ${pct(dist[h])}</span>`).join("");
+}
+function wheel(svg, dist, mark) {
+  const max = Math.max(...Object.values(dist), 0.01);
+  let s = "";
+  PETALS.forEach((p, i) => {
+    const v = dist[p] || 0, ang = i * 45;
+    const len = 40 + 76 * (v / max);
+    const op = 0.18 + 0.82 * (v / max);
+    s += `<g transform="rotate(${ang})"><path d="M0 -14 C 26 -${14 + len * 0.35}, 22 -${len}, 0 -${len + 14} C -22 -${len}, -26 -${14 + len * 0.35}, 0 -14 Z" fill="${PCOL[p]}" fill-opacity="${op}" stroke="${mark === p ? "currentColor" : PCOL[p]}" stroke-width="${mark === p ? 3 : 1}"><title>${L.petal[p]} ${pct(v)}</title></path></g>`;
+    const rad = (ang - 90) * Math.PI / 180, r = 145;
+    const x = Math.cos(rad) * r, y = Math.sin(rad) * r;
+    s += `<text x="${x.toFixed(1)}" y="${(y - 2).toFixed(1)}" text-anchor="middle">${L.petal[p]}</text><text class="pc" x="${x.toFixed(1)}" y="${(y + 10).toFixed(1)}" text-anchor="middle">${pct(v)}</text>`;
+  });
+  svg.innerHTML = s;
+  svg.style.color = "var(--fg)";
+  const top = PETALS.slice().sort((a, b) => (dist[b] || 0) - (dist[a] || 0))[0];
+  svg.setAttribute("aria-label", PETALS.map(p => `${L.petal[p]} ${pct(dist[p] || 0)}`).join(", "));
+  return top;
+}
+const METERS = [
+  { k: "valence", lo: 1, hi: 7 }, { k: "arousal", lo: 1, hi: 7 }, { k: "size", lo: 0, hi: 4 },
+  { k: "temperature", lo: -1, hi: 1 }, { k: "movement", lo: 0, hi: 3 }, { k: "light", lo: -1, hi: 1 }];
+// zoom each scale to the range the 27 sounds cover, with a margin, so differences are visible
+const RANGE = Object.fromEntries(METERS.map(m => {
+  const v = D.map(d => d[m.k]); const a = Math.min(...v), b = Math.max(...v), pad = (b - a) * 0.15;
+  return [m.k, [a - pad, b + pad]];
+}));
+const pos = (k, v) => { const [a, b] = RANGE[k]; return Math.max(0, Math.min(100, 100 * (v - a) / (b - a))); };
+function meters(el, tasks, cls) {
+  el.innerHTML = METERS.map(m => {
+    const others = D.map(d => `<span class="o" style="left:${pos(m.k, d[m.k])}%"></span>`).join("");
+    const dots = tasks.map((t, i) => `<span class="d ${cls ? cls[i] : ""}" style="left:${pos(m.k, byTask[t][m.k])}%" title="${byTask[t][m.k]}"></span>`).join("");
+    return `<div class="meter"><div class="lab"><span>${L.m[m.k][0]}</span><b>${L.m[m.k][2]}</b><span>${L.m[m.k][1]}</span></div><div class="track">${others}${dots}</div></div>`;
+  }).join("");
+}
+function alphaMeter(el, t) {
+  const v = D.map(d => d.alpha_pct), a = Math.min(...v) - 2, b = Math.max(...v) + 2;
+  const p = x => 100 * (x - a) / (b - a);
+  el.innerHTML = `<div class="meter"><div class="lab"><span>${L.alpha_more}</span><span>${L.alpha_less}</span></div><div class="track">${D.map(d => `<span class="o" style="left:${p(d.alpha_pct)}%"></span>`).join("")}<span class="d" style="left:${p(byTask[t].alpha_pct)}%"></span></div></div>`;
+}
+
+/* ---------- explorer */
+let group = 0, sel = null;
+function renderTabs() {
+  $("tabs").innerHTML = L.groups.map((g, i) => `<button class="tab" role="tab" aria-selected="${i === group}" data-i="${i}">${g.name}</button>`).join("");
+  $("tabnote").textContent = L.groups[group].note;
+  $("grid").innerHTML = L.groups[group].tasks.map(t => {
+    const h = byTask[t].hue, items = HUES.filter(x => h[x]).sort((a, b) => h[b] - h[a]);
+    return `<button class="snd" aria-pressed="${t === sel}" data-t="${t}">${L.names[t][0]}<small>${L.names[t][1]}</small><span class="chip" aria-hidden="true">${items.map(x => `<i style="flex:${h[x]};background:${HCOL[x]}"></i>`).join("")}</span></button>`;
+  }).join("");
+}
+$("tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; group = +b.dataset.i; renderTabs(); select(L.groups[group].tasks[0]); });
+$("grid").addEventListener("click", e => { const b = e.target.closest(".snd"); if (b) { select(b.dataset.t); } });
+function select(t) {
+  sel = t; stopAudio();
+  document.querySelectorAll("#grid .snd").forEach(b => b.setAttribute("aria-pressed", b.dataset.t === t));
+  const d = byTask[t];
+  $("p-group").textContent = L.groups.find(g => g.tasks.includes(t)).name;
+  $("p-name").textContent = L.names[t][0];
+  $("p-desc").textContent = L.names[t][2];
+  setBtn($("p-play"), false); $("p-prog").style.width = "0";
+  hueBar($("p-hue"), $("p-huekey"), d.hue);
+  meters($("p-meters"), [t]);
+  const top = wheel($("p-wheel"), d.petal);
+  $("p-wheelcap").innerHTML = L.wheelcap.replace("{e}", `<b>${L.petal[top]}</b>`).replace("{p}", pct(d.petal[top]));
+  $("p-alpha").textContent = "−" + Math.abs(d.alpha_pct).toFixed(0) + "%";
+  $("p-alphatxt").textContent = L.alpha_txt;
+  alphaMeter($("p-alphameter"), t);
+}
+$("p-play").addEventListener("click", () => toggle(sel, $("p-play"), $("p-prog")));
+
+/* ---------- finding visuals */
+(function () {
+  const rows = L.light_rows.map(([t, lab]) => [lab, byTask[t].light]);
+  $("viz-light").innerHTML = `<div class="legend-note" style="margin:0 0 6px">${L.light_cap}</div>` + rows.map(([lab, v]) =>
+    `<div class="r"><span>${lab}</span><span class="t"><i style="width:${(v + 1) * 50}%"></i></span><span class="v">${v > 0 ? "+" : ""}${v.toFixed(2)}</span></div>`).join("");
+  const er = L.emo_rows.map(([t, p, lab]) => [lab, L.petal[p], byTask[t].petal[p], PCOL[p]]);
+  $("viz-emo").innerHTML = er.map(([lab, p, v, c]) =>
+    `<div class="r"><span>${lab} · ${p.toLowerCase()}</span><span class="t"><i style="width:${v * 100}%;background:${c}"></i></span><span class="v">${pct(v)}</span></div>`).join("") +
+    `<div class="legend-note">${L.emo_cap}</div>`;
+})();
+
+/* ---------- game */
+let gT = null, gH = null, gP = null;
+function newGame() {
+  stopAudio(); const all = D.map(d => d.task); let t; do { t = all[Math.floor(Math.random() * all.length)]; } while (t === gT);
+  gT = t; gH = gP = null; $("g-name").textContent = L.mystery; $("g-sub").textContent = L.g_hint;
+  $("g-reveal").classList.remove("on"); $("g-go").disabled = true; setBtn($("g-play"), false);
+  $("g-hues").innerHTML = HUES.map(h => `<button class="sw" style="--c:${HCOL[h]}" aria-pressed="false" data-h="${h}" aria-label="${L.hue[h]}" title="${L.hue[h]}"></button>`).join("");
+  $("g-petals").innerHTML = PETALS.map(p => `<button class="pt" style="--c:${PCOL[p]}" aria-pressed="false" data-p="${p}">${L.petal[p]}</button>`).join("");
+}
+const gProg = document.createElement("i");
+$("g-play").addEventListener("click", () => toggle(gT, $("g-play"), gProg));
+$("g-hues").addEventListener("click", e => { const b = e.target.closest(".sw"); if (!b) return; gH = b.dataset.h; document.querySelectorAll("#g-hues .sw").forEach(x => x.setAttribute("aria-pressed", x === b)); $("g-go").disabled = !(gH && gP); });
+$("g-petals").addEventListener("click", e => { const b = e.target.closest(".pt"); if (!b) return; gP = b.dataset.p; document.querySelectorAll("#g-petals .pt").forEach(x => x.setAttribute("aria-pressed", x === b)); $("g-go").disabled = !(gH && gP); });
+$("g-go").addEventListener("click", () => {
+  const d = byTask[gT];
+  $("g-name").textContent = L.names[gT][0]; $("g-sub").textContent = L.names[gT][2];
+  hueBar($("g-hue"), $("g-huekey"), d.hue); wheel($("g-wheel"), d.petal, gP);
+  $("g-verdict").innerHTML = L.verdict.replace("{h}", pct(d.hue[gH] || 0)).replace("{hn}", L.hue[gH].toLowerCase())
+    .replace("{p}", pct(d.petal[gP] || 0)).replace("{pn}", L.petal[gP].toLowerCase());
+  $("g-reveal").classList.add("on");
+});
+$("g-new").addEventListener("click", newGame);
+
+/* ---------- compare */
+const PAIRS = ["birds","earthquake","rain","river","seawaves","thunder","wind"];
+let pair = 0;
+function renderPair() {
+  $("cmp-tabs").innerHTML = PAIRS.map((p, i) => `<button class="tab" role="tab" aria-selected="${i === pair}" data-i="${i}">${L.pairs[p]}</button>`).join("");
+  const a = D.find(d => d.task.slice(2) === PAIRS[pair]).task, b = D.find(d => d.task.slice(2) === PAIRS[pair] + "sc").task;
+  stopAudio(); setBtn($("c-play-a"), false); setBtn($("c-play-b"), false);
+  meters($("c-meters"), [a, b], ["a", "b"]);
+  $("c-verdict").innerHTML = L.cmp_verdict[PAIRS[pair]];
+  $("c-play-a").onclick = () => toggle(a, $("c-play-a"), $("c-prog-a"));
+  $("c-play-b").onclick = () => toggle(b, $("c-play-b"), $("c-prog-b"));
+}
+$("cmp-tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) { pair = +b.dataset.i; renderPair(); } });
+
+/* ---------- hero wave (static if reduced motion) */
+(function () {
+  const svg = $("wave"), still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lines = [0, 1, 2].map(i => { const p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("fill", "none"); p.setAttribute("stroke", ["#d9572b", "#6aa2f5", "#f6cf3c"][i]); p.setAttribute("stroke-width", "1.5"); p.setAttribute("stroke-opacity", [0.9, 0.6, 0.45][i]); svg.appendChild(p); return p; });
+  function draw(t) {
+    lines.forEach((p, i) => {
+      let d = "";
+      for (let x = 0; x <= 1200; x += 8) {
+        const env = Math.sin(Math.PI * x / 1200);
+        const y = 80 + env * (34 - i * 8) * Math.sin(x / (60 + i * 25) + t * (0.0009 + i * 0.0004)) * Math.cos(x / (210 + i * 40) - t * 0.0003);
+        d += (x ? "L" : "M") + x + " " + y.toFixed(1);
+      }
+      p.setAttribute("d", d);
+    });
+    if (!still) requestAnimationFrame(draw);
+  }
+  draw(0);
+})();
+
+[$("p-play"), $("g-play"), $("c-play-a"), $("c-play-b")].forEach(b => setBtn(b, false));
+renderTabs(); select(L.groups[0].tasks[0]); newGame(); renderPair();
+</script>
 </body>
 </html>
